@@ -1,1 +1,0 @@
-INDEX VERSION 1.127+/home/erwol/Dropbox/Workspaces/sts-iw/.metadata/.plugins/org.eclipse.jdt.core
