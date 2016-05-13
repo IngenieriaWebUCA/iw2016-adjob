@@ -2,13 +2,10 @@ package es.uca.iw.domain;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
 import org.springframework.roo.addon.tostring.RooToString;
-
 import es.uca.iw.reference.Sexo;
 import es.uca.iw.reference.TipoUsuario;
-
 import javax.validation.constraints.Size;
 import java.util.Date;
-
 import javax.persistence.Enumerated;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -55,12 +52,17 @@ public class Usuario {
     /**
      */
     private Integer telefono;
-    
+
     @Enumerated
     private TipoUsuario tipo;
-    
+
     /**
      */
     @Enumerated
     private Sexo sexo;
+
+    /**
+     */
+    @Size(min = 9, max = 9)
+    private String dni;
 }

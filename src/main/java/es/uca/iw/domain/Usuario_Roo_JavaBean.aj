@@ -82,4 +82,12 @@ privileged aspect Usuario_Roo_JavaBean {
         this.sexo = sexo;
     }
     
+    public String Usuario.getDni() {
+        return this.dni;
+    }
+    
+    public void Usuario.setDni(String dni) {
+        this.dni = dni;
+    }
+    
 }

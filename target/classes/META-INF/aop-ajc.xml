@@ -1,12 +1,53 @@
 <aspectj>
 <aspects>
-<aspect name="es.uca.iw.domain.Usuario_Roo_Jpa_Entity"/>
+<aspect name="es.uca.iw.domain.ExperienciaCurso_Roo_Configurable"/>
+<aspect name="es.uca.iw.domain.Curriculum_Roo_Configurable"/>
 <aspect name="es.uca.iw.web.UsuarioController_Roo_Controller"/>
-<aspect name="es.uca.iw.domain.Usuario_Roo_Configurable"/>
-<aspect name="es.uca.iw.domain.Usuario_Roo_ToString"/>
-<aspect name="es.uca.iw.web.ApplicationConversionServiceFactoryBean_Roo_ConversionService"/>
+<aspect name="es.uca.iw.domain.Usuario_Roo_Jpa_Entity"/>
+<aspect name="es.uca.iw.domain.ExperienciaLaboral_Roo_JavaBean"/>
+<aspect name="es.uca.iw.domain.Empresa_Roo_Configurable"/>
+<aspect name="es.uca.iw.domain.ExperienciaIdioma_Roo_ToString"/>
+<aspect name="es.uca.iw.domain.ExperienciaTitulo_Roo_Jpa_ActiveRecord"/>
+<aspect name="es.uca.iw.domain.ExperienciaTitulo_Roo_JavaBean"/>
+<aspect name="es.uca.iw.domain.ExperienciaTitulo_Roo_Jpa_Entity"/>
+<aspect name="es.uca.iw.domain.ExperienciaIdioma_Roo_Configurable"/>
+<aspect name="es.uca.iw.domain.Curriculum_Roo_JavaBean"/>
+<aspect name="es.uca.iw.domain.ExperienciaIdioma_Roo_Jpa_Entity"/>
 <aspect name="es.uca.iw.domain.Usuario_Roo_Jpa_ActiveRecord"/>
+<aspect name="es.uca.iw.domain.ExperienciaTitulo_Roo_ToString"/>
 <aspect name="es.uca.iw.domain.Usuario_Roo_JavaBean"/>
+<aspect name="es.uca.iw.domain.ExperienciaIdioma_Roo_JavaBean"/>
+<aspect name="es.uca.iw.domain.ExperienciaLaboral_Roo_ToString"/>
+<aspect name="es.uca.iw.domain.Empresa_Roo_ToString"/>
+<aspect name="es.uca.iw.domain.ExperienciaCurso_Roo_Jpa_ActiveRecord"/>
+<aspect name="es.uca.iw.domain.PuestoTrabajo_Roo_Configurable"/>
+<aspect name="es.uca.iw.web.EmpresaController_Roo_Controller"/>
+<aspect name="es.uca.iw.domain.ExperienciaLaboral_Roo_Configurable"/>
+<aspect name="es.uca.iw.domain.Curriculum_Roo_Jpa_Entity"/>
+<aspect name="es.uca.iw.domain.ExperienciaLaboral_Roo_Jpa_Entity"/>
+<aspect name="es.uca.iw.domain.PuestoTrabajo_Roo_JavaBean"/>
+<aspect name="es.uca.iw.domain.OfertaTrabajo_Roo_Configurable"/>
+<aspect name="es.uca.iw.domain.OfertaTrabajo_Roo_JavaBean"/>
+<aspect name="es.uca.iw.domain.PuestoTrabajo_Roo_Jpa_Entity"/>
+<aspect name="es.uca.iw.domain.OfertaTrabajo_Roo_Jpa_Entity"/>
+<aspect name="es.uca.iw.domain.ExperienciaTitulo_Roo_Configurable"/>
+<aspect name="es.uca.iw.domain.Usuario_Roo_ToString"/>
+<aspect name="es.uca.iw.domain.Empresa_Roo_JavaBean"/>
+<aspect name="es.uca.iw.web.ApplicationConversionServiceFactoryBean_Roo_ConversionService"/>
+<aspect name="es.uca.iw.domain.Empresa_Roo_Jpa_Entity"/>
+<aspect name="es.uca.iw.domain.PuestoTrabajo_Roo_ToString"/>
+<aspect name="es.uca.iw.domain.ExperienciaIdioma_Roo_Jpa_ActiveRecord"/>
+<aspect name="es.uca.iw.domain.OfertaTrabajo_Roo_Jpa_ActiveRecord"/>
+<aspect name="es.uca.iw.domain.ExperienciaCurso_Roo_JavaBean"/>
+<aspect name="es.uca.iw.domain.Curriculum_Roo_ToString"/>
+<aspect name="es.uca.iw.domain.ExperienciaCurso_Roo_ToString"/>
+<aspect name="es.uca.iw.domain.Usuario_Roo_Configurable"/>
+<aspect name="es.uca.iw.domain.ExperienciaCurso_Roo_Jpa_Entity"/>
+<aspect name="es.uca.iw.domain.Empresa_Roo_Jpa_ActiveRecord"/>
+<aspect name="es.uca.iw.domain.Curriculum_Roo_Jpa_ActiveRecord"/>
+<aspect name="es.uca.iw.domain.ExperienciaLaboral_Roo_Jpa_ActiveRecord"/>
+<aspect name="es.uca.iw.domain.OfertaTrabajo_Roo_ToString"/>
+<aspect name="es.uca.iw.domain.PuestoTrabajo_Roo_Jpa_ActiveRecord"/>
 </aspects>
 </aspectj>
 

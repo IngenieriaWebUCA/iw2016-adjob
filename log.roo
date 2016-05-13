@@ -27,3 +27,75 @@ enum constant --name Hombre
 enum constant --name Otro
 field enum --fieldName sexo --type ~.reference.sexo --notNull false 
 
+field string --fieldName dni --sizeMin 9 --sizeMax 9 --class ~.domain.Usuario
+entity jpa --class ~.domain.Empresa
+field string --fieldName nombre --sizeMin 3 --sizeMax 30 --class ~.domain.Empresa
+field string --fieldName cif --sizeMin 9 --sizeMax 9 --class ~.domain.Empresa
+field string --fieldName actividad_profesional --sizeMin 3 --sizeMax 200 --class ~.domain.Empresa
+field number --fieldName numero_empleados --class ~.domain.Empresa  --type java.lang.Integer
+
+field number --fieldName telefono --class ~.domain.Empresa  --type java.lang.Integer
+
+field string --fieldName web --sizeMin 3 --sizeMax 30 --class ~.domain.Empresa
+
+field string --fieldName direccion --sizeMin 3 --sizeMax 100 --class ~.domain.Empresa
+
+web mvc all --package ~.web
+
+enum type --class ~.reference.tipoContrato
+enum constant --name Indefinido
+enum constant --name Temporal
+enum constant --name HorasYservicios
+enum type --class ~.reference.estadoOferta
+
+enum constant --name Espera
+enum constant --name Activa
+enum constant --name Detenida
+enum constant --name Cancelada
+enum constant --name Tramite
+enum constant --name Resuelta
+enum type --class ~.reference.puestoTrabajo
+enum type --class ~.reference.puestoTrabajo
+entity jpa --class ~.domain.puestoTrabajo
+field string --fieldName nombre --sizeMin 3 --sizeMax 30 --class ~.domain.puestoTrabajo
+field string --fieldName descripcion --sizeMin 3 --sizeMax 100 --class ~.domain.puestoTrabajo
+entity jpa --class ~.domain.ofertaTrabajo
+field string --fieldName nombre --sizeMin 3 --sizeMax 30 --class ~.domain.ofertaTrabajo
+field string --fieldName informacion --sizeMin 10 --sizeMax 200 --class ~.domain.ofertaTrabajo
+field date --fieldName fecha_inicio --type java.util.Date --notNull
+field date --fieldName fecha_fin --type java.util.Date --notNull
+field enum --fieldName tipo_contrato --type ~.reference.tipoContrato --notNull false
+field enum --fieldName estado_oferta --type ~.reference.estadoOferta --notNull false
+field number --fieldName sueldo --class ~.domain.ofertaTrabajo  --type java.lang.Float
+field number --fieldName numero_vacantes --class ~.domain.ofertaTrabajo  --type java.lang.Integer
+field string --fieldName perfil --sizeMin 10 --sizeMax 200 --class ~.domain.ofertaTrabajo
+field reference --fieldName empresa --type ~.domain.Empresa
+field reference --fieldName puesto_buscado --type ~.domain.puestoTrabajo
+entity jpa --class ~.domain.curriculum
+field string --fieldName foto --sizeMin 0 --sizeMax 30 --class ~.domain.curriculum
+field string --fieldName trayectoria --sizeMin 10 --sizeMax 300 --class ~.domain.curriculum
+field reference --fieldName usuario --type ~.domain.usuario
+entity jpa --class ~.domain.experienciaLaboral
+field string --fieldName nombre_empresa --sizeMin 3 --sizeMax 30 --class ~.domain.experienciaLaboral
+field date --fieldName fecha_inicio --type java.util.Date --notNull
+field date --fieldName fecha_fin --type java.util.Date --notNull
+field reference --fieldName curriculum --type ~.domain.curriculum
+field reference --fieldName puesto --type ~.domain.puestoTrabajo
+entity jpa --class ~.domain.experienciaIdioma
+field string --fieldName nombre_titulo --sizeMin 3 --sizeMax 30 --class ~.domain.experienciaIdioma
+field string --fieldName descripcion --sizeMin 0 --sizeMax 50 --class ~.domain.experienciaIdioma
+field string --fieldName entidad_emisora --sizeMin 3 --sizeMax 30 --class ~.domain.experienciaIdioma
+field string --fieldName nivel --sizeMin 1 --sizeMax 10 --class ~.domain.experienciaIdioma
+field reference --fieldName curriculum --type ~.domain.curriculum
+entity jpa --class ~.domain.experienciaCurso
+field string --fieldName nombre --sizeMin 3 --sizeMax 30 --class ~.domain.experienciaCurso
+field string --fieldName nombre_academia --sizeMin 3 --sizeMax 30 --class ~.domain.experienciaCurso
+field string --fieldName descripcion --sizeMin 3 --sizeMax 30 --class ~.domain.experienciaCurso
+field date --fieldName fecha_inicio --type java.util.Date --notNull
+field date --fieldName fecha_fin --type java.util.Date --notNull
+field reference --fieldName curriculum --type ~.domain.curriculum
+entity jpa --class ~.domain.experienciaTitulo
+field string --fieldName nombre --sizeMin 3 --sizeMax 30 --class ~.domain.experienciaTitulo
+field string --fieldName entidad_emisora --sizeMin 3 --sizeMax 30 --class ~.domain.experienciaTitulo
+field date --fieldName fecha_obtencion --type java.util.Date --notNull
+field string --fieldName descripcion --sizeMin 0 --sizeMax 30 --class ~.domain.experienciaTitulo
