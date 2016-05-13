@@ -1,0 +1,29 @@
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-05-13 20:46:47
+project --topLevelPackage es.uca.iw --projectName adjob
+jpa setup --provider HIBERNATE --database MYSQL --databaseName adjob --hostName localhost --userName root
+// Spring Roo 1.3.1.RELEASE [rev 8cb81a3] log opened at 2016-05-13 20:52:35
+entity jpa --class ~.domain.Usuario
+field string --fieldName nombre --sizeMin 3 --sizeMax 30 --class ~.domain.Usuario
+field string --fieldName apellidos --sizeMin 3 --sizeMax 50 --class ~.domain.Usuario
+field string --fieldName email --sizeMin 3 --sizeMax 30 --class ~.domain.Usuario
+field string --fieldName contrasena --sizeMin 3 --sizeMax 30 --class ~.domain.Usuario
+// [failed] field string --fieldName nombre --sizeMin 3 --sizeMax 30 --class ~.domain.Usuario
+field date --fieldName fechaNacimiento --type java.util.Date --notNull
+field string --fieldName direccion --sizeMin 3 --sizeMax 30 --class ~.domain.Usuario
+field number --fieldName telefono --class ~.domain.Usuario --type java.lang.Integer
+enum type --class ~.reference.tipoUsuario
+enum constant --name Demandante
+enum constant --name GestorETT
+enum constant --name GestorEmpresa
+enum constant --name Administrador
+enum constant --name SuperAdministrador
+
+field enum --fieldName tipo --type ~.reference.tipoUsuario --notNull false
+web mvc setup
+web mvc all --package ~.web
+enum type --class ~.reference.sexo
+enum constant --name Mujer
+enum constant --name Hombre
+enum constant --name Otro
+field enum --fieldName sexo --type ~.reference.sexo --notNull false 
+
