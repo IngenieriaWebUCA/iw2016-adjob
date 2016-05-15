@@ -127,3 +127,6 @@ enum constant --name Aceptada
 field enum --fieldName estado --type ~.reference.estadoPeticionOferta --notNull false --class ~.domain.peticionOferta
 field reference --fieldName curriculum_publicado --type ~domain.curriculum --cardinality ONE_TO_ONE --class ~.domain.peticionOferta
 web mvc all --package ~.web
+help
+web mvc jquery setup
+web mvc bootstrap setup
