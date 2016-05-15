@@ -6,10 +6,10 @@
         <field:input field="foto" id="c_es_uca_iw_domain_Curriculum_foto" max="30" min="0" required="true" z="uSwYuZuSbC5q81kuHIyzU0eXBlI="/>
         <field:textarea field="trayectoria" id="c_es_uca_iw_domain_Curriculum_trayectoria" z="p9vFCzOhg/RcVneyEXXdNdCCHN0="/>
         <field:select field="puestos_posibles" id="c_es_uca_iw_domain_Curriculum_puestos_posibles" itemValue="id" items="${puestotrabajoes}" multiple="true" path="/puestotrabajoes" z="zTGZyRTkEgD8Wu95Sbld3t7QcRE="/>
-        <field:simple field="experiencia_laboral" id="c_es_uca_iw_domain_Curriculum_experiencia_laboral" messageCode="entity_reference_not_managed" messageCodeAttribute="Experiencia Laboral" z="4kmumwdicbpuVfitkZP9CbfhoC0="/>
-        <field:simple field="experiencia_curso" id="c_es_uca_iw_domain_Curriculum_experiencia_curso" messageCode="entity_reference_not_managed" messageCodeAttribute="Experiencia Curso" z="VaHKmZZguF4LMLYE+ClgdaUX25E="/>
-        <field:simple field="experiencia_idioma" id="c_es_uca_iw_domain_Curriculum_experiencia_idioma" messageCode="entity_reference_not_managed" messageCodeAttribute="Experiencia Idioma" z="/QYn1hK0NlN1Iz+hmVPopbccSFg="/>
-        <field:simple field="experiencia_titulo" id="c_es_uca_iw_domain_Curriculum_experiencia_titulo" messageCode="entity_reference_not_managed" messageCodeAttribute="Experiencia Titulo" z="peVqZdulGaWvEpp9skIDPBePv/Y="/>
+        <field:select field="experiencia_laboral" id="c_es_uca_iw_domain_Curriculum_experiencia_laboral" itemValue="id" items="${experiencialaborals}" multiple="true" path="/experiencialaborals" z="XMCLMtT/F4IUEy8dhjbwtoAwrjQ="/>
+        <field:select field="experiencia_curso" id="c_es_uca_iw_domain_Curriculum_experiencia_curso" itemValue="id" items="${experienciacursoes}" multiple="true" path="/experienciacursoes" z="wNN0e7ZdLLiGi+U4yfUZ2OH+fSo="/>
+        <field:select field="experiencia_idioma" id="c_es_uca_iw_domain_Curriculum_experiencia_idioma" itemValue="id" items="${experienciaidiomas}" multiple="true" path="/experienciaidiomas" z="pR+PIypQHxM+4lrIht38ZBHYVKQ="/>
+        <field:select field="experiencia_titulo" id="c_es_uca_iw_domain_Curriculum_experiencia_titulo" itemValue="id" items="${experienciatituloes}" multiple="true" path="/experienciatituloes" z="9jH8pfTvZchIemVeYKMiU112Ve4="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_es_uca_iw_domain_Curriculum" render="${not empty dependencies}" z="0pbi3K0R2MUBYATqYYu/j3cDzuw="/>
 </div>

@@ -130,3 +130,7 @@ web mvc all --package ~.web
 help
 web mvc jquery setup
 web mvc bootstrap setup
+field set --fieldName experiencia_laboral --type ~.domain.experienciaLaboral --class ~.domain.curriculum --cardinality MANY_TO_MANY
+field set --fieldName experiencia_curso --type ~.domain.experienciaCurso --class ~.domain.curriculum --cardinality MANY_TO_MANY
+field set --fieldName experiencia_idioma --type ~.domain.experienciaIdioma --class ~.domain.curriculum --cardinality MANY_TO_MANY
+field set --fieldName experiencia_titulo --type ~.domain.experienciaTitulo --class ~.domain.curriculum --cardinality MANY_TO_MANY
