@@ -10,6 +10,7 @@
         <field:input field="telefono" id="c_es_uca_iw_domain_Empresa_telefono" validationMessageCode="field_invalid_integer" z="R86vZ7tGxBwle3x1soLA+dR2VMk="/>
         <field:input field="web" id="c_es_uca_iw_domain_Empresa_web" max="30" min="3" required="true" z="lkRqby0jiYxJAmH6VWXcV/EMqXg="/>
         <field:textarea field="direccion" id="c_es_uca_iw_domain_Empresa_direccion" z="yRA6B1shKvCLdVaVciWrE1C+N5E="/>
+        <field:select field="ofertas" id="c_es_uca_iw_domain_Empresa_ofertas" itemValue="id" items="${ofertatrabajoes}" path="/ofertatrabajoes" z="I/8LyP6S82185sIw9GSuWKuNWCE="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_es_uca_iw_domain_Empresa" render="${not empty dependencies}" z="R9ltFt0mw9C+loYnUlTiTM1AOdQ="/>
 </div>

@@ -1,4 +1,4 @@
-package es.uca.iw.domain;
+	package es.uca.iw.domain;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
 import org.springframework.roo.addon.tostring.RooToString;
@@ -11,6 +11,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
 
 @RooJavaBean
 @RooToString
@@ -65,4 +69,9 @@ public class Usuario {
      */
     @Size(min = 9, max = 9)
     private String dni;
+
+    /**
+     */
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Curriculum> curriculums = new HashSet<Curriculum>();
 }

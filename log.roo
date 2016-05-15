@@ -99,3 +99,31 @@ field string --fieldName nombre --sizeMin 3 --sizeMax 30 --class ~.domain.experi
 field string --fieldName entidad_emisora --sizeMin 3 --sizeMax 30 --class ~.domain.experienciaTitulo
 field date --fieldName fecha_obtencion --type java.util.Date --notNull
 field string --fieldName descripcion --sizeMin 0 --sizeMax 30 --class ~.domain.experienciaTitulo
+// Spring Roo 1.3.1.RELEASE [rev 8cb81a3] log opened at 2016-05-14 14:46:54
+// Spring Roo 1.3.1.RELEASE [rev 8cb81a3] log opened at 2016-05-15 11:46:28
+field set --fieldName curriculums --type ~.domain.curriculum --class ~.domain.usuario --cardinality ONE_TO_MANY
+field set --fieldName empresas --type ~.domain.Empresa --class ~.domain.Usuario
+field reference --fieldName ofertas --type ~.domain.ofertaTrabajo --class ~.domain.Empresa
+field set --fieldName puestos_posibles --type ~.domain.puestoTrabajo --class ~.domain.curriculum
+web mvc all --package ~.web
+// Spring Roo 1.3.1.RELEASE [rev 8cb81a3] log closed at 2016-05-15 11:54:27
+// Spring Roo 1.3.1.RELEASE [rev 8cb81a3] log opened at 2016-05-15 12:01:18
+// [failed] field reference --fieldName ofertas --type ~.domain.ofertaTrabajo --class ~.domain.Empresa --cardinality ONE_TO_MANY
+field reference --fieldName ofertas --type ~.domain.ofertaTrabajo --class ~.domain.Empresa
+web mvc all --package ~.web
+field set --fieldName experiencia_laboral --type ~.domain.experienciaLaboral --class ~.domain.curriculum --cardinality ONE_TO_MANY 
+field set --fieldName experiencia_curso --type ~.domain.experienciaCurso --class ~.domain.curriculum --cardinality ONE_TO_MANY 
+field set --fieldName experiencia_idioma --type ~.domain.experienciaIdioma --class ~.domain.curriculum --cardinality ONE_TO_MANY 
+field set --fieldName experiencia_titulo --type ~.domain.experienciaTitulo --class ~.domain.curriculum --cardinality ONE_TO_MANY
+entity jpa --class ~.domain.peticionOferta
+field reference --fieldName usuario_demandante --type ~domain.Usuario --cardinality ONE_TO_ONE --class ~.domain.peticionOferta
+field reference --fieldName oferta --type ~domain.ofertaTrabajo --cardinality ONE_TO_ONE --class ~.domain.peticionOferta
+enum type --class ~.reference.estadoPeticionOferta
+enum constant --name Recibida
+enum constant --name Retirada
+enum constant --name En_Estudio
+enum constant --name Descartada
+enum constant --name Aceptada
+field enum --fieldName estado --type ~.reference.estadoPeticionOferta --notNull false --class ~.domain.peticionOferta
+field reference --fieldName curriculum_publicado --type ~domain.curriculum --cardinality ONE_TO_ONE --class ~.domain.peticionOferta
+web mvc all --package ~.web

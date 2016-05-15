@@ -3,7 +3,6 @@
 
 package es.uca.iw.domain;
 
-import es.uca.iw.domain.Curriculum;
 import es.uca.iw.domain.ExperienciaCurso;
 import java.util.Date;
 
@@ -47,14 +46,6 @@ privileged aspect ExperienciaCurso_Roo_JavaBean {
     
     public void ExperienciaCurso.setFecha_fin(Date fecha_fin) {
         this.fecha_fin = fecha_fin;
-    }
-    
-    public Curriculum ExperienciaCurso.getCurriculum() {
-        return this.curriculum;
-    }
-    
-    public void ExperienciaCurso.setCurriculum(Curriculum curriculum) {
-        this.curriculum = curriculum;
     }
     
 }

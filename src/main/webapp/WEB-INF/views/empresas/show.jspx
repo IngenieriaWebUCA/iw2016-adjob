@@ -10,5 +10,6 @@
         <field:display field="telefono" id="s_es_uca_iw_domain_Empresa_telefono" object="${empresa}" z="dsdhhg+jWun+71gVDnWUk7t+nH8="/>
         <field:display field="web" id="s_es_uca_iw_domain_Empresa_web" object="${empresa}" z="CdMX22Dv6/+4QNUO0Fr3I0qe7F4="/>
         <field:display field="direccion" id="s_es_uca_iw_domain_Empresa_direccion" object="${empresa}" z="A9mooHmwnATJRdQidO+nV3bUv/8="/>
+        <field:display field="ofertas" id="s_es_uca_iw_domain_Empresa_ofertas" object="${empresa}" z="EQC09CNDFp5InpB1/4nBYZVn4l0="/>
     </page:show>
 </div>

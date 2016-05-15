@@ -3,7 +3,6 @@
 
 package es.uca.iw.domain;
 
-import es.uca.iw.domain.Curriculum;
 import es.uca.iw.domain.ExperienciaIdioma;
 
 privileged aspect ExperienciaIdioma_Roo_JavaBean {
@@ -38,14 +37,6 @@ privileged aspect ExperienciaIdioma_Roo_JavaBean {
     
     public void ExperienciaIdioma.setNivel(String nivel) {
         this.nivel = nivel;
-    }
-    
-    public Curriculum ExperienciaIdioma.getCurriculum() {
-        return this.curriculum;
-    }
-    
-    public void ExperienciaIdioma.setCurriculum(Curriculum curriculum) {
-        this.curriculum = curriculum;
     }
     
 }

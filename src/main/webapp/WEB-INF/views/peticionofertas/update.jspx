@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_es_uca_iw_domain_PeticionOferta" modelAttribute="peticionOferta" path="/peticionofertas" versionField="Version" z="weDrXrltZ7DM94RdS061j/2oQ9Y=">
+        <field:select field="usuario_demandante" id="c_es_uca_iw_domain_PeticionOferta_usuario_demandante" itemValue="id" items="${usuarios}" path="/usuarios" z="K6jPFnfjUgniQlwIaQJnxvEMUeE="/>
+        <field:select field="oferta" id="c_es_uca_iw_domain_PeticionOferta_oferta" itemValue="id" items="${ofertatrabajoes}" path="/ofertatrabajoes" z="en1DMFCwsfVWZlGx3GrJZnMTcNY="/>
+        <field:select field="estado" id="c_es_uca_iw_domain_PeticionOferta_estado" items="${estadopeticionofertas}" path="estadopeticionofertas" z="RyLvWweZpTLFQFXG6/5l504FSa0="/>
+        <field:select field="curriculum_publicado" id="c_es_uca_iw_domain_PeticionOferta_curriculum_publicado" itemValue="id" items="${curriculums}" path="/curriculums" z="dw9VI5H36+o+1PdhD6CHdKxCpZ4="/>
+    </form:update>
+</div>

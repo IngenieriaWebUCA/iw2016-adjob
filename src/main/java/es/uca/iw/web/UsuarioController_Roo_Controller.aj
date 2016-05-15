@@ -3,6 +3,7 @@
 
 package es.uca.iw.web;
 
+import es.uca.iw.domain.Curriculum;
 import es.uca.iw.domain.Usuario;
 import es.uca.iw.reference.Sexo;
 import es.uca.iw.reference.TipoUsuario;
@@ -98,6 +99,7 @@ privileged aspect UsuarioController_Roo_Controller {
     void UsuarioController.populateEditForm(Model uiModel, Usuario usuario) {
         uiModel.addAttribute("usuario", usuario);
         addDateTimeFormatPatterns(uiModel);
+        uiModel.addAttribute("curriculums", Curriculum.findAllCurriculums());
         uiModel.addAttribute("sexoes", Arrays.asList(Sexo.values()));
         uiModel.addAttribute("tipousuarios", Arrays.asList(TipoUsuario.values()));
     }

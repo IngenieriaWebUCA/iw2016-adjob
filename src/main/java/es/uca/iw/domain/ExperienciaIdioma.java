@@ -30,8 +30,5 @@ public class ExperienciaIdioma {
     @Size(min = 1, max = 10)
     private String nivel;
 
-    /**
-     */
-    @ManyToOne
-    private Curriculum curriculum;
+
 }

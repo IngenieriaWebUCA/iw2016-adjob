@@ -14,7 +14,7 @@ privileged aspect Curriculum_Roo_Jpa_ActiveRecord {
     @PersistenceContext
     transient EntityManager Curriculum.entityManager;
     
-    public static final List<String> Curriculum.fieldNames4OrderClauseFilter = java.util.Arrays.asList("foto", "trayectoria", "usuario");
+    public static final List<String> Curriculum.fieldNames4OrderClauseFilter = java.util.Arrays.asList("foto", "trayectoria", "puestos_posibles", "experiencia_laboral", "experiencia_curso", "experiencia_idioma", "experiencia_titulo");
     
     public static final EntityManager Curriculum.entityManager() {
         EntityManager em = new Curriculum().entityManager;

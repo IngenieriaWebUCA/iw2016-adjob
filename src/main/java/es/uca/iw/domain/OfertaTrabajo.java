@@ -65,10 +65,7 @@ public class OfertaTrabajo {
     @Size(min = 10, max = 200)
     private String perfil;
 
-    /**
-     */
-    @ManyToOne
-    private Empresa empresa;
+
 
     /**
      */

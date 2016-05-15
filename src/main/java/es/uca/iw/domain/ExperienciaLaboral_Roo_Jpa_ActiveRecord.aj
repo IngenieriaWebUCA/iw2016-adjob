@@ -14,7 +14,7 @@ privileged aspect ExperienciaLaboral_Roo_Jpa_ActiveRecord {
     @PersistenceContext
     transient EntityManager ExperienciaLaboral.entityManager;
     
-    public static final List<String> ExperienciaLaboral.fieldNames4OrderClauseFilter = java.util.Arrays.asList("nombre_empresa", "fecha_inicio", "fecha_fin", "curriculum", "puesto");
+    public static final List<String> ExperienciaLaboral.fieldNames4OrderClauseFilter = java.util.Arrays.asList("nombre_empresa", "fecha_inicio", "fecha_fin", "puesto");
     
     public static final EntityManager ExperienciaLaboral.entityManager() {
         EntityManager em = new ExperienciaLaboral().entityManager;

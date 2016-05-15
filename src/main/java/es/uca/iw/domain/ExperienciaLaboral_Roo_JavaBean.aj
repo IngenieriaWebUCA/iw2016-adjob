@@ -3,7 +3,6 @@
 
 package es.uca.iw.domain;
 
-import es.uca.iw.domain.Curriculum;
 import es.uca.iw.domain.ExperienciaLaboral;
 import es.uca.iw.domain.PuestoTrabajo;
 import java.util.Date;
@@ -32,14 +31,6 @@ privileged aspect ExperienciaLaboral_Roo_JavaBean {
     
     public void ExperienciaLaboral.setFecha_fin(Date fecha_fin) {
         this.fecha_fin = fecha_fin;
-    }
-    
-    public Curriculum ExperienciaLaboral.getCurriculum() {
-        return this.curriculum;
-    }
-    
-    public void ExperienciaLaboral.setCurriculum(Curriculum curriculum) {
-        this.curriculum = curriculum;
     }
     
     public PuestoTrabajo ExperienciaLaboral.getPuesto() {

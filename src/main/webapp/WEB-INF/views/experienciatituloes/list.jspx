@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_iw_domain_ExperienciaTitulo" items="${experienciatituloes}" z="nD+gkMYoa/SGGdwwJ6QI0hwyqLw=">
+        <table:table data="${experienciatituloes}" id="l_es_uca_iw_domain_ExperienciaTitulo" path="/experienciatituloes" z="rGIh45P/kw+EiqcEiDKceKP9tY0=">
+            <table:column id="c_es_uca_iw_domain_ExperienciaTitulo_nombre" property="nombre" z="Xr4qBgnYiR+wPfvB9LKC7qnItNs="/>
+            <table:column id="c_es_uca_iw_domain_ExperienciaTitulo_entidad_emisora" property="entidad_emisora" z="9n1wzuhyXSEIuFgMIZ35Xe2zmSs="/>
+            <table:column date="true" dateTimePattern="${experienciaTitulo_fecha_obtencion_date_format}" id="c_es_uca_iw_domain_ExperienciaTitulo_fecha_obtencion" property="fecha_obtencion" z="CmKTUMR9fIxA9Z3xbhYEgOo6AdY="/>
+            <table:column id="c_es_uca_iw_domain_ExperienciaTitulo_descripcion" property="descripcion" z="3KnEV1YwgLNok+3TRp+2yqFY3W0="/>
+        </table:table>
+    </page:list>
+</div>

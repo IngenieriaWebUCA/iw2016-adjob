@@ -4,7 +4,12 @@
 package es.uca.iw.domain;
 
 import es.uca.iw.domain.Curriculum;
-import es.uca.iw.domain.Usuario;
+import es.uca.iw.domain.ExperienciaCurso;
+import es.uca.iw.domain.ExperienciaIdioma;
+import es.uca.iw.domain.ExperienciaLaboral;
+import es.uca.iw.domain.ExperienciaTitulo;
+import es.uca.iw.domain.PuestoTrabajo;
+import java.util.Set;
 
 privileged aspect Curriculum_Roo_JavaBean {
     
@@ -24,12 +29,44 @@ privileged aspect Curriculum_Roo_JavaBean {
         this.trayectoria = trayectoria;
     }
     
-    public Usuario Curriculum.getUsuario() {
-        return this.usuario;
+    public Set<PuestoTrabajo> Curriculum.getPuestos_posibles() {
+        return this.puestos_posibles;
     }
     
-    public void Curriculum.setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void Curriculum.setPuestos_posibles(Set<PuestoTrabajo> puestos_posibles) {
+        this.puestos_posibles = puestos_posibles;
+    }
+    
+    public Set<ExperienciaLaboral> Curriculum.getExperiencia_laboral() {
+        return this.experiencia_laboral;
+    }
+    
+    public void Curriculum.setExperiencia_laboral(Set<ExperienciaLaboral> experiencia_laboral) {
+        this.experiencia_laboral = experiencia_laboral;
+    }
+    
+    public Set<ExperienciaCurso> Curriculum.getExperiencia_curso() {
+        return this.experiencia_curso;
+    }
+    
+    public void Curriculum.setExperiencia_curso(Set<ExperienciaCurso> experiencia_curso) {
+        this.experiencia_curso = experiencia_curso;
+    }
+    
+    public Set<ExperienciaIdioma> Curriculum.getExperiencia_idioma() {
+        return this.experiencia_idioma;
+    }
+    
+    public void Curriculum.setExperiencia_idioma(Set<ExperienciaIdioma> experiencia_idioma) {
+        this.experiencia_idioma = experiencia_idioma;
+    }
+    
+    public Set<ExperienciaTitulo> Curriculum.getExperiencia_titulo() {
+        return this.experiencia_titulo;
+    }
+    
+    public void Curriculum.setExperiencia_titulo(Set<ExperienciaTitulo> experiencia_titulo) {
+        this.experiencia_titulo = experiencia_titulo;
     }
     
 }

@@ -3,10 +3,12 @@
 
 package es.uca.iw.domain;
 
+import es.uca.iw.domain.Curriculum;
 import es.uca.iw.domain.Usuario;
 import es.uca.iw.reference.Sexo;
 import es.uca.iw.reference.TipoUsuario;
 import java.util.Date;
+import java.util.Set;
 
 privileged aspect Usuario_Roo_JavaBean {
     
@@ -88,6 +90,14 @@ privileged aspect Usuario_Roo_JavaBean {
     
     public void Usuario.setDni(String dni) {
         this.dni = dni;
+    }
+    
+    public Set<Curriculum> Usuario.getCurriculums() {
+        return this.curriculums;
+    }
+    
+    public void Usuario.setCurriculums(Set<Curriculum> curriculums) {
+        this.curriculums = curriculums;
     }
     
 }

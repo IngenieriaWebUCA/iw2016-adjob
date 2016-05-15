@@ -4,6 +4,7 @@
 package es.uca.iw.domain;
 
 import es.uca.iw.domain.Empresa;
+import es.uca.iw.domain.OfertaTrabajo;
 
 privileged aspect Empresa_Roo_JavaBean {
     
@@ -61,6 +62,14 @@ privileged aspect Empresa_Roo_JavaBean {
     
     public void Empresa.setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+    
+    public OfertaTrabajo Empresa.getOfertas() {
+        return this.ofertas;
+    }
+    
+    public void Empresa.setOfertas(OfertaTrabajo ofertas) {
+        this.ofertas = ofertas;
     }
     
 }

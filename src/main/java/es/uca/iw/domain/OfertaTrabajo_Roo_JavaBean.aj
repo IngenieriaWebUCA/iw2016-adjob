@@ -3,7 +3,6 @@
 
 package es.uca.iw.domain;
 
-import es.uca.iw.domain.Empresa;
 import es.uca.iw.domain.OfertaTrabajo;
 import es.uca.iw.domain.PuestoTrabajo;
 import es.uca.iw.reference.EstadoOferta;
@@ -82,14 +81,6 @@ privileged aspect OfertaTrabajo_Roo_JavaBean {
     
     public void OfertaTrabajo.setPerfil(String perfil) {
         this.perfil = perfil;
-    }
-    
-    public Empresa OfertaTrabajo.getEmpresa() {
-        return this.empresa;
-    }
-    
-    public void OfertaTrabajo.setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
     }
     
     public PuestoTrabajo OfertaTrabajo.getPuesto_buscado() {

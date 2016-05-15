@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_es_uca_iw_domain_OfertaTrabajo" modelAttribute="ofertaTrabajo" path="/ofertatrabajoes" versionField="Version" z="7coVKmPm/c7JR1w20EUVkzf+7/8=">
+        <field:input field="nombre" id="c_es_uca_iw_domain_OfertaTrabajo_nombre" max="30" min="3" required="true" z="XceyfCSQl81ClxsRjPZ7Bo4i4ME="/>
+        <field:textarea field="informacion" id="c_es_uca_iw_domain_OfertaTrabajo_informacion" z="plENpO0bZaWEP8uldkplaZe8kOc="/>
+        <field:datetime dateTimePattern="${ofertaTrabajo_fecha_inicio_date_format}" field="fecha_inicio" id="c_es_uca_iw_domain_OfertaTrabajo_fecha_inicio" required="true" z="R4XjuZ6FbhWC17Cc7Hur6beupa4="/>
+        <field:datetime dateTimePattern="${ofertaTrabajo_fecha_fin_date_format}" field="fecha_fin" id="c_es_uca_iw_domain_OfertaTrabajo_fecha_fin" required="true" z="lSvy+q4fVUnfrms5ZzZaVm1h+PM="/>
+        <field:select field="tipo_contrato" id="c_es_uca_iw_domain_OfertaTrabajo_tipo_contrato" items="${tipocontratoes}" path="tipocontratoes" z="dA2rqaMmiTA8qwSUp7X6Nh/DC0k="/>
+        <field:select field="estado_oferta" id="c_es_uca_iw_domain_OfertaTrabajo_estado_oferta" items="${estadoofertas}" path="estadoofertas" z="ieXtoCZ7HWNanVyaOpMC+EiWOJ4="/>
+        <field:input field="sueldo" id="c_es_uca_iw_domain_OfertaTrabajo_sueldo" validationMessageCode="field_invalid_number" z="ucBtpqqK/zgNbRwwSgGQElKTebs="/>
+        <field:input field="numero_vacantes" id="c_es_uca_iw_domain_OfertaTrabajo_numero_vacantes" validationMessageCode="field_invalid_integer" z="ZJ8u4nWNCySqTxWTzIoi0EMK1+U="/>
+        <field:textarea field="perfil" id="c_es_uca_iw_domain_OfertaTrabajo_perfil" z="0iJkqN8aIrnlFvQue7BD2gmcVcw="/>
+        <field:select field="puesto_buscado" id="c_es_uca_iw_domain_OfertaTrabajo_puesto_buscado" itemValue="id" items="${puestotrabajoes}" path="/puestotrabajoes" z="4noOqhUExyMjfXbP6Hfcs16a4X8="/>
+    </form:update>
+</div>

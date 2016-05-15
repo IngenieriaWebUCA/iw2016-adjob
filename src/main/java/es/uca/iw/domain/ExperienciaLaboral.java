@@ -34,10 +34,6 @@ public class ExperienciaLaboral {
     @DateTimeFormat(style = "M-")
     private Date fecha_fin;
 
-    /**
-     */
-    @ManyToOne
-    private Curriculum curriculum;
 
     /**
      */

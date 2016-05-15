@@ -11,5 +11,37 @@
             <menu:item id="i_empresa_new" messageCode="global_menu_new" url="/empresas?form" z="TBXez8QM+aB2tzcjHN1lQJYrewc="/>
             <menu:item id="i_empresa_list" messageCode="global_menu_list" url="/empresas?page=1&amp;size=${empty param.size ? 10 : param.size}" z="/YQYlSdehDz3lrOGSSpWZYe++Zk="/>
         </menu:category>
+        <menu:category id="c_ofertatrabajo" z="M92K0JTwWEBj9/x6eHHOW/VuMEo=">
+            <menu:item id="i_ofertatrabajo_new" messageCode="global_menu_new" url="/ofertatrabajoes?form" z="dEI5+BerGdlgo6x9YmynS8kuEtw="/>
+            <menu:item id="i_ofertatrabajo_list" messageCode="global_menu_list" url="/ofertatrabajoes?page=1&amp;size=${empty param.size ? 10 : param.size}" z="ebmX6VEhkNav416FyJEAqjg/pvc="/>
+        </menu:category>
+        <menu:category id="c_curriculum" z="LktIPOcgSf6R03MYws0FOpXRymQ=">
+            <menu:item id="i_curriculum_new" messageCode="global_menu_new" url="/curriculums?form" z="CgoaCt/ZFSiTVLLesxgHSXy2Q/I="/>
+            <menu:item id="i_curriculum_list" messageCode="global_menu_list" url="/curriculums?page=1&amp;size=${empty param.size ? 10 : param.size}" z="mz8jOwvZQAQIzi0/ZAvTYX5pzFA="/>
+        </menu:category>
+        <menu:category id="c_experienciaidioma" z="gokyF0PTHgFOXdHUrL3WdhoEc+I=">
+            <menu:item id="i_experienciaidioma_new" messageCode="global_menu_new" url="/experienciaidiomas?form" z="qtyCLE4r/D/Shjk/Jor0TsLsQ5c="/>
+            <menu:item id="i_experienciaidioma_list" messageCode="global_menu_list" url="/experienciaidiomas?page=1&amp;size=${empty param.size ? 10 : param.size}" z="zvHgInJ7uWAFfk0Lsbw6nh48lcg="/>
+        </menu:category>
+        <menu:category id="c_experiencialaboral" z="/kYnujHesO7pz7ZhgACbsQWUGUY=">
+            <menu:item id="i_experiencialaboral_new" messageCode="global_menu_new" url="/experiencialaborals?form" z="VCGM1SfAGKp5guKBMmAUVldXXvQ="/>
+            <menu:item id="i_experiencialaboral_list" messageCode="global_menu_list" url="/experiencialaborals?page=1&amp;size=${empty param.size ? 10 : param.size}" z="KO3333t4C0fI0NpOor1wzfud1dw="/>
+        </menu:category>
+        <menu:category id="c_experienciatitulo" z="YMYt6yTMFOaJAZDF9xaVY3FCGa4=">
+            <menu:item id="i_experienciatitulo_new" messageCode="global_menu_new" url="/experienciatituloes?form" z="k1PbwhYAwPpHCxrwAsu9dWDmYKg="/>
+            <menu:item id="i_experienciatitulo_list" messageCode="global_menu_list" url="/experienciatituloes?page=1&amp;size=${empty param.size ? 10 : param.size}" z="ryQoFvuO5774lTaw+kv5BcutgmQ="/>
+        </menu:category>
+        <menu:category id="c_experienciacurso" z="i6BVULJsP9lqGTK4zJhIh5Mk3uY=">
+            <menu:item id="i_experienciacurso_new" messageCode="global_menu_new" url="/experienciacursoes?form" z="DTM479X53cgYbKYLKQZ6GvMEMmc="/>
+            <menu:item id="i_experienciacurso_list" messageCode="global_menu_list" url="/experienciacursoes?page=1&amp;size=${empty param.size ? 10 : param.size}" z="6bJtGrzhgRYEXncRfsneRv0xm1M="/>
+        </menu:category>
+        <menu:category id="c_puestotrabajo" z="viKTUjCDR54+S8uFjaudoOlDDD0=">
+            <menu:item id="i_puestotrabajo_new" messageCode="global_menu_new" url="/puestotrabajoes?form" z="TipaxtGyEO7ADKNKE2fsyNiudB8="/>
+            <menu:item id="i_puestotrabajo_list" messageCode="global_menu_list" url="/puestotrabajoes?page=1&amp;size=${empty param.size ? 10 : param.size}" z="4FwGaWwFuSrh4qpaRL3mV7g9bTQ="/>
+        </menu:category>
+        <menu:category id="c_peticionoferta" z="mUdXNQT1yDODe5bt8+18q96xuzk=">
+            <menu:item id="i_peticionoferta_new" messageCode="global_menu_new" url="/peticionofertas?form" z="vqRLe+P9LaHvj8Jb826ZdA5Slf4="/>
+            <menu:item id="i_peticionoferta_list" messageCode="global_menu_list" url="/peticionofertas?page=1&amp;size=${empty param.size ? 10 : param.size}" z="ifv9S7wQkO/GAYPeRh0Zo4h4/Dg="/>
+        </menu:category>
     </menu:menu>
 </div>

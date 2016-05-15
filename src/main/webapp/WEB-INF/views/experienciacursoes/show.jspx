@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_iw_domain_ExperienciaCurso" object="${experienciacurso}" path="/experienciacursoes" z="kVh2HTbvGoPTeeBItuzkdd+oInA=">
+        <field:display field="nombre" id="s_es_uca_iw_domain_ExperienciaCurso_nombre" object="${experienciacurso}" z="82szdz1aQn2KUe5lz0YkCTg0UEg="/>
+        <field:display field="nombre_academia" id="s_es_uca_iw_domain_ExperienciaCurso_nombre_academia" object="${experienciacurso}" z="zyPQ3fXEofJkNb2jnBMH+wsARX4="/>
+        <field:display field="descripcion" id="s_es_uca_iw_domain_ExperienciaCurso_descripcion" object="${experienciacurso}" z="tiLrLNdnLmTKKuMp33oOoAMiA9M="/>
+        <field:display date="true" dateTimePattern="${experienciaCurso_fecha_inicio_date_format}" field="fecha_inicio" id="s_es_uca_iw_domain_ExperienciaCurso_fecha_inicio" object="${experienciacurso}" z="QZZuCO/KW4djC/vc264Cjmhfe0M="/>
+        <field:display date="true" dateTimePattern="${experienciaCurso_fecha_fin_date_format}" field="fecha_fin" id="s_es_uca_iw_domain_ExperienciaCurso_fecha_fin" object="${experienciacurso}" z="PSxhxIgby7KjdwcrC0/ef1oTLcc="/>
+    </page:show>
+</div>
