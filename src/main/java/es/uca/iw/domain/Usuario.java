@@ -1,4 +1,4 @@
-	package es.uca.iw.domain;
+package es.uca.iw.domain;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
 import org.springframework.roo.addon.tostring.RooToString;
@@ -15,6 +15,7 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 
 @RooJavaBean
 @RooToString
@@ -74,4 +75,10 @@ public class Usuario {
      */
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Curriculum> curriculums = new HashSet<Curriculum>();
+
+    /**
+     * Una empresa puede estar gestionada por múltiples gestores
+     */
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<Empresa> empresas = new HashSet<Empresa>();
 }

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<gvnix-menu id="_menu" rooMenuBasePath="/">
+<menu-item id="c_usuario" labelCode="menu_category_usuario_label" name="Usuario">
+        <menu-item hidden="false" id="i_usuario_new" labelCode="menu_item_usuario_new_label" messageCode="global_menu_new" roles="" url="/usuarios?form"/>
+    <menu-item hidden="false" id="i_usuario_list" labelCode="menu_item_usuario_list_label" messageCode="global_menu_list" roles="" url="/usuarios?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
+    </menu-item>
+<menu-item id="c_empresa" labelCode="menu_category_empresa_label" name="Empresa">
+        <menu-item hidden="false" id="i_empresa_new" labelCode="menu_item_empresa_new_label" messageCode="global_menu_new" roles="" url="/empresas?form"/>
+    <menu-item hidden="false" id="i_empresa_list" labelCode="menu_item_empresa_list_label" messageCode="global_menu_list" roles="" url="/empresas?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
+    </menu-item>
+<menu-item id="c_ofertatrabajo" labelCode="menu_category_ofertatrabajo_label" name="Ofertatrabajo">
+        <menu-item hidden="false" id="i_ofertatrabajo_new" labelCode="menu_item_ofertatrabajo_new_label" messageCode="global_menu_new" roles="" url="/ofertatrabajoes?form"/>
+    <menu-item hidden="false" id="i_ofertatrabajo_list" labelCode="menu_item_ofertatrabajo_list_label" messageCode="global_menu_list" roles="" url="/ofertatrabajoes?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
+    </menu-item>
+<menu-item id="c_curriculum" labelCode="menu_category_curriculum_label" name="Curriculum">
+        <menu-item hidden="false" id="i_curriculum_new" labelCode="menu_item_curriculum_new_label" messageCode="global_menu_new" roles="" url="/curriculums?form"/>
+    <menu-item hidden="false" id="i_curriculum_list" labelCode="menu_item_curriculum_list_label" messageCode="global_menu_list" roles="" url="/curriculums?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
+    </menu-item>
+<menu-item id="c_experienciaidioma" labelCode="menu_category_experienciaidioma_label" name="Experienciaidioma">
+        <menu-item hidden="false" id="i_experienciaidioma_new" labelCode="menu_item_experienciaidioma_new_label" messageCode="global_menu_new" roles="" url="/experienciaidiomas?form"/>
+    <menu-item hidden="false" id="i_experienciaidioma_list" labelCode="menu_item_experienciaidioma_list_label" messageCode="global_menu_list" roles="" url="/experienciaidiomas?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
+    </menu-item>
+<menu-item id="c_experiencialaboral" labelCode="menu_category_experiencialaboral_label" name="Experiencialaboral">
+        <menu-item hidden="false" id="i_experiencialaboral_new" labelCode="menu_item_experiencialaboral_new_label" messageCode="global_menu_new" roles="" url="/experiencialaborals?form"/>
+    <menu-item hidden="false" id="i_experiencialaboral_list" labelCode="menu_item_experiencialaboral_list_label" messageCode="global_menu_list" roles="" url="/experiencialaborals?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
+    </menu-item>
+<menu-item id="c_experienciatitulo" labelCode="menu_category_experienciatitulo_label" name="Experienciatitulo">
+        <menu-item hidden="false" id="i_experienciatitulo_new" labelCode="menu_item_experienciatitulo_new_label" messageCode="global_menu_new" roles="" url="/experienciatituloes?form"/>
+    <menu-item hidden="false" id="i_experienciatitulo_list" labelCode="menu_item_experienciatitulo_list_label" messageCode="global_menu_list" roles="" url="/experienciatituloes?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
+    </menu-item>
+<menu-item id="c_experienciacurso" labelCode="menu_category_experienciacurso_label" name="Experienciacurso">
+        <menu-item hidden="false" id="i_experienciacurso_new" labelCode="menu_item_experienciacurso_new_label" messageCode="global_menu_new" roles="" url="/experienciacursoes?form"/>
+    <menu-item hidden="false" id="i_experienciacurso_list" labelCode="menu_item_experienciacurso_list_label" messageCode="global_menu_list" roles="" url="/experienciacursoes?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
+    </menu-item>
+<menu-item id="c_puestotrabajo" labelCode="menu_category_puestotrabajo_label" name="Puestotrabajo">
+        <menu-item hidden="false" id="i_puestotrabajo_new" labelCode="menu_item_puestotrabajo_new_label" messageCode="global_menu_new" roles="" url="/puestotrabajoes?form"/>
+    <menu-item hidden="false" id="i_puestotrabajo_list" labelCode="menu_item_puestotrabajo_list_label" messageCode="global_menu_list" roles="" url="/puestotrabajoes?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
+    </menu-item>
+<menu-item id="c_peticionoferta" labelCode="menu_category_peticionoferta_label" name="Peticionoferta">
+        <menu-item hidden="false" id="i_peticionoferta_new" labelCode="menu_item_peticionoferta_new_label" messageCode="global_menu_new" roles="" url="/peticionofertas?form"/>
+    <menu-item hidden="false" id="i_peticionoferta_list" labelCode="menu_item_peticionoferta_list_label" messageCode="global_menu_list" roles="" url="/peticionofertas?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
+    </menu-item>
+</gvnix-menu>

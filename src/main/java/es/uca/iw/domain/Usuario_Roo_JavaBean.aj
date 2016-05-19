@@ -4,6 +4,7 @@
 package es.uca.iw.domain;
 
 import es.uca.iw.domain.Curriculum;
+import es.uca.iw.domain.Empresa;
 import es.uca.iw.domain.Usuario;
 import es.uca.iw.reference.Sexo;
 import es.uca.iw.reference.TipoUsuario;
@@ -98,6 +99,14 @@ privileged aspect Usuario_Roo_JavaBean {
     
     public void Usuario.setCurriculums(Set<Curriculum> curriculums) {
         this.curriculums = curriculums;
+    }
+    
+    public Set<Empresa> Usuario.getEmpresas() {
+        return this.empresas;
+    }
+    
+    public void Usuario.setEmpresas(Set<Empresa> empresas) {
+        this.empresas = empresas;
     }
     
 }

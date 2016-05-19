@@ -14,5 +14,6 @@
         <field:select field="sexo" id="c_es_uca_iw_domain_Usuario_sexo" items="${sexoes}" path="sexoes" z="8XrXKLPs4BgcALFgUvWoXkfsnzY="/>
         <field:input field="dni" id="c_es_uca_iw_domain_Usuario_dni" max="9" min="9" required="true" z="yNZ5W3qQmW9799nwL4xrKW1l4x0="/>
         <field:simple field="curriculums" id="c_es_uca_iw_domain_Usuario_curriculums" messageCode="entity_reference_not_managed" messageCodeAttribute="Curriculum" z="z+X9srRYzLncN/Tg+teEib2S/Vo="/>
+        <field:select field="empresas" id="c_es_uca_iw_domain_Usuario_empresas" itemValue="id" items="${empresas}" multiple="true" path="/empresas" z="8WGJvoKCOxcrzgTkCK7+EfDwdZc="/>
     </form:update>
 </div>
