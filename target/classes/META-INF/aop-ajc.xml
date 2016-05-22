@@ -10,6 +10,7 @@
 <aspect name="es.uca.iw.domain.Usuario_Roo_Jpa_ActiveRecord"/>
 <aspect name="es.uca.iw.domain.ExperienciaIdioma_Roo_JavaBean"/>
 <aspect name="es.uca.iw.domain.Empresa_Roo_ToString"/>
+<aspect name="es.uca.iw.domain.Usuario_Roo_Finder"/>
 <aspect name="es.uca.iw.domain.ExperienciaCurso_Roo_Jpa_ActiveRecord"/>
 <aspect name="es.uca.iw.domain.PeticionOferta_Roo_ToString"/>
 <aspect name="es.uca.iw.web.EmpresaController_Roo_Controller"/>
