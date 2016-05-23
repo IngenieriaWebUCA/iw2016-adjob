@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu" version="2.0">
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:sec="http://www.springframework.org/security/tags" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
@@ -15,6 +15,15 @@
             <menu:item id="i_ofertatrabajo_new" messageCode="global_menu_new" url="/ofertatrabajoes?form" z="dEI5+BerGdlgo6x9YmynS8kuEtw="/>
             <menu:item id="i_ofertatrabajo_list" messageCode="global_menu_list" url="/ofertatrabajoes?page=1&amp;size=${empty param.size ? 10 : param.size}" z="ebmX6VEhkNav416FyJEAqjg/pvc="/>
         </menu:category>
+        
+        
+        
+        <!-- Si queremos probar con varios roles: hasAnyRole([role1,role2]) 
+        http://docs.spring.io/spring-security/site/docs/3.0.x/reference/el-access.html 
+        http://stackoverflow.com/questions/11469211/how-to-use-secauthorize-access-hasroleroles-for-checking-multiple-roles
+        -->
+        <sec:authorize access="hasAnyRole('DEMANDANTE', 'GESTOREMPRESA')">
+        
         <menu:category id="c_curriculum" z="LktIPOcgSf6R03MYws0FOpXRymQ=">
             <menu:item id="i_curriculum_new" messageCode="global_menu_new" url="/curriculums?form" z="CgoaCt/ZFSiTVLLesxgHSXy2Q/I="/>
             <menu:item id="i_curriculum_list" messageCode="global_menu_list" url="/curriculums?page=1&amp;size=${empty param.size ? 10 : param.size}" z="mz8jOwvZQAQIzi0/ZAvTYX5pzFA="/>
@@ -43,5 +52,8 @@
             <menu:item id="i_peticionoferta_new" messageCode="global_menu_new" url="/peticionofertas?form" z="vqRLe+P9LaHvj8Jb826ZdA5Slf4="/>
             <menu:item id="i_peticionoferta_list" messageCode="global_menu_list" url="/peticionofertas?page=1&amp;size=${empty param.size ? 10 : param.size}" z="ifv9S7wQkO/GAYPeRh0Zo4h4/Dg="/>
         </menu:category>
+        
+        </sec:authorize>
+        
     </menu:menu>
 </div>

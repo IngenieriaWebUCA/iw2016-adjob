@@ -23,7 +23,11 @@
 
 	<form action="${fn:escapeXml(form_url)}" method="POST" name="f" class="form-signin">
 
-    	<h2 class="form-signin-heading"><spring:message code="security_login_title"/></h2>
+    	<!--  
+    		<h2 class="form-signin-heading"><spring:message code="security_login_title"/></h2>
+    	-->
+    	
+    	<h2 class="form-signin-heading center">Login - Adjob</h2>
 
 		<spring:message code="security_login_form_name" var="name" />
 		<spring:message code="security_login_form_name_message" htmlEscape="false" var="name_msg"/>
@@ -53,5 +57,12 @@
       	</div>
 
       </form>
+      
+      <form action="usuarios?form" class="form-signin">
+                <button type="submit" class="btn btn-block btn-lg btn btn-success">Create new account</button>
+      
+      
+      </form>
+     
 
 </div>

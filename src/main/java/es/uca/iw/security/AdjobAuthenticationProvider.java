@@ -13,11 +13,13 @@ import org.springframework.security.authentication.dao.AbstractUserDetailsAuthen
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.StringUtils;
 
 import es.uca.iw.domain.Usuario;
+import es.uca.iw.reference.TipoUsuario;
 
 public class AdjobAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider{
 
@@ -38,7 +40,30 @@ public class AdjobAuthenticationProvider extends AbstractUserDetailsAuthenticati
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
         try {
             Usuario usuario = Usuario.findUsuariosByEmailAndContrasenaEquals(username, password).getSingleResult();
-		    authorities.add(new GrantedAuthorityImpl("ROLE_USER"));
+		    //  Demandante, GestorETT, GestorEmpresa, Administrador, SuperAdministrador
+            //System.out.println("A ver qué sale..." + usuario.getTipo());
+            switch(usuario.getTipo()){
+	            case Demandante: 
+	            	authorities.add(new SimpleGrantedAuthority("DEMANDANTE"));
+	            	//System.out.println("Identificado como DEMANDANTE");
+	            	break;
+				case Administrador:
+					authorities.add(new SimpleGrantedAuthority("ADMINISTRADOR"));
+					break;
+				case GestorETT:
+					authorities.add(new SimpleGrantedAuthority("GESTORETT"));
+					break;
+				case GestorEmpresa:
+					authorities.add(new SimpleGrantedAuthority("GESTOREMPRESA"));
+					break;
+				case SuperAdministrador:
+					authorities.add(new SimpleGrantedAuthority("SUPERADMINISTRADOR"));
+					break;
+				default:
+					break;
+	       }
+            
+            //authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 		} catch (EmptyResultDataAccessException e) {
 		    throw new BadCredentialsException("Invalid username or password");
 		} catch (EntityNotFoundException e) {
