@@ -13,5 +13,6 @@
         <field:display field="numero_vacantes" id="s_es_uca_iw_domain_OfertaTrabajo_numero_vacantes" object="${ofertatrabajo}" z="si/i+aBS+Ou6Ce9zOvpP+uZulDQ="/>
         <field:display field="perfil" id="s_es_uca_iw_domain_OfertaTrabajo_perfil" object="${ofertatrabajo}" z="dfrkGq7axnSD5K+qlSrWdU7m15c="/>
         <field:display field="puesto_buscado" id="s_es_uca_iw_domain_OfertaTrabajo_puesto_buscado" object="${ofertatrabajo}" z="nVl+YgAVeu6Tyj2nBmsE9MT3tKw="/>
+    	<field:display id="s_es_uca_iw_domain_OfertaTrabajo_puesto_buscado" object="" field=""></field:display>
     </page:show>
 </div>

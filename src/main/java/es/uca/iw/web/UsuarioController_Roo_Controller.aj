@@ -6,7 +6,6 @@ package es.uca.iw.web;
 import es.uca.iw.domain.Curriculum;
 import es.uca.iw.domain.Usuario;
 import es.uca.iw.reference.Sexo;
-import es.uca.iw.reference.TipoUsuario;
 import es.uca.iw.web.UsuarioController;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
@@ -101,7 +100,6 @@ privileged aspect UsuarioController_Roo_Controller {
         addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("curriculums", Curriculum.findAllCurriculums());
         uiModel.addAttribute("sexoes", Arrays.asList(Sexo.values()));
-        uiModel.addAttribute("tipousuarios", Arrays.asList(TipoUsuario.values()));
     }
     
     String UsuarioController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

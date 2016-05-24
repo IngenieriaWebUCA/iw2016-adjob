@@ -54,6 +54,7 @@
 <aspect name="es.uca.iw.domain.OfertaTrabajo_Roo_Jpa_Entity"/>
 <aspect name="es.uca.iw.domain.Usuario_Roo_ToString"/>
 <aspect name="es.uca.iw.domain.Empresa_Roo_JavaBean"/>
+<aspect name="es.uca.iw.domain.Empresa_Roo_Finder"/>
 <aspect name="es.uca.iw.domain.Empresa_Roo_Jpa_Entity"/>
 <aspect name="es.uca.iw.domain.ExperienciaCurso_Roo_JavaBean"/>
 <aspect name="es.uca.iw.domain.Usuario_Roo_Configurable"/>

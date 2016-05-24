@@ -6,7 +6,6 @@ package es.uca.iw.domain;
 import es.uca.iw.domain.Curriculum;
 import es.uca.iw.domain.Usuario;
 import es.uca.iw.reference.Sexo;
-import es.uca.iw.reference.TipoUsuario;
 import java.util.Date;
 import java.util.Set;
 
@@ -68,14 +67,6 @@ privileged aspect Usuario_Roo_JavaBean {
         this.telefono = telefono;
     }
     
-    public TipoUsuario Usuario.getTipo() {
-        return this.tipo;
-    }
-    
-    public void Usuario.setTipo(TipoUsuario tipo) {
-        this.tipo = tipo;
-    }
-    
     public Sexo Usuario.getSexo() {
         return this.sexo;
     }
@@ -98,6 +89,46 @@ privileged aspect Usuario_Roo_JavaBean {
     
     public void Usuario.setCurriculums(Set<Curriculum> curriculums) {
         this.curriculums = curriculums;
+    }
+    
+    public Boolean Usuario.getIs_demandante() {
+        return this.is_demandante;
+    }
+    
+    public void Usuario.setIs_demandante(Boolean is_demandante) {
+        this.is_demandante = is_demandante;
+    }
+    
+    public Boolean Usuario.getIs_gestor_ett() {
+        return this.is_gestor_ett;
+    }
+    
+    public void Usuario.setIs_gestor_ett(Boolean is_gestor_ett) {
+        this.is_gestor_ett = is_gestor_ett;
+    }
+    
+    public Boolean Usuario.getIs_gestor_empresa() {
+        return this.is_gestor_empresa;
+    }
+    
+    public void Usuario.setIs_gestor_empresa(Boolean is_gestor_empresa) {
+        this.is_gestor_empresa = is_gestor_empresa;
+    }
+    
+    public Boolean Usuario.getIs_administrador() {
+        return this.is_administrador;
+    }
+    
+    public void Usuario.setIs_administrador(Boolean is_administrador) {
+        this.is_administrador = is_administrador;
+    }
+    
+    public Boolean Usuario.getIs_superadministrador() {
+        return this.is_superadministrador;
+    }
+    
+    public void Usuario.setIs_superadministrador(Boolean is_superadministrador) {
+        this.is_superadministrador = is_superadministrador;
     }
     
 }

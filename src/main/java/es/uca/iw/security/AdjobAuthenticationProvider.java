@@ -42,26 +42,20 @@ public class AdjobAuthenticationProvider extends AbstractUserDetailsAuthenticati
             Usuario usuario = Usuario.findUsuariosByEmailAndContrasenaEquals(username, password).getSingleResult();
 		    //  Demandante, GestorETT, GestorEmpresa, Administrador, SuperAdministrador
             //System.out.println("A ver qué sale..." + usuario.getTipo());
-            switch(usuario.getTipo()){
-	            case Demandante: 
-	            	authorities.add(new SimpleGrantedAuthority("DEMANDANTE"));
-	            	//System.out.println("Identificado como DEMANDANTE");
-	            	break;
-				case Administrador:
-					authorities.add(new SimpleGrantedAuthority("ADMINISTRADOR"));
-					break;
-				case GestorETT:
-					authorities.add(new SimpleGrantedAuthority("GESTORETT"));
-					break;
-				case GestorEmpresa:
-					authorities.add(new SimpleGrantedAuthority("GESTOREMPRESA"));
-					break;
-				case SuperAdministrador:
-					authorities.add(new SimpleGrantedAuthority("SUPERADMINISTRADOR"));
-					break;
-				default:
-					break;
-	       }
+            
+	        if (usuario.getIs_demandante())
+	            authorities.add(new SimpleGrantedAuthority("DEMANDANTE"));
+	        else if (usuario.getIs_administrador())
+				authorities.add(new SimpleGrantedAuthority("ADMINISTRADOR"));
+	        else if (usuario.getIs_gestor_ett())
+				authorities.add(new SimpleGrantedAuthority("GESTORETT"));
+	        else if (usuario.getIs_gestor_empresa())
+				authorities.add(new SimpleGrantedAuthority("GESTOREMPRESA"));
+	        else if (usuario.getIs_superadministrador())
+				authorities.add(new SimpleGrantedAuthority("SUPERADMINISTRADOR"));
+	        else
+	        	throw new BadCredentialsException("Invalid role");
+	       
             
             //authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 		} catch (EmptyResultDataAccessException e) {
