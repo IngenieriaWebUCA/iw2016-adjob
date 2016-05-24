@@ -55,6 +55,12 @@
         </pluginRepository>
     </pluginRepositories>
     <dependencies>
+    	<!-- Necesario para subir imágenes -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
         <!-- General dependencies for standard applications -->
         <dependency>
             <groupId>junit</groupId>
