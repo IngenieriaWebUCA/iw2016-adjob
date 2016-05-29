@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:update id="fu_es_uca_iw_domain_Usuario" modelAttribute="usuario" path="/usuarios" versionField="Version" z="iMrda+Elq7ohxTomRApvAR7XBuw=">
@@ -10,9 +10,13 @@
         <field:datetime dateTimePattern="${usuario_fechanacimiento_date_format}" field="fechaNacimiento" id="c_es_uca_iw_domain_Usuario_fechaNacimiento" required="true" z="2271XFyOYHfv65cMub9jmEq21FU="/>
         <field:input field="direccion" id="c_es_uca_iw_domain_Usuario_direccion" max="30" min="3" required="true" z="U184vkOOtDXFsFC50JMAN1OsdeA="/>
         <field:input field="telefono" id="c_es_uca_iw_domain_Usuario_telefono" validationMessageCode="field_invalid_integer" z="GMjqpb6MIIKxftoaHN0gpvt9pYg="/>
-        <field:select field="tipo" id="c_es_uca_iw_domain_Usuario_tipo" items="${tipousuarios}" path="tipousuarios" z="QGLTBwmcxAUK5aBoxfMqrUIIRTs="/>
         <field:select field="sexo" id="c_es_uca_iw_domain_Usuario_sexo" items="${sexoes}" path="sexoes" z="8XrXKLPs4BgcALFgUvWoXkfsnzY="/>
         <field:input field="dni" id="c_es_uca_iw_domain_Usuario_dni" max="9" min="9" required="true" z="yNZ5W3qQmW9799nwL4xrKW1l4x0="/>
         <field:simple field="curriculums" id="c_es_uca_iw_domain_Usuario_curriculums" messageCode="entity_reference_not_managed" messageCodeAttribute="Curriculum" z="z+X9srRYzLncN/Tg+teEib2S/Vo="/>
+        <field:checkbox field="is_demandante" id="c_es_uca_iw_domain_Usuario_is_demandante" z="yGexq18ArvT1rjnR6d08N3HjJRk="/>
+        <field:checkbox field="is_gestor_ett" id="c_es_uca_iw_domain_Usuario_is_gestor_ett" z="RkCOgALbXP/gYH/8q422B8JhLwM="/>
+        <field:checkbox field="is_gestor_empresa" id="c_es_uca_iw_domain_Usuario_is_gestor_empresa" z="WVz76mfY7/fszEz5oOMpcJsbfKw="/>
+        <field:checkbox field="is_administrador" id="c_es_uca_iw_domain_Usuario_is_administrador" z="wYWS7R3ct+Zj5SQFFlgg3ggaw94="/>
+        <field:checkbox field="is_superadministrador" id="c_es_uca_iw_domain_Usuario_is_superadministrador" z="TUGYXiCHA3MJ4IztmaWH//XbXgQ="/>
     </form:update>
 </div>

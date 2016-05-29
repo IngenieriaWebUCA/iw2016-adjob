@@ -13,8 +13,13 @@
         <roo.version>1.3.2.RELEASE</roo.version>
         <slf4j.version>1.7.5</slf4j.version>
         <spring.version>3.2.8.RELEASE</spring.version>
+    <spring-security.version>3.2.5.RELEASE</spring-security.version>
     </properties>
     <repositories>
+    	<repository>
+  			<id>Java.Net</id>
+  			<url>http://download.java.net/maven/2/</url>
+  		</repository>
         <repository>
             <id>spring-maven-release</id>
             <name>Spring Maven Release Repository</name>
@@ -29,6 +34,11 @@
             <id>spring-roo-repository</id>
             <name>Spring Roo Repository</name>
             <url>http://spring-roo-repository.springsource.org/release</url>
+        </repository>
+    <repository>
+            <id>gvNIX Add-on repository</id>
+            <url>https://gvnix.googlecode.com/svn/repo</url>
+            <name>gvNIX Add-on repository</name>
         </repository>
     </repositories>
     <pluginRepositories>
@@ -49,6 +59,23 @@
         </pluginRepository>
     </pluginRepositories>
     <dependencies>
+    	 <dependency>
+    		<groupId>org.springframework</groupId>
+    		<artifactId>spring-context-support</artifactId>
+    		<version>3.2.8.RELEASE</version>
+		</dependency>
+    	<!-- Necesario para el correo -->
+    	<dependency>
+	    	<groupId>javax.mail</groupId>
+	    	<artifactId>mail</artifactId>
+	    	<version>1.4.3</version>
+    	</dependency>
+    	<!-- Necesario para subir imágenes -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
         <!-- General dependencies for standard applications -->
         <dependency>
             <groupId>junit</groupId>
@@ -284,6 +311,44 @@
             <groupId>org.apache.tiles</groupId>
             <artifactId>tiles-jsp</artifactId>
             <version>2.2.2</version>
+        </dependency>
+    <dependency>
+            <groupId>org.gvnix</groupId>
+            <artifactId>org.gvnix.addon.web.mvc.annotations</artifactId>
+            <version>1.4.1.RELEASE</version>
+            <scope>provided</scope>
+        </dependency>
+    <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${spring-security.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring-security.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>${spring-security.version}</version>
         </dependency>
     </dependencies>
     <build>

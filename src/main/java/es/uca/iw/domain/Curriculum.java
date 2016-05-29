@@ -32,21 +32,21 @@ public class Curriculum {
 
     /**
      */
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<ExperienciaLaboral> experiencia_laboral = new HashSet<ExperienciaLaboral>();
 
     /**
      */
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<ExperienciaCurso> experiencia_curso = new HashSet<ExperienciaCurso>();
 
     /**
      */
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<ExperienciaIdioma> experiencia_idioma = new HashSet<ExperienciaIdioma>();
 
     /**
      */
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<ExperienciaTitulo> experiencia_titulo = new HashSet<ExperienciaTitulo>();
 }

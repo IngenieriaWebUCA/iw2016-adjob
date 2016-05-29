@@ -8,4 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RooWebScaffold(path = "ofertatrabajoes", formBackingObject = OfertaTrabajo.class)
 public class OfertaTrabajoController {
+	
+	
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <page:show id="ps_es_uca_iw_domain_Usuario" object="${usuario}" path="/usuarios" z="KS3UrodUhGmpHa+ZB1EWyvhl6vY=">
@@ -10,8 +10,12 @@
         <field:display date="true" dateTimePattern="${usuario_fechanacimiento_date_format}" field="fechaNacimiento" id="s_es_uca_iw_domain_Usuario_fechaNacimiento" object="${usuario}" z="df2PSiY6RRGZxlqK3DAx6wPVl94="/>
         <field:display field="direccion" id="s_es_uca_iw_domain_Usuario_direccion" object="${usuario}" z="L7yJzfU0f5LFmfbAme8gmj5SZyE="/>
         <field:display field="telefono" id="s_es_uca_iw_domain_Usuario_telefono" object="${usuario}" z="foQZOE8MPUzErAq/US8pmGCCWjA="/>
-        <field:display field="tipo" id="s_es_uca_iw_domain_Usuario_tipo" object="${usuario}" z="/tqmorAOqULBeRAo9PCuOV0f50c="/>
         <field:display field="sexo" id="s_es_uca_iw_domain_Usuario_sexo" object="${usuario}" z="GZI7nvA0udqVIupkKB1cUZbVRfE="/>
         <field:display field="dni" id="s_es_uca_iw_domain_Usuario_dni" object="${usuario}" z="p2cHy3WoD1tXIj176WjnIQDDIbI="/>
+        <field:display field="is_demandante" id="s_es_uca_iw_domain_Usuario_is_demandante" object="${usuario}" z="0NqgvZfMsxV+G5smQKvW8Amn2No="/>
+        <field:display field="is_gestor_ett" id="s_es_uca_iw_domain_Usuario_is_gestor_ett" object="${usuario}" z="UeRbhbnX4I32C+b5Uh3n1x7y8Ws="/>
+        <field:display field="is_gestor_empresa" id="s_es_uca_iw_domain_Usuario_is_gestor_empresa" object="${usuario}" z="6fdBBogWBjaQyb0fAOjRG7jtWTE="/>
+        <field:display field="is_administrador" id="s_es_uca_iw_domain_Usuario_is_administrador" object="${usuario}" z="PywwqeETJhu/mN1Ull/Ztjh110U="/>
+        <field:display field="is_superadministrador" id="s_es_uca_iw_domain_Usuario_is_superadministrador" object="${usuario}" z="thu1NnhRR2edfdDrZGonUd5lHVY="/>
     </page:show>
 </div>

@@ -1,4 +1,4 @@
-	package es.uca.iw.domain;
+package es.uca.iw.domain;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
 import org.springframework.roo.addon.tostring.RooToString;
@@ -18,7 +18,7 @@ import javax.persistence.OneToMany;
 
 @RooJavaBean
 @RooToString
-@RooJpaActiveRecord
+@RooJpaActiveRecord(finders = { "findUsuariosByEmailAndContrasenaEquals" })
 public class Usuario {
 
     /**
@@ -57,9 +57,6 @@ public class Usuario {
      */
     private Integer telefono;
 
-    @Enumerated
-    private TipoUsuario tipo;
-
     /**
      */
     @Enumerated
@@ -74,4 +71,26 @@ public class Usuario {
      */
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Curriculum> curriculums = new HashSet<Curriculum>();
+
+    /**
+     */
+    private Boolean is_demandante = true;
+
+    /**
+     */
+    private Boolean is_gestor_ett = false;
+
+    /**
+     */
+    private Boolean is_gestor_empresa = false;
+
+    /**
+     */
+    private Boolean is_administrador = false;
+
+    /**
+     */
+    private Boolean is_superadministrador = false;
+    
+    
 }

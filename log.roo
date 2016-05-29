@@ -127,3 +127,36 @@ enum constant --name Aceptada
 field enum --fieldName estado --type ~.reference.estadoPeticionOferta --notNull false --class ~.domain.peticionOferta
 field reference --fieldName curriculum_publicado --type ~domain.curriculum --cardinality ONE_TO_ONE --class ~.domain.peticionOferta
 web mvc all --package ~.web
+help
+web mvc jquery setup
+web mvc bootstrap setup
+field set --fieldName experiencia_laboral --type ~.domain.experienciaLaboral --class ~.domain.curriculum --cardinality MANY_TO_MANY
+field set --fieldName experiencia_curso --type ~.domain.experienciaCurso --class ~.domain.curriculum --cardinality MANY_TO_MANY
+field set --fieldName experiencia_idioma --type ~.domain.experienciaIdioma --class ~.domain.curriculum --cardinality MANY_TO_MANY
+field set --fieldName experiencia_titulo --type ~.domain.experienciaTitulo --class ~.domain.curriculum --cardinality MANY_TO_MANY
+// Spring Roo 1.3.1.RELEASE [rev 8cb81a3] log opened at 2016-05-22 20:49:40
+// Spring Roo 1.3.1.RELEASE [rev 8cb81a3] log opened at 2016-05-22 21:02:44
+finder add --finderName findUsuariosByEmailAndContrasenaEquals --class ~.domain.Usuario
+security setup
+web mvc bootstrap update
+web mvc bootstrap update
+// Spring Roo 1.3.1.RELEASE [rev 8cb81a3] log opened at 2016-05-22 21:35:10
+// Spring Roo 1.3.1.RELEASE [rev 8cb81a3] log closed at 2016-05-22 21:57:43
+// Spring Roo 1.3.1.RELEASE [rev 8cb81a3] log opened at 2016-05-24 11:43:09
+web mvc bootstrap update
+finder add --finderName findEmpresasByOfertasEquals --class ~domain.Empresa
+finder add --finderName findEmpresasByOfertasEquals --class ~domain.OfertaTrabajo
+finder add --finderName findEmpresasByOfertasEquals --class ~domain.OfertaTrabajo
+finder add --finderName findEmpresasByOfertasEquals --class ~domain.Empresa
+// Spring Roo 1.3.1.RELEASE [rev 8cb81a3] log closed at 2016-05-24 13:22:14
+// Spring Roo 1.3.1.RELEASE [rev 8cb81a3] log opened at 2016-05-24 20:30:53
+field boolean --fieldName is_demandante --class ~domain.Usuario
+field boolean --fieldName is_gestor_ett --class ~domain.Usuario
+
+field boolean --fieldName is_gestor_empresa --class ~domain.Usuario
+
+field boolean --fieldName is_administrador --class ~domain.Usuario
+
+field boolean --fieldName is_superadministrador --class ~domain.Usuario
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-28 20:23:05
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-28 20:49:39

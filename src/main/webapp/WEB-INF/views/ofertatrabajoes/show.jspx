@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <page:show id="ps_es_uca_iw_domain_OfertaTrabajo" object="${ofertatrabajo}" path="/ofertatrabajoes" z="OViSef9Yk++12Fof8ivcpfUhcKM=">
@@ -13,5 +13,6 @@
         <field:display field="numero_vacantes" id="s_es_uca_iw_domain_OfertaTrabajo_numero_vacantes" object="${ofertatrabajo}" z="si/i+aBS+Ou6Ce9zOvpP+uZulDQ="/>
         <field:display field="perfil" id="s_es_uca_iw_domain_OfertaTrabajo_perfil" object="${ofertatrabajo}" z="dfrkGq7axnSD5K+qlSrWdU7m15c="/>
         <field:display field="puesto_buscado" id="s_es_uca_iw_domain_OfertaTrabajo_puesto_buscado" object="${ofertatrabajo}" z="nVl+YgAVeu6Tyj2nBmsE9MT3tKw="/>
+    	<field:display id="s_es_uca_iw_domain_OfertaTrabajo_puesto_buscado" object="" field=""></field:display>
     </page:show>
 </div>
