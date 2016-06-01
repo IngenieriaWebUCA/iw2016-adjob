@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_iw_domain_Empresa" items="${empresas}" z="ci0v3MuJRFNsrostH1LsSd4wPp8=">
+        <table:table data="${empresas}" id="l_es_uca_iw_domain_Empresa" path="/empresas" z="et6NxBka5rbI2lYoZbZiRhN3Pfk=">
+            <table:column id="c_es_uca_iw_domain_Empresa_nombre" property="nombre" z="lwc8JEgspJn87eofRmHTlr7ajRw="/>
+            <table:column id="c_es_uca_iw_domain_Empresa_cif" property="cif" z="bfU08o0kYoEk1B40ZiIE+RSIuVo="/>
+            <table:column id="c_es_uca_iw_domain_Empresa_actividad_profesional" property="actividad_profesional" z="dNaH0vEXNKkGMNaVaeybOKJn+DI="/>
+            <table:column id="c_es_uca_iw_domain_Empresa_numero_empleados" property="numero_empleados" z="sxLu1qcsULvArR4Pu61eicVfV18="/>
+            <table:column id="c_es_uca_iw_domain_Empresa_telefono" property="telefono" z="/dudFnSmQtPLoRUPJlfQi1v2Huk="/>
+            <table:column id="c_es_uca_iw_domain_Empresa_web" property="web" z="eE8VioTGSoRE5fcJBrBKlvg6ODM="/>
+        </table:table>
+    </page:list>
+</div>

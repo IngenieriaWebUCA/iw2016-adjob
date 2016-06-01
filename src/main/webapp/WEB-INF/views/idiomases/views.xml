@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="idiomases/list">
+        <put-attribute name="body" value="/WEB-INF/views/idiomases/list.jspx"/>
+    </definition>
+<definition extends="default" name="idiomases/show">
+        <put-attribute name="body" value="/WEB-INF/views/idiomases/show.jspx"/>
+    </definition>
+<definition extends="default" name="idiomases/create">
+        <put-attribute name="body" value="/WEB-INF/views/idiomases/create.jspx"/>
+    </definition>
+<definition extends="default" name="idiomases/update">
+        <put-attribute name="body" value="/WEB-INF/views/idiomases/update.jspx"/>
+    </definition>
+</tiles-definitions>
