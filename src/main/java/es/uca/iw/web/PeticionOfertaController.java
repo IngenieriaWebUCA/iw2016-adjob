@@ -1,14 +1,10 @@
 package es.uca.iw.web;
 import es.uca.iw.domain.Cv;
-import es.uca.iw.domain.MailMail;
 import es.uca.iw.domain.Oferta;
 import es.uca.iw.domain.PeticionOferta;
 import es.uca.iw.domain.Usuario;
 import es.uca.iw.reference.EstadoPeticionOferta;
 import es.uca.iw.reference.TipoUsuario;
-
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,9 +33,6 @@ public class PeticionOfertaController {
         uiModel.addAttribute("peticionOferta", new PeticionOferta());
         uiModel.addAttribute("cvs", Cv.findCvsByUsuario(usuario).getResultList());
         uiModel.addAttribute("ofertas", ofertas);
-        
-       populateEditForm(uiModel, PeticionOferta.findPeticionOferta(id));
-        
         //uiModel.addAttribute("usuarios", usuarios);
         // uiModel.addAttribute("estadopeticionofertas", Arrays.asList(EstadoPeticionOferta.Recibida));
 
@@ -50,16 +43,6 @@ public class PeticionOfertaController {
 
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String updateForm(@PathVariable("id") Long id, Model uiModel) {
-    	 Usuario us = UsuarioController.getUsuario();
-         String correo = us.getEmail();
-         ApplicationContext context = 
-                 new ClassPathXmlApplicationContext("classpath*:META-INF/spring/applicationContext.xml");
-         MailMail mm = (MailMail) context.getBean("mailMail");
-         mm.sendMail("joseantoniomfking@gmail.com",
-     		   correo ,
-     		   "La peticion de su oferta de trabajo ha cambiado de estado, por favor, mire su perfil en ad"
-     		   + "", 
-     		   "");
         populateEditForm(uiModel, PeticionOferta.findPeticionOferta(id));
         return "peticionofertas/update";
     }
