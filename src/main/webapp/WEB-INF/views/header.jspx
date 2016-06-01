@@ -1,0 +1,166 @@
+<div id="page-top" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:spring="http://www.springframework.org/tags" xmlns:security="http://www.springframework.org/security/tags" version="2.0">
+  <jsp:directive.page contentType="text/html;charset=UTF-8" />
+  <jsp:output omit-xml-declaration="yes" />
+	
+	
+	<spring:url var="logo_gvnix" value="/resources/images/logo_gvnix.png" />
+    <spring:url var="home" value="/" />
+    <spring:message code="button_home" var="home_label" htmlEscape="false" />
+
+
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="text-center navbar-brand page-scroll" href="${home}">Adjob</a>
+            </div>
+
+
+
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+
+
+
+                    <!-- Menús que se ven cuando el usuario no ha iniciado sesión -->
+                    <security:authorize access="isAnonymous()">
+                        <li>
+                            <a class="page-scroll" href="${home}ofertas/todas">
+                                <span class="glyphicon glyphicon-user"> Ofertas</span>
+                            </a>
+                        </li>
+                        <li>
+
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="${home}empresas/todas">
+                                <span class="glyphicon glyphicon-user"> Empresas</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="usuarios/nuevo">
+                                <span class="glyphicon glyphicon-plus"> SignUp</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="page-scroll" href="${home}login">
+                                <span class="glyphicon glyphicon-plus"> Login</span>
+                            </a>
+                        </li>
+                    </security:authorize>
+
+
+
+                    <!-- Menús para el demandante de empleo -->
+                    <security:authorize access="hasRole('DEMANDANTE')">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <span class="glyphicon glyphicon-tower"></span>
+                                Job requests
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="${home}peticionofertas/mis-peticiones">My requests</a>
+                                </li>
+                                <li>
+                                    <a href="${home}ofertas/todas">Search and join offers</a>
+
+
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <span class="glyphicon glyphicon-user"></span>
+                                My account
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="${home}cvs/mis-cvs">My CVs</a></li>
+                                <li><a href="${home}cvs/nuevo">Add CV</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="${home}cursoses/mis-cursos">My courses</a></li>
+                                <li><a href="${home}cursoses/nuevo">Add course</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="${home}experiencias/mis-experiencias">My laboral experience</a></li>
+                                <li><a href="${home}experiencias/nueva">Add experience</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="${home}idiomases/mis-idiomas">My languages</a></li>
+                                <li><a href="${home}idiomases/nuevo">Add language</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="${home}tituloses/mis-titulos">My titles</a></li>
+                                <li><a href="${home}tituloses/nuevo">Add title</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="${home}usuarios/mi-cuenta">My account</a></li>
+                            </ul>
+                        </li>
+                    </security:authorize>
+
+
+
+
+
+
+                    <!-- Menús para el demandante de empleo -->
+                    <security:authorize access="hasAnyRole('GESTOREMPRESA')">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <span class="glyphicon glyphicon-user"></span>
+                                My account
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="${home}empresas/mis-empresas">My enterprises</a></li>
+                                <li><a href="${home}empresas/nueva">Add enterprise</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="${home}ofertas/mis-ofertas">My offers</a></li>
+                                <li><a href="${home}ofertas/nueva">Publish offer</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="${home}usuarios/mis-etts">My ETT managers</a></li>
+                                <li><a href="${home}usuarios/nuevo-ett">Add ETT manager</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="${home}usuarios/mi-cuenta">My account</a></li>
+                            </ul>
+                        </li>
+                    </security:authorize>
+
+                    <!-- Menús que ve cualquier usuario autenticado -->
+                    <security:authorize access="isAuthenticated()">
+                        <li>
+                            <a class="page-scroll" href="${home}resources/j_spring_security_logout">
+                                <span class="glyphicon glyphicon-off">Logout </span>
+                            </a>
+
+
+                        </li>
+                    </security:authorize>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

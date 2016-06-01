@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_es_uca_iw_domain_Cursos" modelAttribute="cursos" path="/cursoses" versionField="Version" z="nx/eswbpzKeSJHj1J4hh9PMKgwU=">
+        <field:input field="nombre" id="c_es_uca_iw_domain_Cursos_nombre" max="30" min="3" required="true" z="siD+1P4Mq/L9DHDypsKWXF2cRfs="/>
+        <field:input field="nombre_academia" id="c_es_uca_iw_domain_Cursos_nombre_academia" max="30" min="3" required="true" z="6DE0y3i3cOxuu0T+mMX2ohJl+uI="/>
+        <field:input field="descripcion" id="c_es_uca_iw_domain_Cursos_descripcion" max="30" min="3" required="true" z="MRO9sEzBc3FweCs/P34yc1hXTSo="/>
+        <field:datetime dateTimePattern="${cursos_fecha_inicio_date_format}" field="fecha_inicio" id="c_es_uca_iw_domain_Cursos_fecha_inicio" required="true" z="LJAmNViZFijuU8lb74RYhzQUyHA="/>
+        <field:datetime dateTimePattern="${cursos_fecha_fin_date_format}" field="fecha_fin" id="c_es_uca_iw_domain_Cursos_fecha_fin" required="true" z="uait5+g9Mp7wb1Qe9hZ6Skd+alo="/>
+        <field:select field="usuario" id="c_es_uca_iw_domain_Cursos_usuario" itemValue="id" items="${usuarios}" path="/usuarios" render="false" z="user-managed"/>
+    </form:update>
+</div>

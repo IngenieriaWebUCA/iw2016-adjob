@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_iw_domain_Cv" object="${cv}" path="/cvs" z="Kjze7o9q21DP565yQHJmYszlC8A=">
+        <field:display field="foto" id="s_es_uca_iw_domain_Cv_foto" object="${cv}" z="te9jImIy1u/AEr7CluGNfhGyjxY="/>
+        <field:display field="trayectoria" id="s_es_uca_iw_domain_Cv_trayectoria" object="${cv}" z="eNKBFGQ/JdCq7rvKybz9rKhsktY="/>
+        <field:display field="puestos_posibles" id="s_es_uca_iw_domain_Cv_puestos_posibles" object="${cv}" z="J/hs8BrnpAR+MrkItROp/d7ne78="/>
+        <field:display field="experiencia" id="s_es_uca_iw_domain_Cv_experiencia" object="${cv}" z="MlYQ7LzQHnL57Uqyekn0FNtebtI="/>
+        <field:display field="cursos" id="s_es_uca_iw_domain_Cv_cursos" object="${cv}" z="1rspLMUr7oK2rppvF6TvEG1NSe0="/>
+        <field:display field="idiomas" id="s_es_uca_iw_domain_Cv_idiomas" object="${cv}" z="95iNnmlqDQTCVPB7moZEWRxVUco="/>
+        <field:display field="titulos" id="s_es_uca_iw_domain_Cv_titulos" object="${cv}" z="kL7GDhIw0ePXCdVm5sOOstNQI+U="/>
+        <field:display field="usuario" id="s_es_uca_iw_domain_Cv_usuario" object="${cv}" z="+VloYDJv65c0t/gk2w5CxaYHqZI="/>
+    </page:show>
+</div>

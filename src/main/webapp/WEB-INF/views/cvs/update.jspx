@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_es_uca_iw_domain_Cv" modelAttribute="cv" path="/cvs" versionField="Version" z="5xH5j3mNhjiWxu/iUDRWquik/gc=">
+        <field:input field="foto" id="c_es_uca_iw_domain_Cv_foto" max="30" min="0" required="true" z="EwCtQ4nei/ju/WjMZEHgoGmvwOI="/>
+        <field:textarea field="trayectoria" id="c_es_uca_iw_domain_Cv_trayectoria" z="m24W1cLlE/kECtGBJLLFpnIAsjA="/>
+        <field:select field="puestos_posibles" id="c_es_uca_iw_domain_Cv_puestos_posibles" itemValue="id" items="${puestotrabajoes}" multiple="true" path="/puestotrabajoes" z="PTBytniY89vcoZHY4M63a2qQX9o="/>
+        <field:select field="experiencia" id="c_es_uca_iw_domain_Cv_experiencia" itemValue="id" items="${experiencias}" multiple="true" path="/experiencias" z="tPWkhjKA3f3nmX+WucdcoB8ZUOk="/>
+        <field:select field="cursos" id="c_es_uca_iw_domain_Cv_cursos" itemValue="id" items="${cursoses}" multiple="true" path="/cursoses" z="5Y2bOkMqVzCgUHMmtjEmwAXlryo="/>
+        <field:select field="idiomas" id="c_es_uca_iw_domain_Cv_idiomas" itemValue="id" items="${idiomases}" multiple="true" path="/idiomases" z="0QIUp41axwlBnS8b9GLgUOdqQdY="/>
+        <field:select field="titulos" id="c_es_uca_iw_domain_Cv_titulos" itemValue="id" items="${tituloses}" multiple="true" path="/tituloses" z="C4ka1MTCoRAv2BbvrilMa53XQks="/>
+        <field:select field="usuario" id="c_es_uca_iw_domain_Cv_usuario" itemValue="id" items="${usuarios}" path="/usuarios" z="GGK6DqyXDojyicbMgnsXqfsKa78="/>
+    </form:update>
+</div>

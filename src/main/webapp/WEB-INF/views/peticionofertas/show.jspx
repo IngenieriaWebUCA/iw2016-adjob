@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_iw_domain_PeticionOferta" object="${peticionoferta}" path="/peticionofertas" z="VQ9Fd1ywNjwukcGEefGigS+h0G8=">
+        <field:display field="usuario_demandante" id="s_es_uca_iw_domain_PeticionOferta_usuario_demandante" object="${peticionoferta}" z="Uwp5HjQF7v3jmI6GORG+F9RHGPI="/>
+        <field:display field="estado" id="s_es_uca_iw_domain_PeticionOferta_estado" object="${peticionoferta}" z="2RK/0Q+KvyaLx/G5xtOBmt29Jio="/>
+        <field:display field="curriculum" id="s_es_uca_iw_domain_PeticionOferta_curriculum" object="${peticionoferta}" z="wjz6L8cyoeGsvuLaPXqb5iwotvU="/>
+        <field:display field="oferta" id="s_es_uca_iw_domain_PeticionOferta_oferta" object="${peticionoferta}" z="cKEcJhFzKX8uFKNQI7wrYcVpU2s="/>
+    </page:show>
+</div>

@@ -1,0 +1,166 @@
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-05-30 12:25:57
+project --topLevelPackage es.uca.iw --projectName adjob --packaging WAR 
+jpa setup --provider HIBERNATE --database MYSQL --databaseName adjob --hostName localhost --userName root
+enum type --class ~.reference.tipoUsuario
+enum constant --name Demandante
+enum constant --name GestorETT
+enum constant --name GestorEmpresa
+enum constant --name Administrador
+enum constant --name SuperAdministrador
+enum type --class ~.reference.sexo
+enum constant --name Mujer
+enum constant --name Hombre
+enum constant --name Otro
+entity jpa --class ~.domain.Usuario
+field string --fieldName nombre --sizeMin 3 --sizeMax 30 --class ~.domain.Usuario
+field string --fieldName apellidos --sizeMin 3 --sizeMax 50 --class ~.domain.Usuario
+field string --fieldName email --sizeMin 3 --sizeMax 30 --class ~.domain.Usuario
+field string --fieldName dni --sizeMin 9 --sizeMax 9 --class ~.domain.Usuario
+field string --fieldName contrasena --sizeMin 3 --sizeMax 30 --class ~.domain.Usuario
+field date --fieldName fechaNacimiento --type java.util.Date --notNull
+field string --fieldName direccion --sizeMin 3 --sizeMax 30 --class ~.domain.Usuario
+field number --fieldName telefono --class ~.domain.Usuario --type java.lang.Integer
+field enum --fieldName tipo --type ~.reference.tipoUsuario --notNull false
+field enum --fieldName sexo --type ~.reference.sexo --notNull false 
+entity jpa --class ~.domain.Empresa
+field string --fieldName nombre --sizeMin 3 --sizeMax 30 --class ~.domain.Empresa
+field string --fieldName cif --sizeMin 9 --sizeMax 9 --class ~.domain.Empresa
+field string --fieldName actividad_profesional --sizeMin 3 --sizeMax 200 --class ~.domain.Empresa
+field number --fieldName numero_empleados --class ~.domain.Empresa  --type java.lang.Integer
+field number --fieldName telefono --class ~.domain.Empresa  --type java.lang.Integer
+field string --fieldName web --sizeMin 3 --sizeMax 30 --class ~.domain.Empresa
+field string --fieldName direccion --sizeMin 3 --sizeMax 100 --class ~.domain.Empresa
+entity jpa --class ~.domain.puestoTrabajo
+field string --fieldName nombre --sizeMin 3 --sizeMax 30 --class ~.domain.puestoTrabajo
+field string --fieldName descripcion --sizeMin 3 --sizeMax 100 --class ~.domain.puestoTrabajo
+enum type --class ~.reference.tipoContrato
+enum constant --name Indefinido
+enum constant --name Temporal
+enum constant --name HorasYservicios
+enum type --class ~.reference.estadoOferta
+enum constant --name Espera
+enum constant --name Activa
+enum constant --name Detenida
+enum constant --name Cancelada
+enum constant --name Tramite
+enum constant --name Resuelta
+entity jpa --class ~.domain.oferta
+field string --fieldName nombre --sizeMin 3 --sizeMax 30 --class ~.domain.oferta
+field string --fieldName informacion --sizeMin 10 --sizeMax 200 --class ~.domain.oferta
+field date --fieldName fecha_inicio --type java.util.Date --notNull
+field date --fieldName fecha_fin --type java.util.Date --notNull
+field enum --fieldName tipo_contrato --type ~.reference.tipoContrato --notNull false
+field enum --fieldName estado_oferta --type ~.reference.estadoOferta --notNull false
+field number --fieldName sueldo --class ~.domain.oferta  --type java.lang.Float
+field number --fieldName numero_vacantes --class ~.domain.oferta  --type java.lang.Integer
+field string --fieldName perfil --sizeMin 10 --sizeMax 200 --class ~.domain.oferta
+entity jpa --class ~.domain.experiencia
+field string --fieldName nombre_empresa --sizeMin 3 --sizeMax 30 --class ~.domain.experiencia
+field date --fieldName fecha_inicio --type java.util.Date --notNull
+field date --fieldName fecha_fin --type java.util.Date --notNull
+field reference --fieldName puesto --type ~.domain.puestoTrabajo --class ~.domain.experiencia
+field reference --fieldName usuario --type ~.domain.Usuario --class ~.domain.experiencia
+entity jpa --class ~.domain.idiomas
+field string --fieldName nombre_titulo --sizeMin 3 --sizeMax 30 --class ~.domain.idiomas
+field string --fieldName descripcion --sizeMin 0 --sizeMax 50 --class ~.domain.idiomas
+field string --fieldName entidad_emisora --sizeMin 3 --sizeMax 30 --class ~.domain.idiomas
+field string --fieldName nivel --sizeMin 1 --sizeMax 10 --class ~.domain.idiomas
+field reference --fieldName usuario --type ~.domain.Usuario --class ~.domain.idiomas
+entity jpa --class ~.domain.cursos
+field string --fieldName nombre --sizeMin 3 --sizeMax 30 --class ~.domain.cursos
+field string --fieldName nombre_academia --sizeMin 3 --sizeMax 30 --class ~.domain.cursos
+field string --fieldName descripcion --sizeMin 3 --sizeMax 30 --class ~.domain.cursos
+field date --fieldName fecha_inicio --type java.util.Date --notNull
+field date --fieldName fecha_fin --type java.util.Date --notNull
+field reference --fieldName usuario --type ~.domain.Usuario --class ~.domain.cursos
+entity jpa --class ~.domain.titulos
+field string --fieldName nombre --sizeMin 3 --sizeMax 30 --class ~.domain.titulos
+field string --fieldName entidad_emisora --sizeMin 3 --sizeMax 30 --class ~.domain.titulos
+field string --fieldName descripcion --sizeMin 0 --sizeMax 30 --class ~.domain.titulos
+field date --fieldName fecha_obtencion --type java.util.Date --notNull
+field reference --fieldName usuario --type ~.domain.Usuario --class ~.domain.titulos
+entity jpa --class ~.domain.peticionOferta
+field reference --fieldName usuario_demandante --type ~domain.Usuario --cardinality ONE_TO_ONE --class ~.domain.peticionOferta
+// [failed] field reference --fieldName curriculum_publicado --type ~domain.cv --cardinality ONE_TO_ONE --class ~.domain.peticionOferta
+// [failed] field reference --fieldName oferta --type ~domain.ofertaTrabajo --cardinality ONE_TO_ONE --class ~.domain.peticionOferta
+enum type --class ~.reference.estadoPeticionOferta
+enum constant --name Recibida
+enum constant --name Retirada
+enum constant --name En_Estudio
+enum constant --name Descartada
+enum constant --name Aceptada
+field enum --fieldName estado --type ~.reference.estadoPeticionOferta --notNull false --class ~.domain.peticionOferta
+// [failed] field set --fieldName puestos_posibles --type ~.domain.puestoTrabajo --class ~.domain.cv --cardinality MANY_TO_MANY
+// [failed] field set --fieldName experiencia --type ~.domain.experiencia --class ~.domain.cv --cardinality MANY_TO_MANY
+// [failed] field set --fieldName cursos --type ~.domain.cursos --class ~.domain.cv --cardinality MANY_TO_MANY
+// [failed] field set --fieldName idiomas --type ~.domain.idiomas --class ~.domain.cv --cardinality MANY_TO_MANY
+// [failed] field set --fieldName titulos --type ~.domain.titulos --class ~.domain.cv --cardinality MANY_TO_MANY
+// [failed] field reference --fieldName usuario --type ~.domain.Usuario --class ~.domain.Cv
+entity jpa --class ~.domain.cv
+field string --fieldName foto --sizeMin 0 --sizeMax 30 --class ~.domain.cv
+field string --fieldName trayectoria --sizeMin 10 --sizeMax 300 --class ~.domain.cv
+field set --fieldName puestos_posibles --type ~.domain.puestoTrabajo --class ~.domain.cv --cardinality MANY_TO_MANY
+field set --fieldName experiencia --type ~.domain.experiencia --class ~.domain.cv --cardinality MANY_TO_MANY
+field set --fieldName cursos --type ~.domain.cursos --class ~.domain.cv --cardinality MANY_TO_MANY
+field set --fieldName idiomas --type ~.domain.idiomas --class ~.domain.cv --cardinality MANY_TO_MANY
+field set --fieldName titulos --type ~.domain.titulos --class ~.domain.cv --cardinality MANY_TO_MANY
+field reference --fieldName usuario --type ~.domain.Usuario --class ~.domain.Cv
+field reference --fieldName empresa --type ~.domain.Empresa --class ~.domain.oferta
+field set --fieldName ofertas --type ~.domain.oferta --class ~.domain.empresa --cardinality ONE_TO_MANY --mappedBy empresa
+field set --fieldName empresas_gestionadas --type ~.domain.empresa --class ~.domain.Usuario --cardinality MANY_TO_MANY --notNull false
+field set --fieldName cvs --type ~.domain.cv --class ~.domain.usuario --cardinality ONE_TO_MANY --mappedBy usuario --notNull false
+web mvc setup
+web mvc all --package ~.web
+web mvc language --code en
+web mvc language --code es
+web mvc jquery setup
+web mvc bootstrap setup
+web mvc bootstrap update
+finder add --finderName findUsuariosByEmailAndContrasenaEquals --class ~.domain.Usuario
+finder add --finderName findUsuariosByEmail --class ~.domain.Usuario
+finder add --finderName findCursosByUsuario --class ~.domain.ExperienciaCurso
+finder add --finderName findCursosByUsuario --class ~.domain.Cursos
+finder add --finderName findCursossByUsuario --class ~.domain.Cursos
+finder add --finderName findCvsByUsuario --class ~domain.Cv
+security setup
+web mvc bootstrap update
+backup
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-05-30 19:22:23
+backup
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-05-30 21:43:01
+finder add --finderName findCursosByUsuario --class ~.domain.Cursos
+finder add --finderName findCursosesByUsuario --class ~.domain.Cursos
+backup
+finder add --finderName findExperienciasByUsuario --class ~.domain.Experiencia
+finder add --finderName findIdiomasesByUsuario --class ~.domain.Idiomas
+finder add --finderName findTitulosesByUsuario --class ~.domain.Titulos
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-05-30 22:50:20
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-05-30 23:05:37
+backup
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-05-30 23:10:54
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-05-31 00:47:24
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-05-31 01:40:47
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-05-31 11:09:13
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-05-31 12:09:11
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-05-31 12:16:07
+backup
+backup
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-05-31 17:07:33
+backup
+backup
+finder add --finderName findOfertasByEmpresa --class ~domain.Oferta
+finder add --finderName findOfertasWhereEmpresaIn --class ~domain.Oferta
+finder add --finderName findOfertasByEmpresaIn --class ~domain.Oferta
+finder add --finderName findOfertasByEmpresaLike --class ~domain.Oferta
+finder add --finderName findUsuariosByTipo --class ~domain.Usuario
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-05-31 20:24:46
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-06-01 17:06:45
+finder add --finderName findPeticionOfertasByUsuario_demandante --class ~domain.PeticionOferta
+finder add --finderName findPeticionOfertasByOferta --class ~domain.PeticionOferta
+backup
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-06-01 17:34:33
+field reference --fieldName puesto_buscado --type ~.domain.puestoTrabajo --class ~.domain.Oferta
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-06-01 17:52:46
+backup
+finder add --finderName findEmpresasByUsuario --class ~domain.Usuario
+backup

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_iw_domain_Cursos" items="${cursoses}" z="4ivp3h9iNq+zXQt8jeCgVOKIrVA=">
+        <table:table data="${cursoses}" id="l_es_uca_iw_domain_Cursos" path="/cursoses" z="RTB1dG+KlTX6yk0tETcWw+NZ9qY=">
+            <table:column id="c_es_uca_iw_domain_Cursos_nombre" property="nombre" z="rKBCTQW244IB0aFtMMuVgxzw4ZE="/>
+            <table:column id="c_es_uca_iw_domain_Cursos_nombre_academia" property="nombre_academia" z="5OxW1SCzwdyXJOYheoUIFlZwoiI="/>
+            <table:column id="c_es_uca_iw_domain_Cursos_descripcion" property="descripcion" z="IyW9elsbLM62Y9WAjrZbG3rOT7s="/>
+            <table:column date="true" dateTimePattern="${cursos_fecha_inicio_date_format}" id="c_es_uca_iw_domain_Cursos_fecha_inicio" property="fecha_inicio" z="OSTpcWydYeTnU0xm+VW7t4V/VFk="/>
+            <table:column date="true" dateTimePattern="${cursos_fecha_fin_date_format}" id="c_es_uca_iw_domain_Cursos_fecha_fin" property="fecha_fin" z="HQzartmw5t5qkEqHab/+jd3vKOw="/>
+            <table:column id="c_es_uca_iw_domain_Cursos_usuario" property="usuario" z="ydztJ9X4ykuiLybCJcQEhh2dAho="/>
+        </table:table>
+    </page:list>
+</div>

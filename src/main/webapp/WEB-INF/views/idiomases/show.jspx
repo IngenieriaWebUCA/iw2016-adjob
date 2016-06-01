@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_iw_domain_Idiomas" object="${idiomas}" path="/idiomases" z="cggylcODyfASbci37YweiG2PaQg=">
+        <field:display field="nombre_titulo" id="s_es_uca_iw_domain_Idiomas_nombre_titulo" object="${idiomas}" z="Zkpsyyj0dfA/adO/zQudh8Axk9U="/>
+        <field:display field="descripcion" id="s_es_uca_iw_domain_Idiomas_descripcion" object="${idiomas}" z="rhoQFEncSP6BWg0xyEfOzdM9m9E="/>
+        <field:display field="entidad_emisora" id="s_es_uca_iw_domain_Idiomas_entidad_emisora" object="${idiomas}" z="hvMscF5r53DUQMBvFSTd2J3QI7s="/>
+        <field:display field="nivel" id="s_es_uca_iw_domain_Idiomas_nivel" object="${idiomas}" z="SGU6aS7q9PqwuJyAowKPY52nokE="/>
+        <field:display field="usuario" id="s_es_uca_iw_domain_Idiomas_usuario" object="${idiomas}" z="iCcpiZIYC4Q+Tm5X7iOTUez85VQ="/>
+    </page:show>
+</div>
