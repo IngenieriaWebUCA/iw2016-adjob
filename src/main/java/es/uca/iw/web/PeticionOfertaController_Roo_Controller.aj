@@ -3,8 +3,13 @@
 
 package es.uca.iw.web;
 
+<<<<<<< HEAD
 import es.uca.iw.domain.Cv;
 import es.uca.iw.domain.Oferta;
+=======
+import es.uca.iw.domain.Curriculum;
+import es.uca.iw.domain.OfertaTrabajo;
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 import es.uca.iw.domain.PeticionOferta;
 import es.uca.iw.domain.Usuario;
 import es.uca.iw.reference.EstadoPeticionOferta;
@@ -24,6 +29,26 @@ import org.springframework.web.util.WebUtils;
 
 privileged aspect PeticionOfertaController_Roo_Controller {
     
+<<<<<<< HEAD
+=======
+    @RequestMapping(method = RequestMethod.POST, produces = "text/html")
+    public String PeticionOfertaController.create(@Valid PeticionOferta peticionOferta, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        if (bindingResult.hasErrors()) {
+            populateEditForm(uiModel, peticionOferta);
+            return "peticionofertas/create";
+        }
+        uiModel.asMap().clear();
+        peticionOferta.persist();
+        return "redirect:/peticionofertas/" + encodeUrlPathSegment(peticionOferta.getId().toString(), httpServletRequest);
+    }
+    
+    @RequestMapping(params = "form", produces = "text/html")
+    public String PeticionOfertaController.createForm(Model uiModel) {
+        populateEditForm(uiModel, new PeticionOferta());
+        return "peticionofertas/create";
+    }
+    
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
     @RequestMapping(value = "/{id}", produces = "text/html")
     public String PeticionOfertaController.show(@PathVariable("id") Long id, Model uiModel) {
         uiModel.addAttribute("peticionoferta", PeticionOferta.findPeticionOferta(id));
@@ -31,6 +56,23 @@ privileged aspect PeticionOfertaController_Roo_Controller {
         return "peticionofertas/show";
     }
     
+<<<<<<< HEAD
+=======
+    @RequestMapping(produces = "text/html")
+    public String PeticionOfertaController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, @RequestParam(value = "sortFieldName", required = false) String sortFieldName, @RequestParam(value = "sortOrder", required = false) String sortOrder, Model uiModel) {
+        if (page != null || size != null) {
+            int sizeNo = size == null ? 10 : size.intValue();
+            final int firstResult = page == null ? 0 : (page.intValue() - 1) * sizeNo;
+            uiModel.addAttribute("peticionofertas", PeticionOferta.findPeticionOfertaEntries(firstResult, sizeNo, sortFieldName, sortOrder));
+            float nrOfPages = (float) PeticionOferta.countPeticionOfertas() / sizeNo;
+            uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
+        } else {
+            uiModel.addAttribute("peticionofertas", PeticionOferta.findAllPeticionOfertas(sortFieldName, sortOrder));
+        }
+        return "peticionofertas/list";
+    }
+    
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
     @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
     public String PeticionOfertaController.update(@Valid PeticionOferta peticionOferta, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
@@ -42,6 +84,15 @@ privileged aspect PeticionOfertaController_Roo_Controller {
         return "redirect:/peticionofertas/" + encodeUrlPathSegment(peticionOferta.getId().toString(), httpServletRequest);
     }
     
+<<<<<<< HEAD
+=======
+    @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
+    public String PeticionOfertaController.updateForm(@PathVariable("id") Long id, Model uiModel) {
+        populateEditForm(uiModel, PeticionOferta.findPeticionOferta(id));
+        return "peticionofertas/update";
+    }
+    
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
     public String PeticionOfertaController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         PeticionOferta peticionOferta = PeticionOferta.findPeticionOferta(id);
@@ -54,8 +105,13 @@ privileged aspect PeticionOfertaController_Roo_Controller {
     
     void PeticionOfertaController.populateEditForm(Model uiModel, PeticionOferta peticionOferta) {
         uiModel.addAttribute("peticionOferta", peticionOferta);
+<<<<<<< HEAD
         uiModel.addAttribute("cvs", Cv.findAllCvs());
         uiModel.addAttribute("ofertas", Oferta.findAllOfertas());
+=======
+        uiModel.addAttribute("curriculums", Curriculum.findAllCurriculums());
+        uiModel.addAttribute("ofertatrabajoes", OfertaTrabajo.findAllOfertaTrabajoes());
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
         uiModel.addAttribute("usuarios", Usuario.findAllUsuarios());
         uiModel.addAttribute("estadopeticionofertas", Arrays.asList(EstadoPeticionOferta.values()));
     }

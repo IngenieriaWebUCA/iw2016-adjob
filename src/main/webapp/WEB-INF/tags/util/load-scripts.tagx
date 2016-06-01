@@ -34,7 +34,11 @@
   <script language="JavaScript" type="text/javascript">dojo.require("dojo.parser");</script>
 
 <spring:url value="/resources/styles/jquery/jquery-ui.css" var="jquery_ui_css_url"/>
+<<<<<<< HEAD
     <link href="${jquery_ui_css_url}" media="screen,print" rel="stylesheet" type="text/css"/>
+=======
+    <link href="${jquery_ui_css_url}" media="screen" rel="stylesheet" type="text/css"/>
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
     <spring:url value="/resources/scripts/jquery/jquery-min.js" var="jquery_js_url"/>
     <script src="${jquery_js_url}" type="text/javascript">
         <!--required for FF3 and Opera-->
@@ -96,6 +100,7 @@
     <script src="${jquery_numberformatter_js_url}" type="text/javascript">
         <!--required for FF3 and Opera-->
     </script>
+<<<<<<< HEAD
     <spring:url value="/resources/scripts/jquery/jquery.print.js" var="jquery_print_js_url"/>
     <script src="${jquery_print_js_url}" type="text/javascript">
         <!--required for FF3 and Opera-->
@@ -130,4 +135,6 @@ Date.prototype.dateFormat = function( format ){
     return moment(this).format(format);
 };
 </script>
+=======
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 </jsp:root>

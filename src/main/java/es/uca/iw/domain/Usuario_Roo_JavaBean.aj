@@ -3,11 +3,17 @@
 
 package es.uca.iw.domain;
 
+<<<<<<< HEAD
 import es.uca.iw.domain.Cv;
 import es.uca.iw.domain.Empresa;
 import es.uca.iw.domain.Usuario;
 import es.uca.iw.reference.Sexo;
 import es.uca.iw.reference.TipoUsuario;
+=======
+import es.uca.iw.domain.Curriculum;
+import es.uca.iw.domain.Usuario;
+import es.uca.iw.reference.Sexo;
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 import java.util.Date;
 import java.util.Set;
 
@@ -37,6 +43,7 @@ privileged aspect Usuario_Roo_JavaBean {
         this.email = email;
     }
     
+<<<<<<< HEAD
     public String Usuario.getDni() {
         return this.dni;
     }
@@ -45,6 +52,8 @@ privileged aspect Usuario_Roo_JavaBean {
         this.dni = dni;
     }
     
+=======
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
     public String Usuario.getContrasena() {
         return this.contrasena;
     }
@@ -77,6 +86,7 @@ privileged aspect Usuario_Roo_JavaBean {
         this.telefono = telefono;
     }
     
+<<<<<<< HEAD
     public TipoUsuario Usuario.getTipo() {
         return this.tipo;
     }
@@ -85,6 +95,8 @@ privileged aspect Usuario_Roo_JavaBean {
         this.tipo = tipo;
     }
     
+=======
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
     public Sexo Usuario.getSexo() {
         return this.sexo;
     }
@@ -93,6 +105,7 @@ privileged aspect Usuario_Roo_JavaBean {
         this.sexo = sexo;
     }
     
+<<<<<<< HEAD
     public Set<Empresa> Usuario.getEmpresas_gestionadas() {
         return this.empresas_gestionadas;
     }
@@ -107,6 +120,62 @@ privileged aspect Usuario_Roo_JavaBean {
     
     public void Usuario.setCvs(Set<Cv> cvs) {
         this.cvs = cvs;
+=======
+    public String Usuario.getDni() {
+        return this.dni;
+    }
+    
+    public void Usuario.setDni(String dni) {
+        this.dni = dni;
+    }
+    
+    public Set<Curriculum> Usuario.getCurriculums() {
+        return this.curriculums;
+    }
+    
+    public void Usuario.setCurriculums(Set<Curriculum> curriculums) {
+        this.curriculums = curriculums;
+    }
+    
+    public Boolean Usuario.getIs_demandante() {
+        return this.is_demandante;
+    }
+    
+    public void Usuario.setIs_demandante(Boolean is_demandante) {
+        this.is_demandante = is_demandante;
+    }
+    
+    public Boolean Usuario.getIs_gestor_ett() {
+        return this.is_gestor_ett;
+    }
+    
+    public void Usuario.setIs_gestor_ett(Boolean is_gestor_ett) {
+        this.is_gestor_ett = is_gestor_ett;
+    }
+    
+    public Boolean Usuario.getIs_gestor_empresa() {
+        return this.is_gestor_empresa;
+    }
+    
+    public void Usuario.setIs_gestor_empresa(Boolean is_gestor_empresa) {
+        this.is_gestor_empresa = is_gestor_empresa;
+    }
+    
+    public Boolean Usuario.getIs_administrador() {
+        return this.is_administrador;
+    }
+    
+    public void Usuario.setIs_administrador(Boolean is_administrador) {
+        this.is_administrador = is_administrador;
+    }
+    
+    public Boolean Usuario.getIs_superadministrador() {
+        return this.is_superadministrador;
+    }
+    
+    public void Usuario.setIs_superadministrador(Boolean is_superadministrador) {
+        this.is_superadministrador = is_superadministrador;
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
     }
     
 }

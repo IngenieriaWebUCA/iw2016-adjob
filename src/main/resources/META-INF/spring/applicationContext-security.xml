@@ -6,9 +6,15 @@
         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
         
     <!-- ¡¡Importante: comportamiento jerárquico!! -->
+<<<<<<< HEAD
     <beans:bean name="adjobAuthenticationProvider"
         class="es.uca.iw.security.AdjobAuthenticationProvider">
     </beans:bean>
+=======
+	<beans:bean name="adjobAuthenticationProvider"
+		class="es.uca.iw.security.AdjobAuthenticationProvider">
+	</beans:bean>
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
     
     <!-- HTTP security configurations -->
     <http auto-config="true" use-expressions="true">
@@ -17,6 +23,7 @@
         
         <logout logout-url="/resources/j_spring_security_logout" />
         <logout logout-success-url="/welcome" />
+<<<<<<< HEAD
 
         <intercept-url pattern="/cuenta/**" access="hasAnyRole('DEMANDANTE', 'GESTORETT', 'GESTOREMPRESA')"  />
         <intercept-url pattern="/resources/**" access="permitAll" />
@@ -37,6 +44,23 @@
     </authentication-manager>
         <!-- 
         <authentication-provider>s
+=======
+        
+        
+        <!--
+        <intercept-url pattern="/choices/**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/member/**" access="isAuthenticated()" />
+        <intercept-url pattern="/resources/**" access="permitAll" />
+        <intercept-url pattern="/login/**" access="permitAll" />
+         intercept-url pattern="/**" access="isAuthenticated()" />  -->
+    </http>
+    <!-- Configure Authentication mechanism -->
+    <authentication-manager alias="authenticationManager">
+    	<authentication-provider ref="adjobAuthenticationProvider"/>
+    </authentication-manager>
+        <!-- 
+        <authentication-provider>
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
             <password-encoder hash="sha-256" />
             <user-service>
                 <user name="admin" password="8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918" authorities="ROLE_ADMIN" />

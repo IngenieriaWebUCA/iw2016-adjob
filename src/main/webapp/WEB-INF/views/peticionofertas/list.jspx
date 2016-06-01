@@ -5,9 +5,15 @@
     <page:list id="pl_es_uca_iw_domain_PeticionOferta" items="${peticionofertas}" z="bC8XLvLq3ssXJOt167hQJdVpjrU=">
         <table:table data="${peticionofertas}" id="l_es_uca_iw_domain_PeticionOferta" path="/peticionofertas" z="Y/4qTlFJThI2jLimWMmCQFvviAM=">
             <table:column id="c_es_uca_iw_domain_PeticionOferta_usuario_demandante" property="usuario_demandante" z="NRXqtfFQ6SxMeAXX9Fqv6t4SpLs="/>
+<<<<<<< HEAD
             <table:column id="c_es_uca_iw_domain_PeticionOferta_estado" property="estado" z="cFSEEo8R+Do6+Y04WBUCp8gU7GQ="/>
             <table:column id="c_es_uca_iw_domain_PeticionOferta_curriculum" property="curriculum" z="CUe/NHgOv6l/9lSF7D7D40lBLwI="/>
             <table:column id="c_es_uca_iw_domain_PeticionOferta_oferta" property="oferta" z="nnfBvyUZpL0lEEjlIE/pYzSN7OA="/>
+=======
+            <table:column id="c_es_uca_iw_domain_PeticionOferta_oferta" property="oferta" z="nnfBvyUZpL0lEEjlIE/pYzSN7OA="/>
+            <table:column id="c_es_uca_iw_domain_PeticionOferta_estado" property="estado" z="cFSEEo8R+Do6+Y04WBUCp8gU7GQ="/>
+            <table:column id="c_es_uca_iw_domain_PeticionOferta_curriculum_publicado" property="curriculum_publicado" z="OWCdSjMIISM4AIWjUgkXfpyKigM="/>
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
         </table:table>
     </page:list>
 </div>

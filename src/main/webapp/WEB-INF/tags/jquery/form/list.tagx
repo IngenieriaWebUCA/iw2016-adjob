@@ -16,7 +16,11 @@
     <c:if test="${empty labelPlural}">
       <spring:message code="label_${fn:toLowerCase(fn:substringAfter(id,'_'))}_plural" var="labelPlural" htmlEscape="false" />
     </c:if>
+<<<<<<< HEAD
     <spring:message arguments="${labelPlural}" code="entity_list_all" var="title_msg" />
+=======
+    <spring:message arguments="${labelPlural}" code="entity_list_all" var="title_msg" htmlEscape="false" />
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
     <util:panel id="${id}" title="${title_msg}" openPane="${openPane}">
         <jsp:doBody />
     </util:panel>

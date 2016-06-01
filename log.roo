@@ -1,16 +1,40 @@
+<<<<<<< HEAD
 // Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-05-30 12:25:57
 project --topLevelPackage es.uca.iw --projectName adjob --packaging WAR 
 jpa setup --provider HIBERNATE --database MYSQL --databaseName adjob --hostName localhost --userName root
+=======
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-05-13 20:46:47
+project --topLevelPackage es.uca.iw --projectName adjob
+jpa setup --provider HIBERNATE --database MYSQL --databaseName adjob --hostName localhost --userName root
+// Spring Roo 1.3.1.RELEASE [rev 8cb81a3] log opened at 2016-05-13 20:52:35
+entity jpa --class ~.domain.Usuario
+field string --fieldName nombre --sizeMin 3 --sizeMax 30 --class ~.domain.Usuario
+field string --fieldName apellidos --sizeMin 3 --sizeMax 50 --class ~.domain.Usuario
+field string --fieldName email --sizeMin 3 --sizeMax 30 --class ~.domain.Usuario
+field string --fieldName contrasena --sizeMin 3 --sizeMax 30 --class ~.domain.Usuario
+// [failed] field string --fieldName nombre --sizeMin 3 --sizeMax 30 --class ~.domain.Usuario
+field date --fieldName fechaNacimiento --type java.util.Date --notNull
+field string --fieldName direccion --sizeMin 3 --sizeMax 30 --class ~.domain.Usuario
+field number --fieldName telefono --class ~.domain.Usuario --type java.lang.Integer
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 enum type --class ~.reference.tipoUsuario
 enum constant --name Demandante
 enum constant --name GestorETT
 enum constant --name GestorEmpresa
 enum constant --name Administrador
 enum constant --name SuperAdministrador
+<<<<<<< HEAD
+=======
+
+field enum --fieldName tipo --type ~.reference.tipoUsuario --notNull false
+web mvc setup
+web mvc all --package ~.web
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 enum type --class ~.reference.sexo
 enum constant --name Mujer
 enum constant --name Hombre
 enum constant --name Otro
+<<<<<<< HEAD
 entity jpa --class ~.domain.Usuario
 field string --fieldName nombre --sizeMin 3 --sizeMax 30 --class ~.domain.Usuario
 field string --fieldName apellidos --sizeMin 3 --sizeMax 50 --class ~.domain.Usuario
@@ -22,35 +46,68 @@ field string --fieldName direccion --sizeMin 3 --sizeMax 30 --class ~.domain.Usu
 field number --fieldName telefono --class ~.domain.Usuario --type java.lang.Integer
 field enum --fieldName tipo --type ~.reference.tipoUsuario --notNull false
 field enum --fieldName sexo --type ~.reference.sexo --notNull false 
+=======
+field enum --fieldName sexo --type ~.reference.sexo --notNull false 
+
+field string --fieldName dni --sizeMin 9 --sizeMax 9 --class ~.domain.Usuario
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 entity jpa --class ~.domain.Empresa
 field string --fieldName nombre --sizeMin 3 --sizeMax 30 --class ~.domain.Empresa
 field string --fieldName cif --sizeMin 9 --sizeMax 9 --class ~.domain.Empresa
 field string --fieldName actividad_profesional --sizeMin 3 --sizeMax 200 --class ~.domain.Empresa
 field number --fieldName numero_empleados --class ~.domain.Empresa  --type java.lang.Integer
+<<<<<<< HEAD
 field number --fieldName telefono --class ~.domain.Empresa  --type java.lang.Integer
 field string --fieldName web --sizeMin 3 --sizeMax 30 --class ~.domain.Empresa
 field string --fieldName direccion --sizeMin 3 --sizeMax 100 --class ~.domain.Empresa
 entity jpa --class ~.domain.puestoTrabajo
 field string --fieldName nombre --sizeMin 3 --sizeMax 30 --class ~.domain.puestoTrabajo
 field string --fieldName descripcion --sizeMin 3 --sizeMax 100 --class ~.domain.puestoTrabajo
+=======
+
+field number --fieldName telefono --class ~.domain.Empresa  --type java.lang.Integer
+
+field string --fieldName web --sizeMin 3 --sizeMax 30 --class ~.domain.Empresa
+
+field string --fieldName direccion --sizeMin 3 --sizeMax 100 --class ~.domain.Empresa
+
+web mvc all --package ~.web
+
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 enum type --class ~.reference.tipoContrato
 enum constant --name Indefinido
 enum constant --name Temporal
 enum constant --name HorasYservicios
 enum type --class ~.reference.estadoOferta
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 enum constant --name Espera
 enum constant --name Activa
 enum constant --name Detenida
 enum constant --name Cancelada
 enum constant --name Tramite
 enum constant --name Resuelta
+<<<<<<< HEAD
 entity jpa --class ~.domain.oferta
 field string --fieldName nombre --sizeMin 3 --sizeMax 30 --class ~.domain.oferta
 field string --fieldName informacion --sizeMin 10 --sizeMax 200 --class ~.domain.oferta
+=======
+enum type --class ~.reference.puestoTrabajo
+enum type --class ~.reference.puestoTrabajo
+entity jpa --class ~.domain.puestoTrabajo
+field string --fieldName nombre --sizeMin 3 --sizeMax 30 --class ~.domain.puestoTrabajo
+field string --fieldName descripcion --sizeMin 3 --sizeMax 100 --class ~.domain.puestoTrabajo
+entity jpa --class ~.domain.ofertaTrabajo
+field string --fieldName nombre --sizeMin 3 --sizeMax 30 --class ~.domain.ofertaTrabajo
+field string --fieldName informacion --sizeMin 10 --sizeMax 200 --class ~.domain.ofertaTrabajo
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 field date --fieldName fecha_inicio --type java.util.Date --notNull
 field date --fieldName fecha_fin --type java.util.Date --notNull
 field enum --fieldName tipo_contrato --type ~.reference.tipoContrato --notNull false
 field enum --fieldName estado_oferta --type ~.reference.estadoOferta --notNull false
+<<<<<<< HEAD
 field number --fieldName sueldo --class ~.domain.oferta  --type java.lang.Float
 field number --fieldName numero_vacantes --class ~.domain.oferta  --type java.lang.Integer
 field string --fieldName perfil --sizeMin 10 --sizeMax 200 --class ~.domain.oferta
@@ -83,6 +140,60 @@ entity jpa --class ~.domain.peticionOferta
 field reference --fieldName usuario_demandante --type ~domain.Usuario --cardinality ONE_TO_ONE --class ~.domain.peticionOferta
 // [failed] field reference --fieldName curriculum_publicado --type ~domain.cv --cardinality ONE_TO_ONE --class ~.domain.peticionOferta
 // [failed] field reference --fieldName oferta --type ~domain.ofertaTrabajo --cardinality ONE_TO_ONE --class ~.domain.peticionOferta
+=======
+field number --fieldName sueldo --class ~.domain.ofertaTrabajo  --type java.lang.Float
+field number --fieldName numero_vacantes --class ~.domain.ofertaTrabajo  --type java.lang.Integer
+field string --fieldName perfil --sizeMin 10 --sizeMax 200 --class ~.domain.ofertaTrabajo
+field reference --fieldName empresa --type ~.domain.Empresa
+field reference --fieldName puesto_buscado --type ~.domain.puestoTrabajo
+entity jpa --class ~.domain.curriculum
+field string --fieldName foto --sizeMin 0 --sizeMax 30 --class ~.domain.curriculum
+field string --fieldName trayectoria --sizeMin 10 --sizeMax 300 --class ~.domain.curriculum
+field reference --fieldName usuario --type ~.domain.usuario
+entity jpa --class ~.domain.experienciaLaboral
+field string --fieldName nombre_empresa --sizeMin 3 --sizeMax 30 --class ~.domain.experienciaLaboral
+field date --fieldName fecha_inicio --type java.util.Date --notNull
+field date --fieldName fecha_fin --type java.util.Date --notNull
+field reference --fieldName curriculum --type ~.domain.curriculum
+field reference --fieldName puesto --type ~.domain.puestoTrabajo
+entity jpa --class ~.domain.experienciaIdioma
+field string --fieldName nombre_titulo --sizeMin 3 --sizeMax 30 --class ~.domain.experienciaIdioma
+field string --fieldName descripcion --sizeMin 0 --sizeMax 50 --class ~.domain.experienciaIdioma
+field string --fieldName entidad_emisora --sizeMin 3 --sizeMax 30 --class ~.domain.experienciaIdioma
+field string --fieldName nivel --sizeMin 1 --sizeMax 10 --class ~.domain.experienciaIdioma
+field reference --fieldName curriculum --type ~.domain.curriculum
+entity jpa --class ~.domain.experienciaCurso
+field string --fieldName nombre --sizeMin 3 --sizeMax 30 --class ~.domain.experienciaCurso
+field string --fieldName nombre_academia --sizeMin 3 --sizeMax 30 --class ~.domain.experienciaCurso
+field string --fieldName descripcion --sizeMin 3 --sizeMax 30 --class ~.domain.experienciaCurso
+field date --fieldName fecha_inicio --type java.util.Date --notNull
+field date --fieldName fecha_fin --type java.util.Date --notNull
+field reference --fieldName curriculum --type ~.domain.curriculum
+entity jpa --class ~.domain.experienciaTitulo
+field string --fieldName nombre --sizeMin 3 --sizeMax 30 --class ~.domain.experienciaTitulo
+field string --fieldName entidad_emisora --sizeMin 3 --sizeMax 30 --class ~.domain.experienciaTitulo
+field date --fieldName fecha_obtencion --type java.util.Date --notNull
+field string --fieldName descripcion --sizeMin 0 --sizeMax 30 --class ~.domain.experienciaTitulo
+// Spring Roo 1.3.1.RELEASE [rev 8cb81a3] log opened at 2016-05-14 14:46:54
+// Spring Roo 1.3.1.RELEASE [rev 8cb81a3] log opened at 2016-05-15 11:46:28
+field set --fieldName curriculums --type ~.domain.curriculum --class ~.domain.usuario --cardinality ONE_TO_MANY
+field set --fieldName empresas --type ~.domain.Empresa --class ~.domain.Usuario
+field reference --fieldName ofertas --type ~.domain.ofertaTrabajo --class ~.domain.Empresa
+field set --fieldName puestos_posibles --type ~.domain.puestoTrabajo --class ~.domain.curriculum
+web mvc all --package ~.web
+// Spring Roo 1.3.1.RELEASE [rev 8cb81a3] log closed at 2016-05-15 11:54:27
+// Spring Roo 1.3.1.RELEASE [rev 8cb81a3] log opened at 2016-05-15 12:01:18
+// [failed] field reference --fieldName ofertas --type ~.domain.ofertaTrabajo --class ~.domain.Empresa --cardinality ONE_TO_MANY
+field reference --fieldName ofertas --type ~.domain.ofertaTrabajo --class ~.domain.Empresa
+web mvc all --package ~.web
+field set --fieldName experiencia_laboral --type ~.domain.experienciaLaboral --class ~.domain.curriculum --cardinality ONE_TO_MANY 
+field set --fieldName experiencia_curso --type ~.domain.experienciaCurso --class ~.domain.curriculum --cardinality ONE_TO_MANY 
+field set --fieldName experiencia_idioma --type ~.domain.experienciaIdioma --class ~.domain.curriculum --cardinality ONE_TO_MANY 
+field set --fieldName experiencia_titulo --type ~.domain.experienciaTitulo --class ~.domain.curriculum --cardinality ONE_TO_MANY
+entity jpa --class ~.domain.peticionOferta
+field reference --fieldName usuario_demandante --type ~domain.Usuario --cardinality ONE_TO_ONE --class ~.domain.peticionOferta
+field reference --fieldName oferta --type ~domain.ofertaTrabajo --cardinality ONE_TO_ONE --class ~.domain.peticionOferta
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 enum type --class ~.reference.estadoPeticionOferta
 enum constant --name Recibida
 enum constant --name Retirada
@@ -90,6 +201,7 @@ enum constant --name En_Estudio
 enum constant --name Descartada
 enum constant --name Aceptada
 field enum --fieldName estado --type ~.reference.estadoPeticionOferta --notNull false --class ~.domain.peticionOferta
+<<<<<<< HEAD
 // [failed] field set --fieldName puestos_posibles --type ~.domain.puestoTrabajo --class ~.domain.cv --cardinality MANY_TO_MANY
 // [failed] field set --fieldName experiencia --type ~.domain.experiencia --class ~.domain.cv --cardinality MANY_TO_MANY
 // [failed] field set --fieldName cursos --type ~.domain.cursos --class ~.domain.cv --cardinality MANY_TO_MANY
@@ -164,3 +276,40 @@ field reference --fieldName puesto_buscado --type ~.domain.puestoTrabajo --class
 backup
 finder add --finderName findEmpresasByUsuario --class ~domain.Usuario
 backup
+=======
+field reference --fieldName curriculum_publicado --type ~domain.curriculum --cardinality ONE_TO_ONE --class ~.domain.peticionOferta
+web mvc all --package ~.web
+help
+web mvc jquery setup
+web mvc bootstrap setup
+field set --fieldName experiencia_laboral --type ~.domain.experienciaLaboral --class ~.domain.curriculum --cardinality MANY_TO_MANY
+field set --fieldName experiencia_curso --type ~.domain.experienciaCurso --class ~.domain.curriculum --cardinality MANY_TO_MANY
+field set --fieldName experiencia_idioma --type ~.domain.experienciaIdioma --class ~.domain.curriculum --cardinality MANY_TO_MANY
+field set --fieldName experiencia_titulo --type ~.domain.experienciaTitulo --class ~.domain.curriculum --cardinality MANY_TO_MANY
+// Spring Roo 1.3.1.RELEASE [rev 8cb81a3] log opened at 2016-05-22 20:49:40
+// Spring Roo 1.3.1.RELEASE [rev 8cb81a3] log opened at 2016-05-22 21:02:44
+finder add --finderName findUsuariosByEmailAndContrasenaEquals --class ~.domain.Usuario
+security setup
+web mvc bootstrap update
+web mvc bootstrap update
+// Spring Roo 1.3.1.RELEASE [rev 8cb81a3] log opened at 2016-05-22 21:35:10
+// Spring Roo 1.3.1.RELEASE [rev 8cb81a3] log closed at 2016-05-22 21:57:43
+// Spring Roo 1.3.1.RELEASE [rev 8cb81a3] log opened at 2016-05-24 11:43:09
+web mvc bootstrap update
+finder add --finderName findEmpresasByOfertasEquals --class ~domain.Empresa
+finder add --finderName findEmpresasByOfertasEquals --class ~domain.OfertaTrabajo
+finder add --finderName findEmpresasByOfertasEquals --class ~domain.OfertaTrabajo
+finder add --finderName findEmpresasByOfertasEquals --class ~domain.Empresa
+// Spring Roo 1.3.1.RELEASE [rev 8cb81a3] log closed at 2016-05-24 13:22:14
+// Spring Roo 1.3.1.RELEASE [rev 8cb81a3] log opened at 2016-05-24 20:30:53
+field boolean --fieldName is_demandante --class ~domain.Usuario
+field boolean --fieldName is_gestor_ett --class ~domain.Usuario
+
+field boolean --fieldName is_gestor_empresa --class ~domain.Usuario
+
+field boolean --fieldName is_administrador --class ~domain.Usuario
+
+field boolean --fieldName is_superadministrador --class ~domain.Usuario
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-05-25 18:04:20
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log closed at 2016-05-25 18:08:49
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a

@@ -14,7 +14,11 @@ privileged aspect PeticionOferta_Roo_Jpa_ActiveRecord {
     @PersistenceContext
     transient EntityManager PeticionOferta.entityManager;
     
+<<<<<<< HEAD
     public static final List<String> PeticionOferta.fieldNames4OrderClauseFilter = java.util.Arrays.asList("usuario_demandante", "estado", "curriculum", "oferta");
+=======
+    public static final List<String> PeticionOferta.fieldNames4OrderClauseFilter = java.util.Arrays.asList("usuario_demandante", "oferta", "estado", "curriculum_publicado");
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
     
     public static final EntityManager PeticionOferta.entityManager() {
         EntityManager em = new PeticionOferta().entityManager;

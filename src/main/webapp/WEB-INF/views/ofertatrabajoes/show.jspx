@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_iw_domain_OfertaTrabajo" object="${ofertatrabajo}" path="/ofertatrabajoes" z="OViSef9Yk++12Fof8ivcpfUhcKM=">
+        <field:display field="nombre" id="s_es_uca_iw_domain_OfertaTrabajo_nombre" object="${ofertatrabajo}" z="Ok9+LA/HQC/SaABxrWDB2dij4Qw="/>
+        <field:display field="informacion" id="s_es_uca_iw_domain_OfertaTrabajo_informacion" object="${ofertatrabajo}" z="lO1ZtxBv3i9yLkIShJ+N66Yjb6s="/>
+        <field:display date="true" dateTimePattern="${ofertaTrabajo_fecha_inicio_date_format}" field="fecha_inicio" id="s_es_uca_iw_domain_OfertaTrabajo_fecha_inicio" object="${ofertatrabajo}" z="Dtcd0Uzg0UN3wOfSJ6R917BjaCk="/>
+        <field:display date="true" dateTimePattern="${ofertaTrabajo_fecha_fin_date_format}" field="fecha_fin" id="s_es_uca_iw_domain_OfertaTrabajo_fecha_fin" object="${ofertatrabajo}" z="Q0T8YCosQVDXimI6SuG+82g0keU="/>
+        <field:display field="tipo_contrato" id="s_es_uca_iw_domain_OfertaTrabajo_tipo_contrato" object="${ofertatrabajo}" z="12pb1ackexmSXbJzwGKLm33rvTM="/>
+        <field:display field="estado_oferta" id="s_es_uca_iw_domain_OfertaTrabajo_estado_oferta" object="${ofertatrabajo}" z="mwOwYeFRlpSTOjhtbagom6eZZa0="/>
+        <field:display field="sueldo" id="s_es_uca_iw_domain_OfertaTrabajo_sueldo" object="${ofertatrabajo}" z="IE+VHEEV3/CigqAzSR4+km4b8mM="/>
+        <field:display field="numero_vacantes" id="s_es_uca_iw_domain_OfertaTrabajo_numero_vacantes" object="${ofertatrabajo}" z="si/i+aBS+Ou6Ce9zOvpP+uZulDQ="/>
+        <field:display field="perfil" id="s_es_uca_iw_domain_OfertaTrabajo_perfil" object="${ofertatrabajo}" z="dfrkGq7axnSD5K+qlSrWdU7m15c="/>
+        <field:display field="puesto_buscado" id="s_es_uca_iw_domain_OfertaTrabajo_puesto_buscado" object="${ofertatrabajo}" z="nVl+YgAVeu6Tyj2nBmsE9MT3tKw="/>
+    	<field:display id="s_es_uca_iw_domain_OfertaTrabajo_puesto_buscado" object="" field=""></field:display>
+    </page:show>
+</div>

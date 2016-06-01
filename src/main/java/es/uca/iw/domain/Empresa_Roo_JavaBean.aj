@@ -4,8 +4,12 @@
 package es.uca.iw.domain;
 
 import es.uca.iw.domain.Empresa;
+<<<<<<< HEAD
 import es.uca.iw.domain.Oferta;
 import java.util.Set;
+=======
+import es.uca.iw.domain.OfertaTrabajo;
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 
 privileged aspect Empresa_Roo_JavaBean {
     
@@ -65,11 +69,19 @@ privileged aspect Empresa_Roo_JavaBean {
         this.direccion = direccion;
     }
     
+<<<<<<< HEAD
     public Set<Oferta> Empresa.getOfertas() {
         return this.ofertas;
     }
     
     public void Empresa.setOfertas(Set<Oferta> ofertas) {
+=======
+    public OfertaTrabajo Empresa.getOfertas() {
+        return this.ofertas;
+    }
+    
+    public void Empresa.setOfertas(OfertaTrabajo ofertas) {
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
         this.ofertas = ofertas;
     }
     

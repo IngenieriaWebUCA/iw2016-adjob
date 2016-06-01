@@ -58,6 +58,7 @@ jquery-numberformatter
 * License: MIT Licencse (http://www.opensource.org/licenses/mit-license.php)
 * Downloaded from: https://code.google.com/p/jquery-numberformatter/
 
+<<<<<<< HEAD
 
 Moment
 ==============
@@ -82,6 +83,8 @@ Date/Time jQuery component
 * jquery.datetimepicker.full.min.js: compressed version
 * License: MIT License
 * Download from: https://github.com/xdan/datetimepicker/archive/master.zip
+=======
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 NOTE
 ====
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="ofertatrabajoes/list">
+        <put-attribute name="body" value="/WEB-INF/views/ofertatrabajoes/list.jspx"/>
+    </definition>
+<definition extends="default" name="ofertatrabajoes/show">
+        <put-attribute name="body" value="/WEB-INF/views/ofertatrabajoes/show.jspx"/>
+    </definition>
+<definition extends="default" name="ofertatrabajoes/create">
+        <put-attribute name="body" value="/WEB-INF/views/ofertatrabajoes/create.jspx"/>
+    </definition>
+<definition extends="default" name="ofertatrabajoes/update">
+        <put-attribute name="body" value="/WEB-INF/views/ofertatrabajoes/update.jspx"/>
+    </definition>
+</tiles-definitions>

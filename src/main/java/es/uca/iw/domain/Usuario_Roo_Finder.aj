@@ -4,12 +4,16 @@
 package es.uca.iw.domain;
 
 import es.uca.iw.domain.Usuario;
+<<<<<<< HEAD
 import es.uca.iw.reference.TipoUsuario;
+=======
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 privileged aspect Usuario_Roo_Finder {
     
+<<<<<<< HEAD
     public static Long Usuario.countFindUsuariosByEmail(String email) {
         if (email == null || email.length() == 0) throw new IllegalArgumentException("The email argument is required");
         EntityManager em = Usuario.entityManager();
@@ -18,6 +22,8 @@ privileged aspect Usuario_Roo_Finder {
         return ((Long) q.getSingleResult());
     }
     
+=======
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
     public static Long Usuario.countFindUsuariosByEmailAndContrasenaEquals(String email, String contrasena) {
         if (email == null || email.length() == 0) throw new IllegalArgumentException("The email argument is required");
         if (contrasena == null || contrasena.length() == 0) throw new IllegalArgumentException("The contrasena argument is required");
@@ -28,6 +34,7 @@ privileged aspect Usuario_Roo_Finder {
         return ((Long) q.getSingleResult());
     }
     
+<<<<<<< HEAD
     public static Long Usuario.countFindUsuariosByTipo(TipoUsuario tipo) {
         if (tipo == null) throw new IllegalArgumentException("The tipo argument is required");
         EntityManager em = Usuario.entityManager();
@@ -59,6 +66,8 @@ privileged aspect Usuario_Roo_Finder {
         return q;
     }
     
+=======
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
     public static TypedQuery<Usuario> Usuario.findUsuariosByEmailAndContrasenaEquals(String email, String contrasena) {
         if (email == null || email.length() == 0) throw new IllegalArgumentException("The email argument is required");
         if (contrasena == null || contrasena.length() == 0) throw new IllegalArgumentException("The contrasena argument is required");
@@ -86,6 +95,7 @@ privileged aspect Usuario_Roo_Finder {
         return q;
     }
     
+<<<<<<< HEAD
     public static TypedQuery<Usuario> Usuario.findUsuariosByTipo(TipoUsuario tipo) {
         if (tipo == null) throw new IllegalArgumentException("The tipo argument is required");
         EntityManager em = Usuario.entityManager();
@@ -109,4 +119,6 @@ privileged aspect Usuario_Roo_Finder {
         return q;
     }
     
+=======
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 }

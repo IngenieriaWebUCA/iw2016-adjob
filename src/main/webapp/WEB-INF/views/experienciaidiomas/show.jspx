@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_iw_domain_ExperienciaIdioma" object="${experienciaidioma}" path="/experienciaidiomas" z="urNGXXNprA2fBM1KGHTglN5aj/Y=">
+        <field:display field="nombre_titulo" id="s_es_uca_iw_domain_ExperienciaIdioma_nombre_titulo" object="${experienciaidioma}" z="8RW/O1As0W1Y0DBvEyk8XyWIA3I="/>
+        <field:display field="descripcion" id="s_es_uca_iw_domain_ExperienciaIdioma_descripcion" object="${experienciaidioma}" z="vM7Y/+RKTHTtGBQRLOHaKGMV+WE="/>
+        <field:display field="entidad_emisora" id="s_es_uca_iw_domain_ExperienciaIdioma_entidad_emisora" object="${experienciaidioma}" z="T0cpxJCAZ6ZpbXRdyx2gEEWDCXo="/>
+        <field:display field="nivel" id="s_es_uca_iw_domain_ExperienciaIdioma_nivel" object="${experienciaidioma}" z="+GuJYb7P86Dc+cSyPkKtNUx4hqc="/>
+    </page:show>
+</div>

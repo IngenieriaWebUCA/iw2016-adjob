@@ -26,7 +26,10 @@
           <spring:message arguments="${label}" code="entity_not_found" />
         </c:otherwise>
       </c:choose>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
     </util:panel>
   </c:if>
 </jsp:root>

@@ -37,7 +37,11 @@
     <spring:message var="typeName" code="menu_item_${fn:toLowerCase(fn:split(id,'_')[fn:length(fn:split(id,'_')) - 1])}_new_label" htmlEscape="false" />
     <spring:message var="typeNamePlural" code="menu_item_${fn:toLowerCase(fn:split(id,'_')[fn:length(fn:split(id,'_')) - 1])}_list_label" htmlEscape="false" />
 
+<<<<<<< HEAD
     <spring:message arguments="${label}" code="entity_show" var="title_msg" />
+=======
+    <spring:message arguments="${label}" code="entity_show" var="title_msg" htmlEscape="false" />
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
     <util:panel id="${id}" title="${title_msg}" openPane="${openPane}">
       <c:choose>
         <c:when test="${not empty object}">

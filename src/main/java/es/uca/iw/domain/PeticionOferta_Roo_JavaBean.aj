@@ -3,8 +3,13 @@
 
 package es.uca.iw.domain;
 
+<<<<<<< HEAD
 import es.uca.iw.domain.Cv;
 import es.uca.iw.domain.Oferta;
+=======
+import es.uca.iw.domain.Curriculum;
+import es.uca.iw.domain.OfertaTrabajo;
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 import es.uca.iw.domain.PeticionOferta;
 import es.uca.iw.domain.Usuario;
 import es.uca.iw.reference.EstadoPeticionOferta;
@@ -19,6 +24,7 @@ privileged aspect PeticionOferta_Roo_JavaBean {
         this.usuario_demandante = usuario_demandante;
     }
     
+<<<<<<< HEAD
     public EstadoPeticionOferta PeticionOferta.getEstado() {
         return this.estado;
     }
@@ -41,6 +47,30 @@ privileged aspect PeticionOferta_Roo_JavaBean {
     
     public void PeticionOferta.setOferta(Oferta oferta) {
         this.oferta = oferta;
+=======
+    public OfertaTrabajo PeticionOferta.getOferta() {
+        return this.oferta;
+    }
+    
+    public void PeticionOferta.setOferta(OfertaTrabajo oferta) {
+        this.oferta = oferta;
+    }
+    
+    public EstadoPeticionOferta PeticionOferta.getEstado() {
+        return this.estado;
+    }
+    
+    public void PeticionOferta.setEstado(EstadoPeticionOferta estado) {
+        this.estado = estado;
+    }
+    
+    public Curriculum PeticionOferta.getCurriculum_publicado() {
+        return this.curriculum_publicado;
+    }
+    
+    public void PeticionOferta.setCurriculum_publicado(Curriculum curriculum_publicado) {
+        this.curriculum_publicado = curriculum_publicado;
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
     }
     
 }

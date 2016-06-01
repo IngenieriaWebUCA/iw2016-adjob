@@ -1,4 +1,5 @@
 package es.uca.iw.web;
+<<<<<<< HEAD
 import es.uca.iw.domain.*;
 import es.uca.iw.reference.Sexo;
 import es.uca.iw.reference.TipoUsuario;
@@ -28,10 +29,18 @@ import java.util.Set;
 import org.apache.commons.codec.binary.Hex;
 
 
+=======
+import es.uca.iw.domain.Usuario;
+import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 @RequestMapping("/usuarios")
 @Controller
 @RooWebScaffold(path = "usuarios", formBackingObject = Usuario.class)
 public class UsuarioController {
+<<<<<<< HEAD
 
 
     private enum TipoUsuario1 {
@@ -186,3 +195,6 @@ public class UsuarioController {
 *
 *
 * */
+=======
+}
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a

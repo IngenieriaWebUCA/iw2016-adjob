@@ -8,7 +8,11 @@ import javax.persistence.Enumerated;
 
 @RooJavaBean
 @RooToString
+<<<<<<< HEAD
 @RooJpaActiveRecord(finders = { "findPeticionOfertasByUsuario_demandante", "findPeticionOfertasByOferta" })
+=======
+@RooJpaActiveRecord
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 public class PeticionOferta {
 
     /**
@@ -18,6 +22,7 @@ public class PeticionOferta {
 
     /**
      */
+<<<<<<< HEAD
     @Enumerated
     private EstadoPeticionOferta estado;
 
@@ -25,9 +30,22 @@ public class PeticionOferta {
      */
     @OneToOne
     private Cv curriculum;
+=======
+    @OneToOne
+    private OfertaTrabajo oferta;
+
+    /**
+     */
+    @Enumerated
+    private EstadoPeticionOferta estado;
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 
     /**
      */
     @OneToOne
+<<<<<<< HEAD
     private Oferta oferta;
+=======
+    private Curriculum curriculum_publicado;
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 }

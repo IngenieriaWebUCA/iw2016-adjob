@@ -56,6 +56,7 @@ body {
 /* Custom theme Bootstrap for gvNIX by DISID */
 
 .navbar {
+<<<<<<< HEAD
 	background-color: #334D5C;
 	border-color: #334D5C;
 }
@@ -65,6 +66,17 @@ body {
 .navbar .navbar-toggle:hover {
 	background-color: #334D5C;
 	border-color: #334D5C;
+=======
+	background-color: #608224;
+	border-color: #527711;
+}
+.navbar .navbar-toggle {
+	border-color: #608224;
+}
+.navbar .navbar-toggle:hover {
+	background-color: #608224;
+	border-color: #43600E;
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 }
 .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus,
 .navbar .navbar-nav > .active > a, .navbar .navbar-nav > .active > a:hover {
@@ -72,7 +84,11 @@ body {
 	background-color: #43600E;
 }
 .navbar .navbar-nav > li > a {
+<<<<<<< HEAD
 color: #ffffff;
+=======
+color: #acc47f;
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 }
 
 @media (max-width: 767px){
@@ -155,6 +171,7 @@ color: #ffffff;
 }
 
 /*
+<<<<<<< HEAD
 * Errors
 *
 */
@@ -165,6 +182,8 @@ color: #ffffff;
 
 
 /*
+=======
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
  * Forms
  *
  */
@@ -251,8 +270,11 @@ color: #ffffff;
 	 width: 100%;
 }
 
+<<<<<<< HEAD
 /** Icons **/
 
 .input-group-addon.glyphicon {
   top: 0;
 }
+=======
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a

@@ -1,4 +1,5 @@
 package es.uca.iw.web;
+<<<<<<< HEAD
 import es.uca.iw.domain.Cv;
 import es.uca.iw.domain.Oferta;
 import es.uca.iw.domain.PeticionOferta;
@@ -19,11 +20,18 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+=======
+import es.uca.iw.domain.PeticionOferta;
+import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 
 @RequestMapping("/peticionofertas")
 @Controller
 @RooWebScaffold(path = "peticionofertas", formBackingObject = PeticionOferta.class)
 public class PeticionOfertaController {
+<<<<<<< HEAD
 
     @RequestMapping(value = "/apuntar/{id}", produces = "text/html")
     public String createForm(@PathVariable("id") Long id, Model uiModel) {
@@ -87,4 +95,6 @@ public class PeticionOfertaController {
         return "redirect:/peticionofertas/" + encodeUrlPathSegment(peticionOferta.getId().toString(), httpServletRequest);
     }
 
+=======
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 }

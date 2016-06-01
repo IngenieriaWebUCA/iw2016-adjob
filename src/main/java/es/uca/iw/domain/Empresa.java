@@ -3,6 +3,7 @@ import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
 import org.springframework.roo.addon.tostring.RooToString;
 import javax.validation.constraints.Size;
+<<<<<<< HEAD
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -11,6 +12,13 @@ import javax.persistence.OneToMany;
 @RooJavaBean
 @RooToString
 @RooJpaActiveRecord
+=======
+import javax.persistence.ManyToOne;
+
+@RooJavaBean
+@RooToString
+@RooJpaActiveRecord(finders = { "findEmpresasByOfertasEquals" })
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 public class Empresa {
 
     /**
@@ -48,6 +56,11 @@ public class Empresa {
 
     /**
      */
+<<<<<<< HEAD
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "empresa")
     private Set<Oferta> ofertas = new HashSet<Oferta>();
+=======
+    @ManyToOne
+    private OfertaTrabajo ofertas;
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 }

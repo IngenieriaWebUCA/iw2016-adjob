@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_iw_domain_ExperienciaCurso" items="${experienciacursoes}" z="nRIQcSZdcmg5XhdmkjE66YKujHs=">
+        <table:table data="${experienciacursoes}" id="l_es_uca_iw_domain_ExperienciaCurso" path="/experienciacursoes" z="YGiigxY7703RnUJ6ct6iPx+T2eI=">
+            <table:column id="c_es_uca_iw_domain_ExperienciaCurso_nombre" property="nombre" z="3qss5Ax6ZI1Leg/7/QfbWTyjKGs="/>
+            <table:column id="c_es_uca_iw_domain_ExperienciaCurso_nombre_academia" property="nombre_academia" z="ScwAP+gk433mcY1p76FnqSILCQM="/>
+            <table:column id="c_es_uca_iw_domain_ExperienciaCurso_descripcion" property="descripcion" z="VntN6VeIiZKO9X2xtUS67Br+Cyw="/>
+            <table:column date="true" dateTimePattern="${experienciaCurso_fecha_inicio_date_format}" id="c_es_uca_iw_domain_ExperienciaCurso_fecha_inicio" property="fecha_inicio" z="dUWDRlUUcm+/UJltCtgQtQdZMLQ="/>
+            <table:column date="true" dateTimePattern="${experienciaCurso_fecha_fin_date_format}" id="c_es_uca_iw_domain_ExperienciaCurso_fecha_fin" property="fecha_fin" z="RVpm1obbWdUcqj/XOpFFoyDLKzs="/>
+        </table:table>
+    </page:list>
+</div>

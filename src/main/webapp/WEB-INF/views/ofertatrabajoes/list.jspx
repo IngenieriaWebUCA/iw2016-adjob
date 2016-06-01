@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_iw_domain_OfertaTrabajo" items="${ofertatrabajoes}" z="9TqAcGYIm6UDjYB+249QDAFahAM=">
+        <table:table data="${ofertatrabajoes}" id="l_es_uca_iw_domain_OfertaTrabajo" path="/ofertatrabajoes" z="QJp0gHdC3enjYTdyOY/os8XVVA0=">
+            <table:column id="c_es_uca_iw_domain_OfertaTrabajo_nombre" property="nombre" z="AaP8wufOleoYrqTUolFiyRG88iQ="/>
+            <table:column id="c_es_uca_iw_domain_OfertaTrabajo_informacion" property="informacion" z="knt4sD7JTfs8ahLNSlPDJGbDrgI="/>
+            <table:column date="true" dateTimePattern="${ofertaTrabajo_fecha_inicio_date_format}" id="c_es_uca_iw_domain_OfertaTrabajo_fecha_inicio" property="fecha_inicio" z="HmL7V6rNhUn2xRAJrmZ4Yju6550="/>
+            <table:column date="true" dateTimePattern="${ofertaTrabajo_fecha_fin_date_format}" id="c_es_uca_iw_domain_OfertaTrabajo_fecha_fin" property="fecha_fin" z="thKZ8vKoQ/Q4P5W5LR52QDwmRvk="/>
+            <table:column id="c_es_uca_iw_domain_OfertaTrabajo_tipo_contrato" property="tipo_contrato" z="mYa3xlAASFoSszyl3EP29vtdH90="/>
+            <table:column id="c_es_uca_iw_domain_OfertaTrabajo_estado_oferta" property="estado_oferta" z="m9tmz0bmumAQie65RJPd7kRUWik="/>
+        </table:table>
+    </page:list>
+</div>

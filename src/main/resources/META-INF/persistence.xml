@@ -5,7 +5,11 @@
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
             <!-- value="create" to build a new database on each run; value="update" to modify an existing database; value="create-drop" means the same as "create" but also drops tables when Hibernate closes; value="validate" makes no changes to the database -->
+<<<<<<< HEAD
             <property name="hibernate.hbm2ddl.auto" value="update"/>
+=======
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
             <property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy"/>
             <property name="hibernate.connection.charSet" value="UTF-8"/>
             <!-- Uncomment the following two properties for JBoss only -->

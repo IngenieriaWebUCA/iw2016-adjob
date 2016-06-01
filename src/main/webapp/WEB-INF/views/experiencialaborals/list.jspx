@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_iw_domain_ExperienciaLaboral" items="${experiencialaborals}" z="fzHsul+mBIdEdoPZuwNZpxOYbLY=">
+        <table:table data="${experiencialaborals}" id="l_es_uca_iw_domain_ExperienciaLaboral" path="/experiencialaborals" z="jOUsA521piUi1wqst9k1xQZ1TKw=">
+            <table:column id="c_es_uca_iw_domain_ExperienciaLaboral_nombre_empresa" property="nombre_empresa" z="rJfbbB9hdiiXLdmA0FGrtVXrWlU="/>
+            <table:column date="true" dateTimePattern="${experienciaLaboral_fecha_inicio_date_format}" id="c_es_uca_iw_domain_ExperienciaLaboral_fecha_inicio" property="fecha_inicio" z="gKm9PdZ6D4lJoVNg/CPFUvfN660="/>
+            <table:column date="true" dateTimePattern="${experienciaLaboral_fecha_fin_date_format}" id="c_es_uca_iw_domain_ExperienciaLaboral_fecha_fin" property="fecha_fin" z="ogPzs78paCwX/NlZDVMZvReTPTY="/>
+            <table:column id="c_es_uca_iw_domain_ExperienciaLaboral_puesto" property="puesto" z="r/6UiKK0uH43At5CjSZ2EVtHaOk="/>
+        </table:table>
+    </page:list>
+</div>

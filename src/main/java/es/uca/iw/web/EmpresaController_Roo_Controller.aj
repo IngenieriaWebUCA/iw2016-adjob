@@ -4,7 +4,11 @@
 package es.uca.iw.web;
 
 import es.uca.iw.domain.Empresa;
+<<<<<<< HEAD
 import es.uca.iw.domain.Oferta;
+=======
+import es.uca.iw.domain.OfertaTrabajo;
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 import es.uca.iw.web.EmpresaController;
 import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +24,26 @@ import org.springframework.web.util.WebUtils;
 
 privileged aspect EmpresaController_Roo_Controller {
     
+<<<<<<< HEAD
+=======
+    @RequestMapping(method = RequestMethod.POST, produces = "text/html")
+    public String EmpresaController.create(@Valid Empresa empresa, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        if (bindingResult.hasErrors()) {
+            populateEditForm(uiModel, empresa);
+            return "empresas/create";
+        }
+        uiModel.asMap().clear();
+        empresa.persist();
+        return "redirect:/empresas/" + encodeUrlPathSegment(empresa.getId().toString(), httpServletRequest);
+    }
+    
+    @RequestMapping(params = "form", produces = "text/html")
+    public String EmpresaController.createForm(Model uiModel) {
+        populateEditForm(uiModel, new Empresa());
+        return "empresas/create";
+    }
+    
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
     @RequestMapping(value = "/{id}", produces = "text/html")
     public String EmpresaController.show(@PathVariable("id") Long id, Model uiModel) {
         uiModel.addAttribute("empresa", Empresa.findEmpresa(id));
@@ -27,6 +51,23 @@ privileged aspect EmpresaController_Roo_Controller {
         return "empresas/show";
     }
     
+<<<<<<< HEAD
+=======
+    @RequestMapping(produces = "text/html")
+    public String EmpresaController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, @RequestParam(value = "sortFieldName", required = false) String sortFieldName, @RequestParam(value = "sortOrder", required = false) String sortOrder, Model uiModel) {
+        if (page != null || size != null) {
+            int sizeNo = size == null ? 10 : size.intValue();
+            final int firstResult = page == null ? 0 : (page.intValue() - 1) * sizeNo;
+            uiModel.addAttribute("empresas", Empresa.findEmpresaEntries(firstResult, sizeNo, sortFieldName, sortOrder));
+            float nrOfPages = (float) Empresa.countEmpresas() / sizeNo;
+            uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
+        } else {
+            uiModel.addAttribute("empresas", Empresa.findAllEmpresas(sortFieldName, sortOrder));
+        }
+        return "empresas/list";
+    }
+    
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
     @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
     public String EmpresaController.update(@Valid Empresa empresa, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
@@ -56,7 +97,11 @@ privileged aspect EmpresaController_Roo_Controller {
     
     void EmpresaController.populateEditForm(Model uiModel, Empresa empresa) {
         uiModel.addAttribute("empresa", empresa);
+<<<<<<< HEAD
         uiModel.addAttribute("ofertas", Oferta.findAllOfertas());
+=======
+        uiModel.addAttribute("ofertatrabajoes", OfertaTrabajo.findAllOfertaTrabajoes());
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
     }
     
     String EmpresaController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

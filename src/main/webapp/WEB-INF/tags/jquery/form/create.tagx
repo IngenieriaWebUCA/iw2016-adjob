@@ -19,7 +19,11 @@
     <c:if test="${multipart}">
       <c:set var="enctype" value="multipart/form-data"/>
     </c:if>
+<<<<<<< HEAD
     <spring:message arguments="${label}" code="entity_create" var="title_msg"/>
+=======
+    <spring:message arguments="${label}" code="entity_create" var="title_msg" htmlEscape="false" />
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
     <util:panel id="${id}" title="${title_msg}" openPane="${openPane}">
       <spring:url value="${path}" var="form_url"/>
       <c:set var="jsCall" value=""/>
@@ -27,7 +31,11 @@
       	<c:set var="jsCall" value="encodePk()" />
       </c:if>
 
+<<<<<<< HEAD
       <form:form cssClass="form-horizontal validate" action="${form_url}" method="POST" modelAttribute="${modelAttribute}" enctype="${enctype}" onsubmit="${jsCall}"><!-- cssClass="validate" -->
+=======
+      <form:form cssClass="form-horizontal" action="${form_url}" method="POST" modelAttribute="${modelAttribute}" enctype="${enctype}" onsubmit="${jsCall}"><!-- cssClass="validate" -->
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
         <form:errors cssClass="errors alert alert-warning" delimiter="&lt;p/&gt;"/>
         <c:if test="${not empty compositePkField}">
           <form:hidden id="_${fn:escapeXml(compositePkField)}_id" path="${fn:escapeXml(compositePkField)}" />

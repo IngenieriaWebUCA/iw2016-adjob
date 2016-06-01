@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_iw_domain_ExperienciaLaboral" object="${experiencialaboral}" path="/experiencialaborals" z="U/5YHwuWdNFan+SACt3q7ju1ij0=">
+        <field:display field="nombre_empresa" id="s_es_uca_iw_domain_ExperienciaLaboral_nombre_empresa" object="${experiencialaboral}" z="z1BEVdIyft01pxF2rv5AX0sHCow="/>
+        <field:display date="true" dateTimePattern="${experienciaLaboral_fecha_inicio_date_format}" field="fecha_inicio" id="s_es_uca_iw_domain_ExperienciaLaboral_fecha_inicio" object="${experiencialaboral}" z="a9EicXveEvQ59pVIdjUqyPU5SDg="/>
+        <field:display date="true" dateTimePattern="${experienciaLaboral_fecha_fin_date_format}" field="fecha_fin" id="s_es_uca_iw_domain_ExperienciaLaboral_fecha_fin" object="${experiencialaboral}" z="1Q2fAye8X2RH/mDtY1p+ETi2yiA="/>
+        <field:display field="puesto" id="s_es_uca_iw_domain_ExperienciaLaboral_puesto" object="${experiencialaboral}" z="3NOsru8XIpEcBrpgZgFcfofpgUo="/>
+    </page:show>
+</div>

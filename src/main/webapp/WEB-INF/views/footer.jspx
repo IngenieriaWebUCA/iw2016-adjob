@@ -26,6 +26,10 @@
 	    <spring:message code="global_language"/>
 	    <c:out value=": "/>
 	  <util:language label="English" locale="en"/>
+<<<<<<< HEAD
+=======
+	    <util:language label="Deubuilderh" locale="de"/>
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 	    <util:language label="Espanol" locale="es"/>
 	    </span>
  </div>

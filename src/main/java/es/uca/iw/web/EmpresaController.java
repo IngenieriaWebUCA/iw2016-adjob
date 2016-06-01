@@ -1,5 +1,6 @@
 package es.uca.iw.web;
 import es.uca.iw.domain.Empresa;
+<<<<<<< HEAD
 import es.uca.iw.domain.Usuario;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 import org.springframework.security.core.Authentication;
@@ -15,11 +16,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import java.util.Set;
+=======
+import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 
 @RequestMapping("/empresas")
 @Controller
 @RooWebScaffold(path = "empresas", formBackingObject = Empresa.class)
 public class EmpresaController {
+<<<<<<< HEAD
 
     private Usuario getUsuario(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -76,4 +83,6 @@ public class EmpresaController {
         }
         return "empresas/list";
     }
+=======
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 }

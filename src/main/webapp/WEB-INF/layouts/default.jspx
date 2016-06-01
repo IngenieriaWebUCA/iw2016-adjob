@@ -9,6 +9,7 @@
 	<head>
 		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
 		<meta content="IE=8" http-equiv="X-UA-Compatible"/>
+<<<<<<< HEAD
 
 		<!-- Bootstrap -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,6 +17,54 @@
 		<bootstrap-util:load-styles-bootstrap />
 		<util:load-scripts/>
 		<bootstrap-util:load-scripts-bootstrap />
+=======
+		
+		<!-- Bootstrap -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+		<bootstrap-util:load-styles-bootstrap />
+		<util:load-scripts/>
+		<bootstrap-util:load-scripts-bootstrap />
+		
+		<!-- Tema AdJob -->
+		<spring:url value="/resources/styles/tema/animate.min.css" var="animateCSS" />
+		<spring:url value="/resources/styles/tema/creative.css" var="creativeCSS" />
+		<link href="${animateCSS}" rel="stylesheet" />
+		<link href="${creativeCSS}" rel="stylesheet" />
+		
+		
+		
+		
+		
+		
+		<!--  
+		<spring:url value="/resources/scripts/tema/creative.js" var="creativeJS" />
+		<script src="${creativeJS}"></script>
+		
+		<spring:url value="/resources/scripts/tema/cbpAnimatedHeader.js" var="animatedHeaderJS" />
+		<script src="${animatedHeaderJS}"></script>
+		
+		  
+		<spring:url value="/resources/scripts/tema/classie.js" var="classieJS" />
+		<script src="${classieJS}"></script>
+		
+		<spring:url value="/resources/scripts/tema/jquery.easing.min.js" var="easingJS" />
+		<script src="${easingJS}"></script>
+		
+		<spring:url value="/resources/scripts/tema/jquery.fittext.js" var="fitJS" />
+		<script src="${fitJS}"></script>
+		
+		<spring:url value="/resources/scripts/tema/wow.min.js" var="wowJS" />
+		<script src="${wowJS}"></script>
+		-->
+		
+		
+		
+		
+		
+		
+
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 
 		<spring:message code="application_name" htmlEscape="false" var="app_name"/>
 		<title>
@@ -24,6 +73,7 @@
 	</head>
 
   	<body class="tundra spring">
+<<<<<<< HEAD
 	<!-- Fixed navbar dropdown -->
 	<div class="container">
 		<tiles:insertAttribute ignore="true" name="header" />
@@ -31,6 +81,15 @@
 		<tiles:insertAttribute ignore="true" name="menu" />
 		-->
 	</div>
+=======
+   		<!-- Fixed navbar dropdown -->
+	<header class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+      <tiles:insertAttribute ignore="true" name="header" />
+			<tiles:insertAttribute ignore="true" name="menu" />
+		</div>
+	</header>
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 
 	<div class="container">
 		<div id="main">

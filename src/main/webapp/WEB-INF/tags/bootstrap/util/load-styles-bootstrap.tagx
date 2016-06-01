@@ -3,11 +3,19 @@
   <jsp:output omit-xml-declaration="yes"/>
 
 	<!-- Bootstrap -->
+<<<<<<< HEAD
 	<spring:url value="/resources/styles/bootstrap/gvnix.bootstrap.css" var="bootstrap_min_css_url" />
 	<link href="${bootstrap_min_css_url}" media="screen,print" rel="stylesheet" type="text/css" />
 
 	<spring:url value="/resources/styles/bootstrap/offcanvas.css" var="offcanvas_css_url" />
 	<link href="${offcanvas_css_url}" media="screen,print" rel="stylesheet" type="text/css" />
+=======
+	<spring:url value="/resources/styles/bootstrap/bootstrap.min.css" var="bootstrap_min_css_url" />
+	<link href="${bootstrap_min_css_url}" media="screen" rel="stylesheet" type="text/css" />
+
+	<spring:url value="/resources/styles/bootstrap/offcanvas.css" var="offcanvas_css_url" />
+	<link href="${offcanvas_css_url}" media="screen" rel="stylesheet" type="text/css" />
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 
 	<spring:url value="/resources/styles/bootstrap/print.css" var="bootstrap_print_css_url" />
 	<link href="${bootstrap_print_css_url}" media="screen,print" rel="stylesheet" type="text/css" />

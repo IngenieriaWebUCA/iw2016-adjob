@@ -3,6 +3,7 @@
 
 package es.uca.iw.web;
 
+<<<<<<< HEAD
 import es.uca.iw.domain.Cursos;
 import es.uca.iw.domain.Cv;
 import es.uca.iw.domain.Empresa;
@@ -12,6 +13,18 @@ import es.uca.iw.domain.Oferta;
 import es.uca.iw.domain.PeticionOferta;
 import es.uca.iw.domain.PuestoTrabajo;
 import es.uca.iw.domain.Titulos;
+=======
+import es.uca.iw.domain.Curriculum;
+import es.uca.iw.domain.Empresa;
+import es.uca.iw.domain.ExperienciaCurso;
+import es.uca.iw.domain.ExperienciaIdioma;
+import es.uca.iw.domain.ExperienciaLaboral;
+import es.uca.iw.domain.ExperienciaTitulo;
+import es.uca.iw.domain.OfertaTrabajo;
+import es.uca.iw.domain.PeticionOferta;
+import es.uca.iw.domain.PuestoTrabajo;
+import es.uca.iw.domain.Usuario;
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
 import es.uca.iw.web.ApplicationConversionServiceFactoryBean;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.core.convert.converter.Converter;
@@ -21,22 +34,37 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     
     declare @type: ApplicationConversionServiceFactoryBean: @Configurable;
     
+<<<<<<< HEAD
     public Converter<Cursos, String> ApplicationConversionServiceFactoryBean.getCursosToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<es.uca.iw.domain.Cursos, java.lang.String>() {
             public String convert(Cursos cursos) {
                 return new StringBuilder().append(cursos.getNombre()).append(' ').append(cursos.getNombre_academia()).append(' ').append(cursos.getDescripcion()).append(' ').append(cursos.getFecha_inicio()).toString();
+=======
+    public Converter<Curriculum, String> ApplicationConversionServiceFactoryBean.getCurriculumToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<es.uca.iw.domain.Curriculum, java.lang.String>() {
+            public String convert(Curriculum curriculum) {
+                return new StringBuilder().append(curriculum.getFoto()).append(' ').append(curriculum.getTrayectoria()).toString();
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
             }
         };
     }
     
+<<<<<<< HEAD
     public Converter<Long, Cursos> ApplicationConversionServiceFactoryBean.getIdToCursosConverter() {
         return new org.springframework.core.convert.converter.Converter<java.lang.Long, es.uca.iw.domain.Cursos>() {
             public es.uca.iw.domain.Cursos convert(java.lang.Long id) {
                 return Cursos.findCursos(id);
+=======
+    public Converter<Long, Curriculum> ApplicationConversionServiceFactoryBean.getIdToCurriculumConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, es.uca.iw.domain.Curriculum>() {
+            public es.uca.iw.domain.Curriculum convert(java.lang.Long id) {
+                return Curriculum.findCurriculum(id);
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
             }
         };
     }
     
+<<<<<<< HEAD
     public Converter<String, Cursos> ApplicationConversionServiceFactoryBean.getStringToCursosConverter() {
         return new org.springframework.core.convert.converter.Converter<java.lang.String, es.uca.iw.domain.Cursos>() {
             public es.uca.iw.domain.Cursos convert(String id) {
@@ -65,6 +93,12 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         return new org.springframework.core.convert.converter.Converter<java.lang.String, es.uca.iw.domain.Cv>() {
             public es.uca.iw.domain.Cv convert(String id) {
                 return getObject().convert(getObject().convert(id, Long.class), Cv.class);
+=======
+    public Converter<String, Curriculum> ApplicationConversionServiceFactoryBean.getStringToCurriculumConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, es.uca.iw.domain.Curriculum>() {
+            public es.uca.iw.domain.Curriculum convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), Curriculum.class);
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
             }
         };
     }
@@ -93,74 +127,185 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
+<<<<<<< HEAD
     public Converter<Experiencia, String> ApplicationConversionServiceFactoryBean.getExperienciaToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<es.uca.iw.domain.Experiencia, java.lang.String>() {
             public String convert(Experiencia experiencia) {
                 return new StringBuilder().append(experiencia.getNombre_empresa()).append(' ').append(experiencia.getFecha_inicio()).append(' ').append(experiencia.getFecha_fin()).toString();
+=======
+    public Converter<ExperienciaCurso, String> ApplicationConversionServiceFactoryBean.getExperienciaCursoToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<es.uca.iw.domain.ExperienciaCurso, java.lang.String>() {
+            public String convert(ExperienciaCurso experienciaCurso) {
+                return new StringBuilder().append(experienciaCurso.getNombre()).append(' ').append(experienciaCurso.getNombre_academia()).append(' ').append(experienciaCurso.getDescripcion()).append(' ').append(experienciaCurso.getFecha_inicio()).toString();
             }
         };
     }
     
+    public Converter<Long, ExperienciaCurso> ApplicationConversionServiceFactoryBean.getIdToExperienciaCursoConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, es.uca.iw.domain.ExperienciaCurso>() {
+            public es.uca.iw.domain.ExperienciaCurso convert(java.lang.Long id) {
+                return ExperienciaCurso.findExperienciaCurso(id);
+            }
+        };
+    }
+    
+    public Converter<String, ExperienciaCurso> ApplicationConversionServiceFactoryBean.getStringToExperienciaCursoConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, es.uca.iw.domain.ExperienciaCurso>() {
+            public es.uca.iw.domain.ExperienciaCurso convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), ExperienciaCurso.class);
+            }
+        };
+    }
+    
+    public Converter<ExperienciaIdioma, String> ApplicationConversionServiceFactoryBean.getExperienciaIdiomaToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<es.uca.iw.domain.ExperienciaIdioma, java.lang.String>() {
+            public String convert(ExperienciaIdioma experienciaIdioma) {
+                return new StringBuilder().append(experienciaIdioma.getNombre_titulo()).append(' ').append(experienciaIdioma.getDescripcion()).append(' ').append(experienciaIdioma.getEntidad_emisora()).append(' ').append(experienciaIdioma.getNivel()).toString();
+            }
+        };
+    }
+    
+    public Converter<Long, ExperienciaIdioma> ApplicationConversionServiceFactoryBean.getIdToExperienciaIdiomaConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, es.uca.iw.domain.ExperienciaIdioma>() {
+            public es.uca.iw.domain.ExperienciaIdioma convert(java.lang.Long id) {
+                return ExperienciaIdioma.findExperienciaIdioma(id);
+            }
+        };
+    }
+    
+    public Converter<String, ExperienciaIdioma> ApplicationConversionServiceFactoryBean.getStringToExperienciaIdiomaConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, es.uca.iw.domain.ExperienciaIdioma>() {
+            public es.uca.iw.domain.ExperienciaIdioma convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), ExperienciaIdioma.class);
+            }
+        };
+    }
+    
+    public Converter<ExperienciaLaboral, String> ApplicationConversionServiceFactoryBean.getExperienciaLaboralToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<es.uca.iw.domain.ExperienciaLaboral, java.lang.String>() {
+            public String convert(ExperienciaLaboral experienciaLaboral) {
+                return new StringBuilder().append(experienciaLaboral.getNombre_empresa()).append(' ').append(experienciaLaboral.getFecha_inicio()).append(' ').append(experienciaLaboral.getFecha_fin()).toString();
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
+            }
+        };
+    }
+    
+<<<<<<< HEAD
     public Converter<Long, Experiencia> ApplicationConversionServiceFactoryBean.getIdToExperienciaConverter() {
         return new org.springframework.core.convert.converter.Converter<java.lang.Long, es.uca.iw.domain.Experiencia>() {
             public es.uca.iw.domain.Experiencia convert(java.lang.Long id) {
                 return Experiencia.findExperiencia(id);
+=======
+    public Converter<Long, ExperienciaLaboral> ApplicationConversionServiceFactoryBean.getIdToExperienciaLaboralConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, es.uca.iw.domain.ExperienciaLaboral>() {
+            public es.uca.iw.domain.ExperienciaLaboral convert(java.lang.Long id) {
+                return ExperienciaLaboral.findExperienciaLaboral(id);
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
             }
         };
     }
     
+<<<<<<< HEAD
     public Converter<String, Experiencia> ApplicationConversionServiceFactoryBean.getStringToExperienciaConverter() {
         return new org.springframework.core.convert.converter.Converter<java.lang.String, es.uca.iw.domain.Experiencia>() {
             public es.uca.iw.domain.Experiencia convert(String id) {
                 return getObject().convert(getObject().convert(id, Long.class), Experiencia.class);
+=======
+    public Converter<String, ExperienciaLaboral> ApplicationConversionServiceFactoryBean.getStringToExperienciaLaboralConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, es.uca.iw.domain.ExperienciaLaboral>() {
+            public es.uca.iw.domain.ExperienciaLaboral convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), ExperienciaLaboral.class);
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
             }
         };
     }
     
+<<<<<<< HEAD
     public Converter<Idiomas, String> ApplicationConversionServiceFactoryBean.getIdiomasToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<es.uca.iw.domain.Idiomas, java.lang.String>() {
             public String convert(Idiomas idiomas) {
                 return new StringBuilder().append(idiomas.getNombre_titulo()).append(' ').append(idiomas.getDescripcion()).append(' ').append(idiomas.getEntidad_emisora()).append(' ').append(idiomas.getNivel()).toString();
+=======
+    public Converter<ExperienciaTitulo, String> ApplicationConversionServiceFactoryBean.getExperienciaTituloToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<es.uca.iw.domain.ExperienciaTitulo, java.lang.String>() {
+            public String convert(ExperienciaTitulo experienciaTitulo) {
+                return new StringBuilder().append(experienciaTitulo.getNombre()).append(' ').append(experienciaTitulo.getEntidad_emisora()).append(' ').append(experienciaTitulo.getFecha_obtencion()).append(' ').append(experienciaTitulo.getDescripcion()).toString();
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
             }
         };
     }
     
+<<<<<<< HEAD
     public Converter<Long, Idiomas> ApplicationConversionServiceFactoryBean.getIdToIdiomasConverter() {
         return new org.springframework.core.convert.converter.Converter<java.lang.Long, es.uca.iw.domain.Idiomas>() {
             public es.uca.iw.domain.Idiomas convert(java.lang.Long id) {
                 return Idiomas.findIdiomas(id);
+=======
+    public Converter<Long, ExperienciaTitulo> ApplicationConversionServiceFactoryBean.getIdToExperienciaTituloConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, es.uca.iw.domain.ExperienciaTitulo>() {
+            public es.uca.iw.domain.ExperienciaTitulo convert(java.lang.Long id) {
+                return ExperienciaTitulo.findExperienciaTitulo(id);
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
             }
         };
     }
     
+<<<<<<< HEAD
     public Converter<String, Idiomas> ApplicationConversionServiceFactoryBean.getStringToIdiomasConverter() {
         return new org.springframework.core.convert.converter.Converter<java.lang.String, es.uca.iw.domain.Idiomas>() {
             public es.uca.iw.domain.Idiomas convert(String id) {
                 return getObject().convert(getObject().convert(id, Long.class), Idiomas.class);
+=======
+    public Converter<String, ExperienciaTitulo> ApplicationConversionServiceFactoryBean.getStringToExperienciaTituloConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, es.uca.iw.domain.ExperienciaTitulo>() {
+            public es.uca.iw.domain.ExperienciaTitulo convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), ExperienciaTitulo.class);
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
             }
         };
     }
     
+<<<<<<< HEAD
     public Converter<Oferta, String> ApplicationConversionServiceFactoryBean.getOfertaToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<es.uca.iw.domain.Oferta, java.lang.String>() {
             public String convert(Oferta oferta) {
                 return new StringBuilder().append(oferta.getNombre()).append(' ').append(oferta.getInformacion()).append(' ').append(oferta.getFecha_inicio()).append(' ').append(oferta.getFecha_fin()).toString();
+=======
+    public Converter<OfertaTrabajo, String> ApplicationConversionServiceFactoryBean.getOfertaTrabajoToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<es.uca.iw.domain.OfertaTrabajo, java.lang.String>() {
+            public String convert(OfertaTrabajo ofertaTrabajo) {
+                return new StringBuilder().append(ofertaTrabajo.getNombre()).append(' ').append(ofertaTrabajo.getInformacion()).append(' ').append(ofertaTrabajo.getFecha_inicio()).append(' ').append(ofertaTrabajo.getFecha_fin()).toString();
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
             }
         };
     }
     
+<<<<<<< HEAD
     public Converter<Long, Oferta> ApplicationConversionServiceFactoryBean.getIdToOfertaConverter() {
         return new org.springframework.core.convert.converter.Converter<java.lang.Long, es.uca.iw.domain.Oferta>() {
             public es.uca.iw.domain.Oferta convert(java.lang.Long id) {
                 return Oferta.findOferta(id);
+=======
+    public Converter<Long, OfertaTrabajo> ApplicationConversionServiceFactoryBean.getIdToOfertaTrabajoConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, es.uca.iw.domain.OfertaTrabajo>() {
+            public es.uca.iw.domain.OfertaTrabajo convert(java.lang.Long id) {
+                return OfertaTrabajo.findOfertaTrabajo(id);
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
             }
         };
     }
     
+<<<<<<< HEAD
     public Converter<String, Oferta> ApplicationConversionServiceFactoryBean.getStringToOfertaConverter() {
         return new org.springframework.core.convert.converter.Converter<java.lang.String, es.uca.iw.domain.Oferta>() {
             public es.uca.iw.domain.Oferta convert(String id) {
                 return getObject().convert(getObject().convert(id, Long.class), Oferta.class);
+=======
+    public Converter<String, OfertaTrabajo> ApplicationConversionServiceFactoryBean.getStringToOfertaTrabajoConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, es.uca.iw.domain.OfertaTrabajo>() {
+            public es.uca.iw.domain.OfertaTrabajo convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), OfertaTrabajo.class);
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
             }
         };
     }
@@ -213,31 +358,53 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
+<<<<<<< HEAD
     public Converter<Titulos, String> ApplicationConversionServiceFactoryBean.getTitulosToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<es.uca.iw.domain.Titulos, java.lang.String>() {
             public String convert(Titulos titulos) {
                 return new StringBuilder().append(titulos.getNombre()).append(' ').append(titulos.getEntidad_emisora()).append(' ').append(titulos.getDescripcion()).append(' ').append(titulos.getFecha_obtencion()).toString();
+=======
+    public Converter<Usuario, String> ApplicationConversionServiceFactoryBean.getUsuarioToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<es.uca.iw.domain.Usuario, java.lang.String>() {
+            public String convert(Usuario usuario) {
+                return new StringBuilder().append(usuario.getNombre()).append(' ').append(usuario.getApellidos()).append(' ').append(usuario.getEmail()).append(' ').append(usuario.getContrasena()).toString();
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
             }
         };
     }
     
+<<<<<<< HEAD
     public Converter<Long, Titulos> ApplicationConversionServiceFactoryBean.getIdToTitulosConverter() {
         return new org.springframework.core.convert.converter.Converter<java.lang.Long, es.uca.iw.domain.Titulos>() {
             public es.uca.iw.domain.Titulos convert(java.lang.Long id) {
                 return Titulos.findTitulos(id);
+=======
+    public Converter<Long, Usuario> ApplicationConversionServiceFactoryBean.getIdToUsuarioConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, es.uca.iw.domain.Usuario>() {
+            public es.uca.iw.domain.Usuario convert(java.lang.Long id) {
+                return Usuario.findUsuario(id);
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
             }
         };
     }
     
+<<<<<<< HEAD
     public Converter<String, Titulos> ApplicationConversionServiceFactoryBean.getStringToTitulosConverter() {
         return new org.springframework.core.convert.converter.Converter<java.lang.String, es.uca.iw.domain.Titulos>() {
             public es.uca.iw.domain.Titulos convert(String id) {
                 return getObject().convert(getObject().convert(id, Long.class), Titulos.class);
+=======
+    public Converter<String, Usuario> ApplicationConversionServiceFactoryBean.getStringToUsuarioConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, es.uca.iw.domain.Usuario>() {
+            public es.uca.iw.domain.Usuario convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), Usuario.class);
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
             }
         };
     }
     
     public void ApplicationConversionServiceFactoryBean.installLabelConverters(FormatterRegistry registry) {
+<<<<<<< HEAD
         registry.addConverter(getCursosToStringConverter());
         registry.addConverter(getIdToCursosConverter());
         registry.addConverter(getStringToCursosConverter());
@@ -256,15 +423,44 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getOfertaToStringConverter());
         registry.addConverter(getIdToOfertaConverter());
         registry.addConverter(getStringToOfertaConverter());
+=======
+        registry.addConverter(getCurriculumToStringConverter());
+        registry.addConverter(getIdToCurriculumConverter());
+        registry.addConverter(getStringToCurriculumConverter());
+        registry.addConverter(getEmpresaToStringConverter());
+        registry.addConverter(getIdToEmpresaConverter());
+        registry.addConverter(getStringToEmpresaConverter());
+        registry.addConverter(getExperienciaCursoToStringConverter());
+        registry.addConverter(getIdToExperienciaCursoConverter());
+        registry.addConverter(getStringToExperienciaCursoConverter());
+        registry.addConverter(getExperienciaIdiomaToStringConverter());
+        registry.addConverter(getIdToExperienciaIdiomaConverter());
+        registry.addConverter(getStringToExperienciaIdiomaConverter());
+        registry.addConverter(getExperienciaLaboralToStringConverter());
+        registry.addConverter(getIdToExperienciaLaboralConverter());
+        registry.addConverter(getStringToExperienciaLaboralConverter());
+        registry.addConverter(getExperienciaTituloToStringConverter());
+        registry.addConverter(getIdToExperienciaTituloConverter());
+        registry.addConverter(getStringToExperienciaTituloConverter());
+        registry.addConverter(getOfertaTrabajoToStringConverter());
+        registry.addConverter(getIdToOfertaTrabajoConverter());
+        registry.addConverter(getStringToOfertaTrabajoConverter());
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
         registry.addConverter(getPeticionOfertaToStringConverter());
         registry.addConverter(getIdToPeticionOfertaConverter());
         registry.addConverter(getStringToPeticionOfertaConverter());
         registry.addConverter(getPuestoTrabajoToStringConverter());
         registry.addConverter(getIdToPuestoTrabajoConverter());
         registry.addConverter(getStringToPuestoTrabajoConverter());
+<<<<<<< HEAD
         registry.addConverter(getTitulosToStringConverter());
         registry.addConverter(getIdToTitulosConverter());
         registry.addConverter(getStringToTitulosConverter());
+=======
+        registry.addConverter(getUsuarioToStringConverter());
+        registry.addConverter(getIdToUsuarioConverter());
+        registry.addConverter(getStringToUsuarioConverter());
+>>>>>>> 6cfd50639538555ce28e1e7bf8ef397311f4aa3a
     }
     
     public void ApplicationConversionServiceFactoryBean.afterPropertiesSet() {
