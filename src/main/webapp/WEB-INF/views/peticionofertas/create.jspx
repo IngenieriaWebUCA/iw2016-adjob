@@ -3,8 +3,8 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_es_uca_iw_domain_PeticionOferta" modelAttribute="peticionOferta" path="/peticionofertas" render="${empty dependencies}" z="vVSbLVRO7AGKW+34cwDv35fRGGk=">
-        <field:select field="usuario_demandante" id="c_es_uca_iw_domain_PeticionOferta_usuario_demandante" itemValue="id" items="${usuarios}" render="false" path="/usuarios" z="K6jPFnfjUgniQlwIaQJnxvEMUeE="/>
-        <field:select field="estado" id="c_es_uca_iw_domain_PeticionOferta_estado" items="${estadopeticionofertas}" render="false" path="estadopeticionofertas" z="RyLvWweZpTLFQFXG6/5l504FSa0="/>
+        <field:select field="usuario_demandante" id="c_es_uca_iw_domain_PeticionOferta_usuario_demandante" itemValue="id" items="${usuarios}" path="/usuarios" render="false" z="user-managed"/>
+        <field:select field="estado" id="c_es_uca_iw_domain_PeticionOferta_estado" items="${estadopeticionofertas}" path="estadopeticionofertas" render="false" z="user-managed"/>
         <field:select field="curriculum" id="c_es_uca_iw_domain_PeticionOferta_curriculum" itemValue="id" items="${cvs}" path="/cvs" z="foehGMWFrh9rlv1UFecbtACjY1M="/>
         <field:select field="oferta" id="c_es_uca_iw_domain_PeticionOferta_oferta" itemValue="id" items="${ofertas}" path="/ofertas" z="+jiitglvbyfKPYgj6MRvkYesd1k="/>
     </form:create>
