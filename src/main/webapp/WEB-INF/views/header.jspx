@@ -35,7 +35,7 @@
                     <security:authorize access="isAnonymous()">
                         <li>
                             <a class="page-scroll" href="${home}ofertas/todas">
-                                <span class="glyphicon glyphicon-user"> Ofertas</span>
+                                <span class="glyphicon glyphicon-user"> <spring:message code="todas_ofertas"/></span>
                             </a>
                         </li>
                         <li>
@@ -43,18 +43,18 @@
                         </li>
                         <li>
                             <a class="page-scroll" href="${home}empresas/todas">
-                                <span class="glyphicon glyphicon-user"> Empresas</span>
+                                <span class="glyphicon glyphicon-user"> <spring:message code="todas_empresas"/></span>
                             </a>
                         </li>
                         <li>
                             <a class="page-scroll" href="usuarios/nuevo">
-                                <span class="glyphicon glyphicon-plus"> SignUp</span>
+                                <span class="glyphicon glyphicon-plus"> <spring:message code="registro"/></span>
                             </a>
                         </li>
 
                         <li>
                             <a class="page-scroll" href="${home}login">
-                                <span class="glyphicon glyphicon-plus"> Login</span>
+                                <span class="glyphicon glyphicon-plus"> <spring:message code="login"/></span>
                             </a>
                         </li>
                     </security:authorize>
@@ -66,14 +66,14 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                 <span class="glyphicon glyphicon-tower"></span>
-                                Job requests
+                                <spring:message code="peticiones"/>
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="${home}peticionofertas/mis-peticiones">My requests</a>
+                                    <a href="${home}peticionofertas/mis-peticiones"><spring:message code="mispeti"/></a>
                                 </li>
                                 <li>
-                                    <a href="${home}ofertas/todas">Search and join offers</a>
+                                    <a href="${home}ofertas/todas"><spring:message code="listarpeti"/></a>
 
 
                                 </li>
@@ -83,25 +83,25 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                 <span class="glyphicon glyphicon-user"></span>
-                                My account
+                                <spring:message code="cuenta"/>
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="${home}cvs/mis-cvs">My CVs</a></li>
-                                <li><a href="${home}cvs/nuevo">Add CV</a></li>
+                                <li><a href="${home}cvs/mis-cvs"><spring:message code="listarcv"/></a></li>
+                                <li><a href="${home}cvs/nuevo"><spring:message code="anadircv"/></a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="${home}cursoses/mis-cursos">My courses</a></li>
-                                <li><a href="${home}cursoses/nuevo">Add course</a></li>
+                                <li><a href="${home}cursoses/mis-cursos"><spring:message code="listarcur"/></a></li>
+                                <li><a href="${home}cursoses/nuevo"><spring:message code="anadircur"/></a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="${home}experiencias/mis-experiencias">My laboral experience</a></li>
-                                <li><a href="${home}experiencias/nueva">Add experience</a></li>
+                                <li><a href="${home}experiencias/mis-experiencias"><spring:message code="experiencia"/></a></li>
+                                <li><a href="${home}experiencias/nueva"><spring:message code="anadirex"/></a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="${home}idiomases/mis-idiomas">My languages</a></li>
-                                <li><a href="${home}idiomases/nuevo">Add language</a></li>
+                                <li><a href="${home}idiomases/mis-idiomas"><spring:message code="idiomas"/></a></li>
+                                <li><a href="${home}idiomases/nuevo"><spring:message code="anadiridi"/></a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="${home}tituloses/mis-titulos">My titles</a></li>
-                                <li><a href="${home}tituloses/nuevo">Add title</a></li>
+                                <li><a href="${home}tituloses/mis-titulos"><spring:message code="titulos"/></a></li>
+                                <li><a href="${home}tituloses/nuevo"><spring:message code="adtitulo"/></a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="${home}usuarios/mi-cuenta">My account</a></li>
+                                <li><a href="${home}usuarios/mi-cuenta"><spring:message code="cuenta"/></a></li>
                             </ul>
                         </li>
                     </security:authorize>
@@ -112,23 +112,25 @@
 
 
                     <!-- Menús para el demandante de empleo -->
-                    <security:authorize access="hasAnyRole('GESTOREMPRESA')">
+                    <security:authorize access="hasAnyRole('GESTOREMPRESA', 'GESTORETT')">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                 <span class="glyphicon glyphicon-user"></span>
                                 My account
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="${home}empresas/mis-empresas">My enterprises</a></li>
-                                <li><a href="${home}empresas/nueva">Add enterprise</a></li>
+                                <li><a href="${home}empresas/mis-empresas"><spring:message code="empresas"/></a></li>
+                                <li><a href="${home}empresas/nueva"><spring:message code="adempresa"/></a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="${home}ofertas/mis-ofertas">My offers</a></li>
-                                <li><a href="${home}ofertas/nueva">Publish offer</a></li>
+                                <li><a href="${home}ofertas/mis-ofertas"><spring:message code="ofertas"/></a></li>
+                                <li><a href="${home}ofertas/nueva"><spring:message code="publioferta"/></a></li>
+                                <security:authorize access="hasRole('GESTOREMPRESA')">
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="${home}usuarios/mis-etts"><spring:message code="ETT"/></a></li>
+                                    <li><a href="${home}usuarios/nuevo-ett"><spring:message code="adETT"/></a></li>
+                                </security:authorize>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="${home}usuarios/mis-etts">My ETT managers</a></li>
-                                <li><a href="${home}usuarios/nuevo-ett">Add ETT manager</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="${home}usuarios/mi-cuenta">My account</a></li>
+                                <li><a href="${home}usuarios/mi-cuenta"><spring:message code="cuenta"/></a></li>
                             </ul>
                         </li>
                     </security:authorize>
@@ -137,7 +139,7 @@
                     <security:authorize access="isAuthenticated()">
                         <li>
                             <a class="page-scroll" href="${home}resources/j_spring_security_logout">
-                                <span class="glyphicon glyphicon-off">Logout </span>
+                                <span class="glyphicon glyphicon-off"><spring:message code="security_logout"/> </span>
                             </a>
 
 

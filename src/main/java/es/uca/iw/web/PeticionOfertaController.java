@@ -5,6 +5,8 @@ import es.uca.iw.domain.PeticionOferta;
 import es.uca.iw.domain.Usuario;
 import es.uca.iw.reference.EstadoPeticionOferta;
 import es.uca.iw.reference.TipoUsuario;
+import es.uca.iw.domain.MailMail;
+
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,10 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 @RequestMapping("/peticionofertas")
 @Controller
@@ -38,19 +44,65 @@ public class PeticionOfertaController {
 
         //populateEditForm(uiModel, new PeticionOferta());
 
+
+
+
         return "peticionofertas/create";
     }
 
-    @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
-    public String updateForm(@PathVariable("id") Long id, Model uiModel) {
-        uiModel.addAttribute("peticionOferta", PeticionOferta.findPeticionOferta(id));
-        uiModel.addAttribute("cvs", Cv.findAllCvs());
-        uiModel.addAttribute("ofertas", Oferta.findAllOfertas());
-        uiModel.addAttribute("usuarios", Usuario.findAllUsuarios());
-        uiModel.addAttribute("estadopeticionofertas", Arrays.asList(EstadoPeticionOferta.values()));
-        return "peticionofertas/update";
+
+
+    @RequestMapping(value = "/peticiones/{id}", produces = "text/html")
+    public String list(@PathVariable("id") Long id, Model uiModel) {
+
+        uiModel.addAttribute("peticionofertas", PeticionOferta.findPeticionOfertasByOferta(Oferta.findOferta(id)).getResultList());
+
+        return "peticionofertas/list";
     }
 
+
+
+
+    @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
+    public String updateForm(@PathVariable("id") Long id, Model uiModel) {
+        if(UsuarioController.getUsuario().getTipo().equals(TipoUsuario.GestorEmpresa) ||
+                UsuarioController.getUsuario().getTipo().equals(TipoUsuario.GestorETT)){
+
+            uiModel.addAttribute("peticionOferta", PeticionOferta.findPeticionOferta(id));
+            uiModel.addAttribute("cvs", Cv.findAllCvs());
+            uiModel.addAttribute("ofertas", Oferta.findAllOfertas());
+            uiModel.addAttribute("usuarios", Usuario.findAllUsuarios());
+            uiModel.addAttribute("estadopeticionofertas", Arrays.asList(EstadoPeticionOferta.values()));
+            return "peticionofertas/update";
+        }
+        else{
+            return "redirect:/peticionofertas/todas";
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
+    public String update(@Valid PeticionOferta peticionOferta, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        if (bindingResult.hasErrors()) {
+            populateEditForm(uiModel, peticionOferta);
+            return "peticionofertas/update";
+        }
+        uiModel.asMap().clear();
+
+        Usuario usuario = peticionOferta.getUsuario_demandante();
+        ApplicationContext context =
+                new ClassPathXmlApplicationContext("classpath*:META-INF/spring/applicationContext.xml");
+        String frase = "Hola " + usuario.getNombre() + ", el estado de tu petición a la oferta " + peticionOferta.getOferta().getNombre() + " ha cambiado a " +
+                peticionOferta.getEstado().toString() + ".";
+        MailMail mm = (MailMail) context.getBean("mailMail");
+        mm.sendMail("joseantoniomfking@gmail.com",
+                usuario.getEmail(),
+                "Cambio de estado en oferta", frase
+        );
+
+
+        peticionOferta.merge();
+        return "redirect:/peticionofertas/" + encodeUrlPathSegment(peticionOferta.getId().toString(), httpServletRequest);
+    }
 
     @RequestMapping(value = "/mis-peticiones", produces = "text/html")
     public String misPeticiones(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, @RequestParam(value = "sortFieldName", required = false) String sortFieldName, @RequestParam(value = "sortOrder", required = false) String sortOrder, Model uiModel) {
@@ -85,10 +137,29 @@ public class PeticionOfertaController {
         uiModel.asMap().clear();
 
         Usuario usuario = UsuarioController.getUsuario();
-        System.out.println("HACE POST");
         peticionOferta.setUsuario_demandante(usuario);
         peticionOferta.persist();
-        return "redirect:/peticionofertas/" + encodeUrlPathSegment(peticionOferta.getId().toString(), httpServletRequest);
+
+
+        ApplicationContext context =
+                new ClassPathXmlApplicationContext("classpath*:META-INF/spring/applicationContext.xml");
+        String frase = "Hola " + usuario.getNombre() + ", te has inscrito en la oferta " + peticionOferta.getOferta().getNombre() + ".";
+        MailMail mm = (MailMail) context.getBean("mailMail");
+        mm.sendMail("joseantoniomfking@gmail.com",
+                UsuarioController.getUsuario().getEmail(),
+                "Nuevo registro en oferta", frase
+                );
+
+        return "redirect:/peticionofertas/mis-peticiones";
+    }
+
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
+    public String delete(@PathVariable("id") Long id, Model uiModel) {
+        PeticionOferta peticionOferta = PeticionOferta.findPeticionOferta(id);
+        peticionOferta.remove();
+        uiModel.asMap().clear();
+        return "redirect:/peticionofertas/mis-peticiones";
     }
 
 }

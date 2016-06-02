@@ -3,6 +3,7 @@ import es.uca.iw.domain.Empresa;
 import es.uca.iw.domain.Oferta;
 import es.uca.iw.domain.PuestoTrabajo;
 import es.uca.iw.domain.Usuario;
+import es.uca.iw.domain.Cv;
 import es.uca.iw.reference.EstadoOferta;
 import es.uca.iw.reference.TipoContrato;
 import es.uca.iw.reference.TipoUsuario;
@@ -26,28 +27,43 @@ import java.util.List;
 public class OfertaController {
 
 
+    @RequestMapping(value = "/recomendaciones", produces = "text/html")
+    public String recomendaciones(Model uiModel) {
+        // Extraemos los cvs del usuario logueado
+        Set<Cv> cvs = UsuarioController.getUsuario().getCvs();
+        ArrayList<Oferta> recomendadas = new ArrayList<Oferta>();
+        for(Cv cv:cvs){
+            Set<PuestoTrabajo> posibles = cv.getPuestos_posibles();
+            for(PuestoTrabajo puesto:posibles){
+                List<Oferta> ofertas = Oferta.findOfertasByPuesto_buscado(puesto).getResultList();
+                for(Oferta of:ofertas)
+                    recomendadas.add(of);
+            }
+
+        }
+        uiModel.asMap().clear();
+        uiModel.addAttribute("ofertas", recomendadas);
+        addDateTimeFormatPatterns(uiModel);
+        return "ofertas/list";
+    }
+
+
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String updateForm(@PathVariable("id") Long id, Model uiModel) {
-        //if(UsuarioController.getSesionIniciada()){
-            System.out.println("Sesión iniciada");
-            if(UsuarioController.getUsuario().getTipo().equals(TipoUsuario.GestorETT) || UsuarioController.getUsuario().getTipo().equals(TipoUsuario.GestorEmpresa)){
-                // Comprueba que el gestor tenga esa oferta
+        if(UsuarioController.getUsuario().getTipo().equals(TipoUsuario.GestorETT) || UsuarioController.getUsuario().getTipo().equals(TipoUsuario.GestorEmpresa)){
+            // Comprueba que el gestor tenga esa oferta
 
-                uiModel.addAttribute("oferta",  Oferta.findOferta(id));
-                addDateTimeFormatPatterns(uiModel);
-                uiModel.addAttribute("empresas", UsuarioController.getUsuario().getEmpresas_gestionadas());
-                uiModel.addAttribute("puesto_buscado", PuestoTrabajo.findAllPuestoTrabajoes());
-                uiModel.addAttribute("estadoofertas", Arrays.asList(EstadoOferta.values()));
-                uiModel.addAttribute("tipocontratoes", Arrays.asList(TipoContrato.values()));
-                return "ofertas/update";
-            }
-            else
-                list(uiModel);
+            uiModel.addAttribute("oferta",  Oferta.findOferta(id));
+            addDateTimeFormatPatterns(uiModel);
+            uiModel.addAttribute("empresas", UsuarioController.getUsuario().getEmpresas_gestionadas());
+            uiModel.addAttribute("puesto_buscado", PuestoTrabajo.findAllPuestoTrabajoes());
+            uiModel.addAttribute("estadoofertas", Arrays.asList(EstadoOferta.values()));
+            uiModel.addAttribute("tipocontratoes", Arrays.asList(TipoContrato.values()));
+            return "ofertas/update";
+        }
+        else
+            return "redirect:/ofertas/todas";
 
-            //System.out.println("Sesión no iniciada");
-            //list(uiModel);
-
-        return null;
     }
 
     @RequestMapping(value = "/nueva", produces = "text/html")
@@ -67,17 +83,6 @@ public class OfertaController {
 
     @RequestMapping(value = "/todas", produces = "text/html")
     public String list(Model uiModel) {
-
-        // @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, @RequestParam(value = "sortFieldName", required = false) String sortFieldName, @RequestParam(value = "sortOrder", required = false) String sortOrder,
-        /*if (page != null || size != null) {
-            int sizeNo = size == null ? 10 : size.intValue();
-            final int firstResult = page == null ? 0 : (page.intValue() - 1) * sizeNo;
-            uiModel.addAttribute("ofertas", Oferta.findOfertaEntries(firstResult, sizeNo, sortFieldName, sortOrder));
-            float nrOfPages = (float) Oferta.countOfertas() / sizeNo;
-            uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
-        } else {
-            uiModel.addAttribute("ofertas", Oferta.findAllOfertas(sortFieldName, sortOrder));
-        }*/
         uiModel.asMap().clear();
         uiModel.addAttribute("ofertas", Oferta.findAllOfertas());
         addDateTimeFormatPatterns(uiModel);
@@ -87,9 +92,11 @@ public class OfertaController {
     @RequestMapping(value = "/mis-ofertas", produces = "text/html")
     public String misEmpresas(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, @RequestParam(value = "sortFieldName", required = false) String sortFieldName, @RequestParam(value = "sortOrder", required = false) String sortOrder, Model uiModel) {
         Usuario usuario = UsuarioController.getUsuario();
-
-        // Buscar todas las ofertas de todas las empresas que gestione el usuario
-        uiModel.addAttribute("ofertas", Oferta.findAllOfertas(sortFieldName, sortOrder));
+        Set<Empresa> empresas = usuario.getEmpresas_gestionadas();
+        ArrayList<Oferta> ofertas = new ArrayList<Oferta>();
+        for(Empresa empresa:empresas)
+            ofertas.addAll(empresa.getOfertas());
+        uiModel.addAttribute("ofertas", ofertas);
         addDateTimeFormatPatterns(uiModel);
         return "ofertas/list";
     }

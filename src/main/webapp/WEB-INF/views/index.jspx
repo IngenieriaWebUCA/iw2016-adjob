@@ -6,7 +6,8 @@
     
        <div class="header-content">
             <div class="header-content-inner" style="text-align:center;">
-                <h1>Bienvenido a Adjob, tu fuente de empleos</h1>
+                <h1><spring:message arguments="${app_name}" code="welcome_h3"/></h1>
+            	<p><spring:message code="welcome_text"/></p>
                 
                 <a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
             </div>

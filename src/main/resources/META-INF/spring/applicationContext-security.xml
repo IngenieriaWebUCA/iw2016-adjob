@@ -18,12 +18,22 @@
         <logout logout-url="/resources/j_spring_security_logout" />
         <logout logout-success-url="/welcome" />
 
-        <intercept-url pattern="/cuenta/**" access="hasAnyRole('DEMANDANTE', 'GESTORETT', 'GESTOREMPRESA')"  />
+
         <intercept-url pattern="/resources/**" access="permitAll" />
+
         <intercept-url pattern="/login/**" access="permitAll" />
 
-        <intercept-url pattern="/empresas?form" access="hasAnyRole('GESTORETT', 'GESTOREMPRESA', 'ADMINISTRADOR', 'SUPERADMINISTRADOR')" />
-        
+        <intercept-url pattern="/empresas?form" access="hasAnyRole('GESTORETT', 'GESTOREMPRESA')" />
+        <intercept-url pattern="/empresas/nueva" access="hasAnyRole('GESTORETT', 'GESTOREMPRESA')" />
+        <intercept-url pattern="/ofertas/nueva" access="hasAnyRole('GESTORETT', 'GESTOREMPRESA')" />
+
+
+        <intercept-url pattern="/cvs/nuevo" access="hasRole('DEMANDANTE')"  />
+        <intercept-url pattern="/cursoes/nuevo" access="hasRole('DEMANDANTE')"  />
+        <intercept-url pattern="/experiencias/nuevo" access="hasRole('DEMANDANTE')"  />
+        <intercept-url pattern="/idiomases/nuevo" access="hasRole('DEMANDANTE')"  />
+        <intercept-url pattern="/tituloses/nuevo" access="hasRole('DEMANDANTE')"  />
+
 
         <!-- Currículums -->
         <intercept-url pattern="/cvs/**" access="isAuthenticated()" />

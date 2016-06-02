@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 
 @RooJavaBean
 @RooToString
-@RooJpaActiveRecord(finders = { "findOfertasByEmpresa", "findOfertasByEmpresaLike" })
+@RooJpaActiveRecord(finders = { "findOfertasByEmpresa", "findOfertasByEmpresaLike", "findOfertasByPuesto_buscado" })
 public class Oferta {
 
     /**

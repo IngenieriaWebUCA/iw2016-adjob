@@ -5,6 +5,7 @@ package es.uca.iw.domain;
 
 import es.uca.iw.domain.Empresa;
 import es.uca.iw.domain.Oferta;
+import es.uca.iw.domain.PuestoTrabajo;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
@@ -23,6 +24,14 @@ privileged aspect Oferta_Roo_Finder {
         EntityManager em = Oferta.entityManager();
         TypedQuery q = em.createQuery("SELECT COUNT(o) FROM Oferta AS o WHERE LOWER(o.empresa) LIKE LOWER(:empresa)", Long.class);
         q.setParameter("empresa", empresa);
+        return ((Long) q.getSingleResult());
+    }
+    
+    public static Long Oferta.countFindOfertasByPuesto_buscado(PuestoTrabajo puesto_buscado) {
+        if (puesto_buscado == null) throw new IllegalArgumentException("The puesto_buscado argument is required");
+        EntityManager em = Oferta.entityManager();
+        TypedQuery q = em.createQuery("SELECT COUNT(o) FROM Oferta AS o WHERE o.puesto_buscado = :puesto_buscado", Long.class);
+        q.setParameter("puesto_buscado", puesto_buscado);
         return ((Long) q.getSingleResult());
     }
     
@@ -69,6 +78,29 @@ privileged aspect Oferta_Roo_Finder {
         }
         TypedQuery<Oferta> q = em.createQuery(queryBuilder.toString(), Oferta.class);
         q.setParameter("empresa", empresa);
+        return q;
+    }
+    
+    public static TypedQuery<Oferta> Oferta.findOfertasByPuesto_buscado(PuestoTrabajo puesto_buscado) {
+        if (puesto_buscado == null) throw new IllegalArgumentException("The puesto_buscado argument is required");
+        EntityManager em = Oferta.entityManager();
+        TypedQuery<Oferta> q = em.createQuery("SELECT o FROM Oferta AS o WHERE o.puesto_buscado = :puesto_buscado", Oferta.class);
+        q.setParameter("puesto_buscado", puesto_buscado);
+        return q;
+    }
+    
+    public static TypedQuery<Oferta> Oferta.findOfertasByPuesto_buscado(PuestoTrabajo puesto_buscado, String sortFieldName, String sortOrder) {
+        if (puesto_buscado == null) throw new IllegalArgumentException("The puesto_buscado argument is required");
+        EntityManager em = Oferta.entityManager();
+        StringBuilder queryBuilder = new StringBuilder("SELECT o FROM Oferta AS o WHERE o.puesto_buscado = :puesto_buscado");
+        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
+            queryBuilder.append(" ORDER BY ").append(sortFieldName);
+            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
+                queryBuilder.append(" ").append(sortOrder);
+            }
+        }
+        TypedQuery<Oferta> q = em.createQuery(queryBuilder.toString(), Oferta.class);
+        q.setParameter("puesto_buscado", puesto_buscado);
         return q;
     }
     

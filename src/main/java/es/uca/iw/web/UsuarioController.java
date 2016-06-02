@@ -1,7 +1,22 @@
 package es.uca.iw.web;
-import es.uca.iw.domain.Cv;
-import es.uca.iw.domain.Empresa;
 import es.uca.iw.domain.Usuario;
+import es.uca.iw.domain.Empresa;
+import es.uca.iw.domain.Cv;
+import es.uca.iw.domain.PuestoTrabajo;
+import es.uca.iw.domain.Oferta;
+import es.uca.iw.domain.PeticionOferta;
+import es.uca.iw.domain.MailMail;
+
+/*
+
+
+import es.uca.iw.domain.Usuario;
+import es.uca.iw.domain.Empresa;
+import es.uca.iw.domain.Cv;
+import es.uca.iw.domain.PuestoTrabajo;
+import es.uca.iw.domain.Oferta;
+import es.uca.iw.domain.PeticionOferta;
+ */
 import es.uca.iw.reference.Sexo;
 import es.uca.iw.reference.TipoUsuario;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
@@ -24,6 +39,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.MessageDigest;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -59,11 +75,19 @@ public class UsuarioController {
     }
 
 
-
+    // https://jira.spring.io/browse/ROO-3456
     @RequestMapping(value = "/interesados/{id}", produces = "text/html")
     public String interesados(@PathVariable("id") Long id, Model uiModel) {
         // Lista los usuarios interesados en la oferta {id}
-        uiModel.addAttribute("usuarios", Usuario.findAllUsuarios());
+        // puestos_posibles
+        List<Cv> cvs = Cv.findAllCvs();
+        ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+        for(Cv cv:cvs){
+            Set<PuestoTrabajo> puestos = cv.getPuestos_posibles();
+            if(puestos.contains(Oferta.findOferta(id).getPuesto_buscado()))
+                usuarios.add(cv.getUsuario());
+        }
+        uiModel.addAttribute("usuarios", usuarios);
 
         addDateTimeFormatPatterns(uiModel);
         return "usuarios/list";
@@ -73,10 +97,11 @@ public class UsuarioController {
     @RequestMapping(value = "/adscritos/{id}", produces = "text/html")
     public String adscritos(@PathVariable("id") Long id, Model uiModel) {
         // Lista los usuarios interesados en la oferta {id}
-        Usuario usuario = getUsuario();
-
-        uiModel.addAttribute("usuarios", Usuario.findAllUsuarios());
-
+        List<PeticionOferta> peticiones = PeticionOferta.findPeticionOfertasByOferta(Oferta.findOferta(id)).getResultList();
+        ArrayList<Usuario> adscritos = new ArrayList<Usuario>();
+        for(PeticionOferta peticion:peticiones)
+            adscritos.add(peticion.getUsuario_demandante());
+        uiModel.addAttribute("usuarios", adscritos);
         addDateTimeFormatPatterns(uiModel);
         return "usuarios/list";
     }
@@ -154,11 +179,6 @@ public class UsuarioController {
         return "usuarios/list";
     }
 
-
-    public static Boolean getSesionIniciada(){
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        return auth.getName() != null;
-    }
     public static Usuario getUsuario(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String email = auth.getName();

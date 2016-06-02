@@ -12,13 +12,9 @@ import es.uca.iw.web.PeticionOfertaController;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
@@ -29,27 +25,6 @@ privileged aspect PeticionOfertaController_Roo_Controller {
         uiModel.addAttribute("peticionoferta", PeticionOferta.findPeticionOferta(id));
         uiModel.addAttribute("itemId", id);
         return "peticionofertas/show";
-    }
-    
-    @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
-    public String PeticionOfertaController.update(@Valid PeticionOferta peticionOferta, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
-        if (bindingResult.hasErrors()) {
-            populateEditForm(uiModel, peticionOferta);
-            return "peticionofertas/update";
-        }
-        uiModel.asMap().clear();
-        peticionOferta.merge();
-        return "redirect:/peticionofertas/" + encodeUrlPathSegment(peticionOferta.getId().toString(), httpServletRequest);
-    }
-    
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
-    public String PeticionOfertaController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
-        PeticionOferta peticionOferta = PeticionOferta.findPeticionOferta(id);
-        peticionOferta.remove();
-        uiModel.asMap().clear();
-        uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
-        uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/peticionofertas";
     }
     
     void PeticionOfertaController.populateEditForm(Model uiModel, PeticionOferta peticionOferta) {
