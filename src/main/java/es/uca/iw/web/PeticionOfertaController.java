@@ -43,7 +43,11 @@ public class PeticionOfertaController {
 
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String updateForm(@PathVariable("id") Long id, Model uiModel) {
-        populateEditForm(uiModel, PeticionOferta.findPeticionOferta(id));
+        uiModel.addAttribute("peticionOferta", PeticionOferta.findPeticionOferta(id));
+        uiModel.addAttribute("cvs", Cv.findAllCvs());
+        uiModel.addAttribute("ofertas", Oferta.findAllOfertas());
+        uiModel.addAttribute("usuarios", Usuario.findAllUsuarios());
+        uiModel.addAttribute("estadopeticionofertas", Arrays.asList(EstadoPeticionOferta.values()));
         return "peticionofertas/update";
     }
 

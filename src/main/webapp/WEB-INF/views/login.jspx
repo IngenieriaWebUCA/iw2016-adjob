@@ -56,13 +56,15 @@
 
       	</div>
 
+
+
       </form>
-      
-      <form action="usuarios?form" class="form-signin">
-                <button type="submit" class="btn btn-block btn-lg btn btn-success">Create new account</button>
-      
-      
-      </form>
+
+    <button class="btn-success btn-block" onclick="window.location.href='${home}usuarios/nuevo'">
+        Registro
+    </button>
+
+
      
 
 </div>

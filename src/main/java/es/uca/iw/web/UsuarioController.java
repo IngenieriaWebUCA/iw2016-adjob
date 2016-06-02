@@ -74,7 +74,7 @@ public class UsuarioController {
     public String adscritos(@PathVariable("id") Long id, Model uiModel) {
         // Lista los usuarios interesados en la oferta {id}
         Usuario usuario = getUsuario();
-        
+
         uiModel.addAttribute("usuarios", Usuario.findAllUsuarios());
 
         addDateTimeFormatPatterns(uiModel);
@@ -154,6 +154,11 @@ public class UsuarioController {
         return "usuarios/list";
     }
 
+
+    public static Boolean getSesionIniciada(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return auth.getName() != null;
+    }
     public static Usuario getUsuario(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String email = auth.getName();

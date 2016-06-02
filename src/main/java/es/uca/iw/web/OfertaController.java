@@ -5,6 +5,7 @@ import es.uca.iw.domain.PuestoTrabajo;
 import es.uca.iw.domain.Usuario;
 import es.uca.iw.reference.EstadoOferta;
 import es.uca.iw.reference.TipoContrato;
+import es.uca.iw.reference.TipoUsuario;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -27,16 +28,26 @@ public class OfertaController {
 
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String updateForm(@PathVariable("id") Long id, Model uiModel) {
-        //populateEditForm(uiModel,);
+        //if(UsuarioController.getSesionIniciada()){
+            System.out.println("Sesión iniciada");
+            if(UsuarioController.getUsuario().getTipo().equals(TipoUsuario.GestorETT) || UsuarioController.getUsuario().getTipo().equals(TipoUsuario.GestorEmpresa)){
+                // Comprueba que el gestor tenga esa oferta
 
-        uiModel.addAttribute("oferta",  Oferta.findOferta(id));
-        addDateTimeFormatPatterns(uiModel);
-        uiModel.addAttribute("empresas", UsuarioController.getUsuario().getEmpresas_gestionadas());
-        uiModel.addAttribute("puesto_buscado", PuestoTrabajo.findAllPuestoTrabajoes());
-        uiModel.addAttribute("estadoofertas", Arrays.asList(EstadoOferta.values()));
-        uiModel.addAttribute("tipocontratoes", Arrays.asList(TipoContrato.values()));
+                uiModel.addAttribute("oferta",  Oferta.findOferta(id));
+                addDateTimeFormatPatterns(uiModel);
+                uiModel.addAttribute("empresas", UsuarioController.getUsuario().getEmpresas_gestionadas());
+                uiModel.addAttribute("puesto_buscado", PuestoTrabajo.findAllPuestoTrabajoes());
+                uiModel.addAttribute("estadoofertas", Arrays.asList(EstadoOferta.values()));
+                uiModel.addAttribute("tipocontratoes", Arrays.asList(TipoContrato.values()));
+                return "ofertas/update";
+            }
+            else
+                list(uiModel);
 
-        return "ofertas/update";
+            //System.out.println("Sesión no iniciada");
+            //list(uiModel);
+
+        return null;
     }
 
     @RequestMapping(value = "/nueva", produces = "text/html")
@@ -55,8 +66,10 @@ public class OfertaController {
     }
 
     @RequestMapping(value = "/todas", produces = "text/html")
-    public String list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, @RequestParam(value = "sortFieldName", required = false) String sortFieldName, @RequestParam(value = "sortOrder", required = false) String sortOrder, Model uiModel) {
-        if (page != null || size != null) {
+    public String list(Model uiModel) {
+
+        // @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, @RequestParam(value = "sortFieldName", required = false) String sortFieldName, @RequestParam(value = "sortOrder", required = false) String sortOrder,
+        /*if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
             final int firstResult = page == null ? 0 : (page.intValue() - 1) * sizeNo;
             uiModel.addAttribute("ofertas", Oferta.findOfertaEntries(firstResult, sizeNo, sortFieldName, sortOrder));
@@ -64,7 +77,9 @@ public class OfertaController {
             uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
         } else {
             uiModel.addAttribute("ofertas", Oferta.findAllOfertas(sortFieldName, sortOrder));
-        }
+        }*/
+        uiModel.asMap().clear();
+        uiModel.addAttribute("ofertas", Oferta.findAllOfertas());
         addDateTimeFormatPatterns(uiModel);
         return "ofertas/list";
     }
