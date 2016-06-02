@@ -166,3 +166,5 @@ finder add --finderName findEmpresasByUsuario --class ~domain.Usuario
 backup
 // Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-06-02 10:34:54
 // Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-06-02 11:27:17
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-06-02 12:14:36
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-06-02 12:15:53

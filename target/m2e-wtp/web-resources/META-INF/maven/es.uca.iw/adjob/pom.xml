@@ -32,11 +32,6 @@
             <name>Spring Roo Repository</name>
             <url>http://spring-roo-repository.springsource.org/release</url>
         </repository>
-   
-  		<repository>
-  			<id>Java.Net</id>
-  			<url>http://download.java.net/maven/2/</url>
-  		</repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>

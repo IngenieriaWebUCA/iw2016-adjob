@@ -51,6 +51,17 @@
         </pluginRepository>
     </pluginRepositories>
     <dependencies>
+    	<dependency>
+    		<groupId>org.springframework</groupId>
+    		<artifactId>spring-context-support</artifactId>
+    		<version>3.2.8.RELEASE</version>
+		</dependency>
+    	<!-- Necesario para el correo -->
+    	<dependency>
+	    	<groupId>javax.mail</groupId>
+	    	<artifactId>mail</artifactId>
+	    	<version>1.4.3</version>
+    	</dependency>
         <!-- General dependencies for standard applications -->
         <dependency>
             <groupId>junit</groupId>
