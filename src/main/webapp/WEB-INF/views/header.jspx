@@ -32,7 +32,7 @@
 
 
                     <!-- Menús que se ven cuando el usuario no ha iniciado sesión -->
-                    <security:authorize access="isAnonymous()">
+
                         <li>
                             <a class="page-scroll" href="${home}ofertas/todas">
                                 <span class="glyphicon glyphicon-user"> <spring:message code="todas_ofertas"/></span>
@@ -46,6 +46,7 @@
                                 <span class="glyphicon glyphicon-user"> <spring:message code="todas_empresas"/></span>
                             </a>
                         </li>
+                    <security:authorize access="isAnonymous()">
                         <li>
                             <a class="page-scroll" href="usuarios/nuevo">
                                 <span class="glyphicon glyphicon-plus"> <spring:message code="registro"/></span>

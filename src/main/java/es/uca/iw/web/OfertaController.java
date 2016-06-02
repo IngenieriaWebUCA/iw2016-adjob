@@ -84,7 +84,12 @@ public class OfertaController {
     @RequestMapping(value = "/todas", produces = "text/html")
     public String list(Model uiModel) {
         uiModel.asMap().clear();
-        uiModel.addAttribute("ofertas", Oferta.findAllOfertas());
+        ArrayList<Oferta> ofertas = new ArrayList<Oferta>();
+        List<Oferta> todas = Oferta.findAllOfertas();
+        for(Oferta oferta:todas)
+            if(!oferta.getEstado_oferta().equals(EstadoOferta.Cancelada))
+                ofertas.add(oferta);
+        uiModel.addAttribute("ofertas", ofertas);
         addDateTimeFormatPatterns(uiModel);
         return "ofertas/list";
     }
