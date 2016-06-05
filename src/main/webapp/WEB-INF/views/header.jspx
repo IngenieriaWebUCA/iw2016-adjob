@@ -48,7 +48,7 @@
                         </li>
                     <security:authorize access="isAnonymous()">
                         <li>
-                            <a class="page-scroll" href="usuarios/nuevo">
+                            <a class="page-scroll" href="${home}usuarios/nuevo">
                                 <span class="glyphicon glyphicon-plus"> <spring:message code="registro"/></span>
                             </a>
                         </li>

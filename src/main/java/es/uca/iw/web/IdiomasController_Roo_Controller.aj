@@ -8,13 +8,9 @@ import es.uca.iw.domain.Usuario;
 import es.uca.iw.web.IdiomasController;
 import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
@@ -25,33 +21,6 @@ privileged aspect IdiomasController_Roo_Controller {
         uiModel.addAttribute("idiomas", Idiomas.findIdiomas(id));
         uiModel.addAttribute("itemId", id);
         return "idiomases/show";
-    }
-    
-    @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
-    public String IdiomasController.update(@Valid Idiomas idiomas, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
-        if (bindingResult.hasErrors()) {
-            populateEditForm(uiModel, idiomas);
-            return "idiomases/update";
-        }
-        uiModel.asMap().clear();
-        idiomas.merge();
-        return "redirect:/idiomases/" + encodeUrlPathSegment(idiomas.getId().toString(), httpServletRequest);
-    }
-    
-    @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
-    public String IdiomasController.updateForm(@PathVariable("id") Long id, Model uiModel) {
-        populateEditForm(uiModel, Idiomas.findIdiomas(id));
-        return "idiomases/update";
-    }
-    
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
-    public String IdiomasController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
-        Idiomas idiomas = Idiomas.findIdiomas(id);
-        idiomas.remove();
-        uiModel.asMap().clear();
-        uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
-        uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/idiomases";
     }
     
     void IdiomasController.populateEditForm(Model uiModel, Idiomas idiomas) {

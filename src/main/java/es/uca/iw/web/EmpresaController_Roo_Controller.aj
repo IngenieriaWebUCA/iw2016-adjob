@@ -4,17 +4,12 @@
 package es.uca.iw.web;
 
 import es.uca.iw.domain.Empresa;
-import es.uca.iw.domain.Oferta;
 import es.uca.iw.web.EmpresaController;
 import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
@@ -25,38 +20,6 @@ privileged aspect EmpresaController_Roo_Controller {
         uiModel.addAttribute("empresa", Empresa.findEmpresa(id));
         uiModel.addAttribute("itemId", id);
         return "empresas/show";
-    }
-    
-    @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
-    public String EmpresaController.update(@Valid Empresa empresa, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
-        if (bindingResult.hasErrors()) {
-            populateEditForm(uiModel, empresa);
-            return "empresas/update";
-        }
-        uiModel.asMap().clear();
-        empresa.merge();
-        return "redirect:/empresas/" + encodeUrlPathSegment(empresa.getId().toString(), httpServletRequest);
-    }
-    
-    @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
-    public String EmpresaController.updateForm(@PathVariable("id") Long id, Model uiModel) {
-        populateEditForm(uiModel, Empresa.findEmpresa(id));
-        return "empresas/update";
-    }
-    
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
-    public String EmpresaController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
-        Empresa empresa = Empresa.findEmpresa(id);
-        empresa.remove();
-        uiModel.asMap().clear();
-        uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
-        uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/empresas";
-    }
-    
-    void EmpresaController.populateEditForm(Model uiModel, Empresa empresa) {
-        uiModel.addAttribute("empresa", empresa);
-        uiModel.addAttribute("ofertas", Oferta.findAllOfertas());
     }
     
     String EmpresaController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

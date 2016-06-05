@@ -1,5 +1,6 @@
 package es.uca.iw.web;
 import es.uca.iw.domain.Empresa;
+import es.uca.iw.domain.Oferta;
 import es.uca.iw.domain.Usuario;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 import org.springframework.security.core.Authentication;
@@ -7,6 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 @RequestMapping("/empresas")
@@ -21,19 +24,15 @@ import java.util.Set;
 @RooWebScaffold(path = "empresas", formBackingObject = Empresa.class)
 public class EmpresaController {
 
-    private Usuario getUsuario(){
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String email = auth.getName();
-        return Usuario.findUsuariosByEmail(email).getSingleResult();
-    }
-
-
     @RequestMapping(value="/nueva", produces = "text/html")
     public String createForm(Model uiModel) {
-        populateEditForm(uiModel, new Empresa());
-        return "empresas/create";
+        if(UsuarioController.hasRole("GESTOREMPRESA") || UsuarioController.hasRole("GESTORETT")){
+            populateEditForm(uiModel, new Empresa());
+            return "empresas/create";
+        }
+        else
+            return "redirect:/";
     }
-
 
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")
     public String create(@Valid Empresa empresa, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
@@ -41,8 +40,7 @@ public class EmpresaController {
             populateEditForm(uiModel, empresa);
             return "empresas/create";
         }
-
-        Usuario usuario = getUsuario();
+        Usuario usuario = UsuarioController.getUsuario();
         Set<Empresa> empresas = usuario.getEmpresas_gestionadas();
         empresas.add(empresa);
         usuario.setEmpresas_gestionadas(empresas);
@@ -51,17 +49,11 @@ public class EmpresaController {
         return "redirect:/empresas/" + encodeUrlPathSegment(empresa.getId().toString(), httpServletRequest);
     }
 
-
     @RequestMapping(value = "/mis-empresas", produces = "text/html")
     public String list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, @RequestParam(value = "sortFieldName", required = false) String sortFieldName, @RequestParam(value = "sortOrder", required = false) String sortOrder, Model uiModel) {
-        Usuario usuario = getUsuario();
-
-        uiModel.addAttribute("empresas",usuario.getEmpresas_gestionadas());
-
+        uiModel.addAttribute("empresas", UsuarioController.getUsuario());
         return "empresas/list";
     }
-
-
 
     @RequestMapping(value = "/todas", produces = "text/html")
     public String listTodo(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, @RequestParam(value = "sortFieldName", required = false) String sortFieldName, @RequestParam(value = "sortOrder", required = false) String sortOrder, Model uiModel) {
@@ -75,5 +67,57 @@ public class EmpresaController {
             uiModel.addAttribute("empresas", Empresa.findAllEmpresas(sortFieldName, sortOrder));
         }
         return "empresas/list";
+    }
+
+    @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
+    public String updateForm(@PathVariable("id") Long id, Model uiModel) {
+        if(UsuarioController.hasRole("GESTOREMPRESA") || UsuarioController.hasRole("GESTORETT")) {
+            if (UsuarioController.getUsuario().getEmpresas_gestionadas().contains(Empresa.findEmpresa(id))) {
+                populateEditForm(uiModel, Empresa.findEmpresa(id));
+                return "empresas/update";
+            } else
+                return "redirect:/empresas/mis-empresas";
+        }
+        else
+            return "redirect:/";
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
+    public String delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+        if(UsuarioController.hasRole("GESTOREMPRESA") || UsuarioController.hasRole("GESTORETT")){
+            if(UsuarioController.getUsuario().getEmpresas_gestionadas().contains(Empresa.findEmpresa(id))){
+                Empresa empresa = Empresa.findEmpresa(id);
+                empresa.remove();
+                uiModel.asMap().clear();
+                uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
+                uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
+                return "redirect:/empresas";
+            }
+            else
+                return "redirect:/empresas/mis-empresas";
+        }
+        else
+            return "redirect:/";
+    }
+
+    void populateEditForm(Model uiModel, Empresa empresa) {
+        ArrayList<Oferta> ofertas = new ArrayList<Oferta>(empresa.getOfertas());
+        uiModel.addAttribute("empresa", empresa);
+        uiModel.addAttribute("ofertas", ofertas);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
+    public String update(@Valid Empresa empresa, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        if (bindingResult.hasErrors()) {
+            populateEditForm(uiModel, empresa);
+            return "empresas/update";
+        }
+        uiModel.asMap().clear();
+        Usuario usuario = UsuarioController.getUsuario();
+        Set<Empresa> empresas = usuario.getEmpresas_gestionadas();
+        empresas.add(empresa);
+        usuario.setEmpresas_gestionadas(empresas);
+        empresa.merge();
+        return "redirect:/empresas/" + encodeUrlPathSegment(empresa.getId().toString(), httpServletRequest);
     }
 }

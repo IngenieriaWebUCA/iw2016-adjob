@@ -17,6 +17,11 @@ import es.uca.iw.domain.PuestoTrabajo;
 import es.uca.iw.domain.Oferta;
 import es.uca.iw.domain.PeticionOferta;
  */
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import es.uca.iw.reference.Sexo;
 import es.uca.iw.reference.TipoUsuario;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
@@ -54,7 +59,7 @@ public class UsuarioController {
 
     private enum TipoUsuario1 {
 
-        Demandante, GestorETT, GestorEmpresa
+        Demandante, GestorEmpresa
     }
 
     private enum TipoUsuario2 {
@@ -64,7 +69,6 @@ public class UsuarioController {
 
     @RequestMapping(value = "/nuevo", produces = "text/html")
     public String createForm(Model uiModel) {
-
         uiModel.addAttribute("usuario", new Usuario());
         addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("cvs", Cv.findAllCvs());
@@ -191,6 +195,25 @@ public class UsuarioController {
         md.update(original.getBytes());
         byte[] digest = md.digest();
         return new String(Hex.encodeHexString(digest));
+    }
+
+    public static boolean hasRole(String role) {
+        // get security context from thread local
+        SecurityContext context = SecurityContextHolder.getContext();
+        if (context == null)
+            return false;
+
+        Authentication authentication = context.getAuthentication();
+        if (authentication == null)
+            return false;
+
+        for (GrantedAuthority auth : authentication.getAuthorities()) {
+            System.out.println("Comparando autorización >" + auth.getAuthority() + "< con >" + role + "<.");
+            if (role.equals(auth.getAuthority()))
+                return true;
+        }
+
+        return false;
     }
 
 

@@ -3,14 +3,9 @@
 
 package es.uca.iw.web;
 
-import es.uca.iw.domain.Empresa;
 import es.uca.iw.domain.Oferta;
-import es.uca.iw.domain.PuestoTrabajo;
-import es.uca.iw.reference.EstadoOferta;
-import es.uca.iw.reference.TipoContrato;
 import es.uca.iw.web.OfertaController;
 import java.io.UnsupportedEncodingException;
-import java.util.Arrays;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.joda.time.format.DateTimeFormat;
@@ -20,7 +15,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
@@ -45,39 +39,9 @@ privileged aspect OfertaController_Roo_Controller {
         return "ofertas/show";
     }
     
-    @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
-    public String OfertaController.update(@Valid Oferta oferta, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
-        if (bindingResult.hasErrors()) {
-            populateEditForm(uiModel, oferta);
-            return "ofertas/update";
-        }
-        uiModel.asMap().clear();
-        oferta.merge();
-        return "redirect:/ofertas/" + encodeUrlPathSegment(oferta.getId().toString(), httpServletRequest);
-    }
-    
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
-    public String OfertaController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
-        Oferta oferta = Oferta.findOferta(id);
-        oferta.remove();
-        uiModel.asMap().clear();
-        uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
-        uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/ofertas";
-    }
-    
     void OfertaController.addDateTimeFormatPatterns(Model uiModel) {
         uiModel.addAttribute("oferta_fecha_inicio_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("oferta_fecha_fin_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
-    }
-    
-    void OfertaController.populateEditForm(Model uiModel, Oferta oferta) {
-        uiModel.addAttribute("oferta", oferta);
-        addDateTimeFormatPatterns(uiModel);
-        uiModel.addAttribute("empresas", Empresa.findAllEmpresas());
-        uiModel.addAttribute("puestotrabajoes", PuestoTrabajo.findAllPuestoTrabajoes());
-        uiModel.addAttribute("estadoofertas", Arrays.asList(EstadoOferta.values()));
-        uiModel.addAttribute("tipocontratoes", Arrays.asList(TipoContrato.values()));
     }
     
     String OfertaController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

@@ -13,12 +13,9 @@ import es.uca.iw.domain.Usuario;
 import es.uca.iw.web.CvController;
 import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
@@ -44,33 +41,6 @@ privileged aspect CvController_Roo_Controller {
             uiModel.addAttribute("cvs", Cv.findAllCvs(sortFieldName, sortOrder));
         }
         return "cvs/list";
-    }
-    
-    @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
-    public String CvController.update(@Valid Cv cv, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
-        if (bindingResult.hasErrors()) {
-            populateEditForm(uiModel, cv);
-            return "cvs/update";
-        }
-        uiModel.asMap().clear();
-        cv.merge();
-        return "redirect:/cvs/" + encodeUrlPathSegment(cv.getId().toString(), httpServletRequest);
-    }
-    
-    @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
-    public String CvController.updateForm(@PathVariable("id") Long id, Model uiModel) {
-        populateEditForm(uiModel, Cv.findCv(id));
-        return "cvs/update";
-    }
-    
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
-    public String CvController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
-        Cv cv = Cv.findCv(id);
-        cv.remove();
-        uiModel.asMap().clear();
-        uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
-        uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/cvs";
     }
     
     void CvController.populateEditForm(Model uiModel, Cv cv) {
