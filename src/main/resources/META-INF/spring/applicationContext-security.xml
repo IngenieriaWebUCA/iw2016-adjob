@@ -26,6 +26,7 @@
         <intercept-url pattern="/empresas?form" access="hasAnyRole('GESTORETT', 'GESTOREMPRESA')" />
         <intercept-url pattern="/empresas/nueva" access="hasAnyRole('GESTORETT', 'GESTOREMPRESA')" />
         <intercept-url pattern="/ofertas/nueva" access="hasAnyRole('GESTORETT', 'GESTOREMPRESA')" />
+        <intercept-url pattern="/ofertas/mis-ofertas" access="hasAnyRole('GESTORETT', 'GESTOREMPRESA')" />
 
 
         <intercept-url pattern="/cvs/nuevo" access="hasRole('DEMANDANTE')"  />
@@ -33,7 +34,7 @@
         <intercept-url pattern="/experiencias/nuevo" access="hasRole('DEMANDANTE')"  />
         <intercept-url pattern="/idiomases/nuevo" access="hasRole('DEMANDANTE')"  />
         <intercept-url pattern="/tituloses/nuevo" access="hasRole('DEMANDANTE')"  />
-
+        <intercept-url pattern="/peticionofertas/mis-peticiones" access="hasRole('DEMANDANTE')"  />
 
         <!-- Currículums -->
         <intercept-url pattern="/cvs/**" access="isAuthenticated()" />

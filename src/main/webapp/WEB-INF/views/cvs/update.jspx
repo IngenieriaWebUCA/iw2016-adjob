@@ -10,6 +10,6 @@
         <field:select field="cursos" id="c_es_uca_iw_domain_Cv_cursos" itemValue="id" items="${cursoses}" multiple="true" path="/cursoses" z="5Y2bOkMqVzCgUHMmtjEmwAXlryo="/>
         <field:select field="idiomas" id="c_es_uca_iw_domain_Cv_idiomas" itemValue="id" items="${idiomases}" multiple="true" path="/idiomases" z="0QIUp41axwlBnS8b9GLgUOdqQdY="/>
         <field:select field="titulos" id="c_es_uca_iw_domain_Cv_titulos" itemValue="id" items="${tituloses}" multiple="true" path="/tituloses" z="C4ka1MTCoRAv2BbvrilMa53XQks="/>
-        <field:select render="false" field="usuario" id="c_es_uca_iw_domain_Cv_usuario" itemValue="id" items="${usuarios}" path="/usuarios" z="GGK6DqyXDojyicbMgnsXqfsKa78="/>
+        <field:select field="usuario" id="c_es_uca_iw_domain_Cv_usuario" itemValue="id" items="${usuarios}" path="/usuarios" render="false" z="user-managed"/>
     </form:update>
 </div>

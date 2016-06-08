@@ -6,10 +6,8 @@ import es.uca.iw.domain.Usuario;
 import es.uca.iw.domain.Cv;
 import es.uca.iw.reference.EstadoOferta;
 import es.uca.iw.reference.TipoContrato;
-import es.uca.iw.reference.TipoUsuario;
+
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -25,33 +26,14 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.List;
 
+
 @RequestMapping("/ofertas")
 @Controller
 @RooWebScaffold(path = "ofertas", formBackingObject = Oferta.class)
 public class OfertaController {
 
-
-    @RequestMapping(value = "/recomendaciones", produces = "text/html")
-    public String recomendaciones(Model uiModel) {
-        // Extraemos los cvs del usuario logueado
-        Set<Cv> cvs = UsuarioController.getUsuario().getCvs();
-        ArrayList<Oferta> recomendadas = new ArrayList<Oferta>();
-        for(Cv cv:cvs){
-            Set<PuestoTrabajo> posibles = cv.getPuestos_posibles();
-            for(PuestoTrabajo puesto:posibles){
-                List<Oferta> ofertas = Oferta.findOfertasByPuesto_buscado(puesto).getResultList();
-                for(Oferta of:ofertas)
-                    recomendadas.add(of);
-            }
-
-        }
-        uiModel.asMap().clear();
-        uiModel.addAttribute("ofertas", recomendadas);
-        addDateTimeFormatPatterns(uiModel);
-        return "ofertas/list";
-    }
-
-    private Boolean gestionaOferta(long id){
+    // Función que dada la id de una oferta, determina si el usuario autenticado puede o no gestionarla
+    public static Boolean gestionaOferta(long id){
         Usuario usuario = UsuarioController.getUsuario();
         Set<Empresa> empresas = usuario.getEmpresas_gestionadas();
         ArrayList<Oferta> ofertas = new ArrayList<Oferta>();
@@ -62,6 +44,38 @@ public class OfertaController {
                 break;
             }
         return ok;
+    }
+
+    // Función que comprueba si una oferta está en el rango de tiempo correcto para mostrarla en el listado público
+    private Boolean en_rango(Oferta oferta){
+        // Fecha de hoy en el mismo formato que usa Spring Roo
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date hoy = new Date();
+        return oferta.getFecha_inicio().after(hoy) && oferta.getFecha_fin().before(hoy);
+    }
+
+    @RequestMapping(value = "/recomendaciones", produces = "text/html")
+    public String recomendaciones(Model uiModel) {
+        if (UsuarioController.hasRole("DEMANDANTE")){
+            Set<Cv> cvs = UsuarioController.getUsuario().getCvs();
+            ArrayList<Oferta> recomendadas = new ArrayList<Oferta>();
+            for(Cv cv:cvs){
+                Set<PuestoTrabajo> posibles = cv.getPuestos_posibles();
+                for(PuestoTrabajo puesto:posibles){
+                    List<Oferta> ofertas = Oferta.findOfertasByPuesto_buscado(puesto).getResultList();
+                    for(Oferta of:ofertas)
+                        recomendadas.add(of);
+                }
+
+            }
+            uiModel.asMap().clear();
+            uiModel.addAttribute("ofertas", recomendadas);
+            addDateTimeFormatPatterns(uiModel);
+            return "ofertas/list";
+        }
+        else
+            return "redirect:/";
+
     }
 
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
@@ -93,8 +107,10 @@ public class OfertaController {
         uiModel.asMap().clear();
         ArrayList<Oferta> ofertas = new ArrayList<Oferta>();
         List<Oferta> todas = Oferta.findAllOfertas();
+
+        // Sólo listamos de forma pública ofertas no canceladas y en rango de tiempo
         for(Oferta oferta:todas)
-            if(!oferta.getEstado_oferta().equals(EstadoOferta.Cancelada))
+            if(!oferta.getEstado_oferta().equals(EstadoOferta.Cancelada) && en_rango(oferta))
                 ofertas.add(oferta);
         uiModel.addAttribute("ofertas", ofertas);
         addDateTimeFormatPatterns(uiModel);
@@ -102,18 +118,24 @@ public class OfertaController {
     }
 
     @RequestMapping(value = "/mis-ofertas", produces = "text/html")
-    public String misEmpresas(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, @RequestParam(value = "sortFieldName", required = false) String sortFieldName, @RequestParam(value = "sortOrder", required = false) String sortOrder, Model uiModel) {
-        Usuario usuario = UsuarioController.getUsuario();
-        Set<Empresa> empresas = usuario.getEmpresas_gestionadas();
-        ArrayList<Oferta> ofertas = new ArrayList<Oferta>();
-        for(Empresa empresa:empresas)
-            ofertas.addAll(empresa.getOfertas());
-        uiModel.addAttribute("ofertas", ofertas);
-        addDateTimeFormatPatterns(uiModel);
-        return "ofertas/list";
+    public String misOfertas(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, @RequestParam(value = "sortFieldName", required = false) String sortFieldName, @RequestParam(value = "sortOrder", required = false) String sortOrder, Model uiModel) {
+        if(UsuarioController.hasRole("GESTORETT") || UsuarioController.hasRole("GESTOREMPRESA")){
+            Usuario usuario = UsuarioController.getUsuario();
+            Set<Empresa> empresas = usuario.getEmpresas_gestionadas();
+            ArrayList<Oferta> ofertas = new ArrayList<Oferta>();
+            for(Empresa empresa:empresas)
+                ofertas.addAll(empresa.getOfertas());
+            uiModel.addAttribute("ofertas", ofertas);
+            addDateTimeFormatPatterns(uiModel);
+            return "ofertas/list";
+        }
+        else
+            return "redirect:/";
+
     }
 
     void populateEditForm(Model uiModel, Oferta oferta) {
+        // Damos a escoger entre todas las empresas del usuario que crea la oferta
         ArrayList<Empresa> empresas = new ArrayList<Empresa>(UsuarioController.getUsuario().getEmpresas_gestionadas());
         uiModel.addAttribute("oferta", oferta);
         addDateTimeFormatPatterns(uiModel);
@@ -136,16 +158,20 @@ public class OfertaController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
     public String delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
-        if(gestionaOferta(id)){
-            Oferta oferta = Oferta.findOferta(id);
-            oferta.remove();
-            uiModel.asMap().clear();
-            uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
-            uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
-            return "redirect:/ofertas";
+        if(UsuarioController.hasRole("GESTORETT") || UsuarioController.hasRole("GESTOREMPRESA")){
+            if(gestionaOferta(id)){
+                Oferta oferta = Oferta.findOferta(id);
+                oferta.remove();
+                uiModel.asMap().clear();
+                uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
+                uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
+                return "redirect:/ofertas";
+            }
+            else
+                return "redirect:/ofertas/mis-ofertas";
         }
         else
-            return "redirect:/ofertas/mis-ofertas";
+            return "redirect:/ofertas/todas";
     }
 }
 
