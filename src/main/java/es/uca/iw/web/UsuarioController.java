@@ -67,6 +67,20 @@ public class UsuarioController {
         GestorETT
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
+    public String delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+        if(getUsuario().getId() == id){
+            Usuario usuario = Usuario.findUsuario(id);
+            usuario.remove();
+            uiModel.asMap().clear();
+            uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
+            uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
+            return "redirect:/resources/j_spring_security_logout";
+        }
+        else
+            return "redirect:/";
+    }
+
     @RequestMapping(value = "/nuevo", produces = "text/html")
     public String createForm(Model uiModel) {
         uiModel.addAttribute("usuario", new Usuario());
@@ -183,6 +197,18 @@ public class UsuarioController {
         return "usuarios/list";
     }
 
+
+    @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
+    public String updateForm(@PathVariable("id") Long id, Model uiModel) {
+        if(UsuarioController.getUsuario().getId() == id){
+            populateEditForm(uiModel, Usuario.findUsuario(id));
+            return "usuarios/update";
+        }
+        else
+            return "redirect:/";
+    }
+
+
     public static Usuario getUsuario(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String email = auth.getName();
@@ -208,22 +234,10 @@ public class UsuarioController {
             return false;
 
         for (GrantedAuthority auth : authentication.getAuthorities()) {
-            System.out.println("Comparando autorización >" + auth.getAuthority() + "< con >" + role + "<.");
+            // System.out.println("Comparando autorización >" + auth.getAuthority() + "< con >" + role + "<.");
             if (role.equals(auth.getAuthority()))
                 return true;
         }
-
         return false;
     }
-
-
 }
-
-
-
-/*
-*
-*
-*
-*
-* */

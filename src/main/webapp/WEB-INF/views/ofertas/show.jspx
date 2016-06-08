@@ -4,10 +4,26 @@
     <jsp:output omit-xml-declaration="yes"/>
 
     <security:authorize access="hasAnyRole('GESTOREMPRESA', 'GESTORETT')">
-        <button class="btn-danger btn-block" onclick="window.location.href='/adjob/peticionofertas/peticiones/${oferta.id}'">
+        <button class="btn-success btn-block" onclick="window.location.href='/adjob/peticionofertas/peticiones/${oferta.id}'">
             Ver y gestionar las peticiones de esta oferta
         </button>
+        <button class="btn-success btn-block" onclick="window.location.href='/adjob/usuarios/interesados/${oferta.id}'">
+            Ver posibles candidatos
+        </button>
+        <button class="btn-success btn-block" onclick="window.location.href='/adjob/usuarios/adscritos/${oferta.id}'">
+            Ver candidatos adscritos
+        </button>
 
+        <button class="btn-warning btn-block" onclick="window.location.href='/adjob/peticionofertas/apuntar/${oferta.id}'">
+            No elimine la oferta; establezca su estado en cancelada o finalizada
+        </button>
+    </security:authorize>
+
+    <!-- Si un usuario es demandante, podrá apuntarse a la oferta. Si es ora cosa, podrá gestionarla -->
+    <security:authorize access="hasRole('DEMANDANTE')">
+        <button class="btn-warning btn-block" onclick="window.location.href='/adjob/peticionofertas/apuntar/${oferta.id}'">
+            Apuntar a la oferta
+        </button>
 
     </security:authorize>
 
@@ -25,22 +41,8 @@
         <field:display field="empresa" id="s_es_uca_iw_domain_Oferta_empresa" object="${oferta}" z="qV7wPuBiHzKura56IodIPscH+ms="/>
         <field:display field="puesto_buscado" id="s_es_uca_iw_domain_Oferta_puesto_buscado" object="${oferta}" z="oXj/E5IdSUZ7c78714Y2LtmxO+M="/>
     </page:show>
-    <!-- Si un usuario es demandante, podrá apuntarse a la oferta. Si es ora cosa, podrá gestionarla -->
-    <security:authorize access="hasRole('DEMANDANTE')">
-        <button class="btn-success btn-block" onclick="window.location.href='/adjob/peticionofertas/apuntar/${oferta.id}'">
-            Apuntar a la oferta
-        </button>
 
 
-    </security:authorize>
 
-    <security:authorize access="hasAnyRole('GESTOREMPRESA', 'GESTORETT')">
-        <button class="btn-success btn-block" onclick="window.location.href='/adjob/usuarios/interesados/${oferta.id}'">
-            Ver posibles candidatos
-        </button>
-        <button class="btn-success btn-block" onclick="window.location.href='/adjob/usuarios/adscritos/${oferta.id}'">
-            Ver candidatos adscritos
-        </button>
-    </security:authorize>
 
 </div>

@@ -24,5 +24,4 @@ public class MailMail
         message.setText(msg);
         mailSender.send(message);
     }
-
 }

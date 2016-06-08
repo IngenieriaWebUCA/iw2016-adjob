@@ -9,7 +9,7 @@
                 <h1><spring:message arguments="${app_name}" code="welcome_h3"/></h1>
             	<p><spring:message code="welcome_text"/></p>
                 
-                <a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+                <a href="/adjob/ofertas/todas" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
             </div>
         </div>
         

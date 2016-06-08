@@ -60,22 +60,6 @@ privileged aspect UsuarioController_Roo_Controller {
         return "redirect:/usuarios/" + encodeUrlPathSegment(usuario.getId().toString(), httpServletRequest);
     }
     
-    @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
-    public String UsuarioController.updateForm(@PathVariable("id") Long id, Model uiModel) {
-        populateEditForm(uiModel, Usuario.findUsuario(id));
-        return "usuarios/update";
-    }
-    
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
-    public String UsuarioController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
-        Usuario usuario = Usuario.findUsuario(id);
-        usuario.remove();
-        uiModel.asMap().clear();
-        uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
-        uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/usuarios";
-    }
-    
     void UsuarioController.addDateTimeFormatPatterns(Model uiModel) {
         uiModel.addAttribute("usuario_fechanacimiento_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
     }

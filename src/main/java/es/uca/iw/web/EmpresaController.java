@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @RequestMapping("/empresas")
@@ -51,7 +52,7 @@ public class EmpresaController {
 
     @RequestMapping(value = "/mis-empresas", produces = "text/html")
     public String list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, @RequestParam(value = "sortFieldName", required = false) String sortFieldName, @RequestParam(value = "sortOrder", required = false) String sortOrder, Model uiModel) {
-        uiModel.addAttribute("empresas", UsuarioController.getUsuario());
+        uiModel.addAttribute("empresas", new ArrayList<Empresa>(UsuarioController.getUsuario().getEmpresas_gestionadas()));
         return "empresas/list";
     }
 
@@ -84,17 +85,21 @@ public class EmpresaController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
     public String delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
-        if(UsuarioController.hasRole("GESTOREMPRESA") || UsuarioController.hasRole("GESTORETT")){
-            if(UsuarioController.getUsuario().getEmpresas_gestionadas().contains(Empresa.findEmpresa(id))){
-                Empresa empresa = Empresa.findEmpresa(id);
-                empresa.remove();
-                uiModel.asMap().clear();
-                uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
-                uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
-                return "redirect:/empresas";
-            }
-            else
-                return "redirect:/empresas/mis-empresas";
+        if (UsuarioController.hasRole("GESTOREMPRESA") || UsuarioController.hasRole("GESTORETT")){
+            Empresa empresa = Empresa.findEmpresa(id);
+            // Eliminamos la empresa de la lista de gestionadas de sus usuarios
+            // TODO Mejorar orden SQL
+            for(Usuario usuario:Usuario.findAllUsuarios())
+                if(usuario.getEmpresas_gestionadas().contains(empresa)){
+                    Set<Empresa> empresas = usuario.getEmpresas_gestionadas();
+                    empresas.remove(empresa);
+                    usuario.setEmpresas_gestionadas(empresas);
+                    usuario.merge();
+                }
+            for(Oferta oferta:empresa.getOfertas())
+                oferta.remove();
+            empresa.remove();
+            return "redirect:/empresas/mis-empresas";
         }
         else
             return "redirect:/";

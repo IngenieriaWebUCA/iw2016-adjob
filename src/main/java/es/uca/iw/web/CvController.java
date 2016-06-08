@@ -107,7 +107,7 @@ public class CvController {
                 uiModel.asMap().clear();
                 uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
                 uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
-                return "redirect:/cvs";
+                return "redirect:/cvs/mis-cvs";
             }
             else
                 return "redirect:/cvs/mis-cvs";

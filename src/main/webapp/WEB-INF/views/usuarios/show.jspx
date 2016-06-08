@@ -14,5 +14,6 @@
         <field:display field="tipo" id="s_es_uca_iw_domain_Usuario_tipo" object="${usuario}" z="/tqmorAOqULBeRAo9PCuOV0f50c="/>
         <field:display field="sexo" id="s_es_uca_iw_domain_Usuario_sexo" object="${usuario}" z="GZI7nvA0udqVIupkKB1cUZbVRfE="/>
         <field:display field="empresas_gestionadas" id="s_es_uca_iw_domain_Usuario_empresas_gestionadas" object="${usuario}" render="false" z="user-managed"/>
+        <field:display field="cvs" id="s_es_uca_iw_domain_Usuario_cvs" object="${usuario}" z="qD1VgoCnHpBjlDsrBPZ96GERBNk="/>
     </page:show>
 </div>

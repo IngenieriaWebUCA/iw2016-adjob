@@ -35,7 +35,7 @@
 
                         <li>
                             <a class="page-scroll" href="${home}ofertas/todas">
-                                <span class="glyphicon glyphicon-user"> <spring:message code="todas_ofertas"/></span>
+                                <span class="glyphicon glyphicon-road"><spring:message code="todas_ofertas"/></span>
                             </a>
                         </li>
                         <li>
@@ -43,7 +43,7 @@
                         </li>
                         <li>
                             <a class="page-scroll" href="${home}empresas/todas">
-                                <span class="glyphicon glyphicon-user"> <spring:message code="todas_empresas"/></span>
+                                <span class="glyphicon glyphicon-inbox"> <spring:message code="todas_empresas"/></span>
                             </a>
                         </li>
                     <security:authorize access="isAnonymous()">

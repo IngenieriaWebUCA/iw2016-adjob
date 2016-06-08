@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:security="http://www.springframework.org/security/tags" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
+<div xmlns:security="http://www.springframework.org/security/tags" xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields"
+     version="2.0" xmlns:spring="http://www.springframework.org/tags" xmlns:c="http://java.sun.com/jsp/jstl/core">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
 
@@ -7,11 +9,16 @@
         <button class="btn-danger btn-block" onclick="window.location.href='/adjob/ofertas/recomendaciones'">
             ¡Ofertas recomendadas para ti!
         </button>
-
-
     </security:authorize>
-    <page:list id="pl_es_uca_iw_domain_Oferta" items="${ofertas}" z="0AwXq9iQWDrn9RgulOudCrZE+hA=">
-        <table:table data="${ofertas}" id="l_es_uca_iw_domain_Oferta" path="/ofertas" z="ESDhsKFcZuxbW9kejPyh99i3w2s=">
+
+    <c:set var="botones" value="false"/>
+    <security:authorize access="hasAnyRole('GESTORETT', 'GESTOREMPRESA')">
+        // Crear variable true o false
+        <c:set var="botones" value="true"/>
+    </security:authorize>
+
+    <page:list id="pl_es_uca_iw_domain_Oferta" items="${ofertas}" z="0AwXq9iQWDrn9RgulOudCrZE+hA=" >
+        <table:table create="${botones}" update="${botones}" delete="${botones}" data="${ofertas}" id="l_es_uca_iw_domain_Oferta" path="/ofertas" z="ESDhsKFcZuxbW9kejPyh99i3w2s=">
             <table:column id="c_es_uca_iw_domain_Oferta_nombre" property="nombre" z="63OPMFaDi23FZJbgXPWVuq66Oes="/>
             <table:column id="c_es_uca_iw_domain_Oferta_informacion" property="informacion" z="5Q4DSANR6C1F38plnBgv6tOFhxc="/>
             <table:column date="true" dateTimePattern="${oferta_fecha_inicio_date_format}" id="c_es_uca_iw_domain_Oferta_fecha_inicio" property="fecha_inicio" z="d9zg/2iAYr3o1dYormuqTVzhtL4="/>

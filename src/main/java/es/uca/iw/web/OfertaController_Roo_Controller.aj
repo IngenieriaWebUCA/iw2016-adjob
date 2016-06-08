@@ -39,6 +39,17 @@ privileged aspect OfertaController_Roo_Controller {
         return "ofertas/show";
     }
     
+    @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
+    public String OfertaController.update(@Valid Oferta oferta, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        if (bindingResult.hasErrors()) {
+            populateEditForm(uiModel, oferta);
+            return "ofertas/update";
+        }
+        uiModel.asMap().clear();
+        oferta.merge();
+        return "redirect:/ofertas/" + encodeUrlPathSegment(oferta.getId().toString(), httpServletRequest);
+    }
+    
     void OfertaController.addDateTimeFormatPatterns(Model uiModel) {
         uiModel.addAttribute("oferta_fecha_inicio_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("oferta_fecha_fin_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));

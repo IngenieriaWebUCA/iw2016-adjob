@@ -24,6 +24,7 @@
         <intercept-url pattern="/login/**" access="permitAll" />
 
         <intercept-url pattern="/empresas?form" access="hasAnyRole('GESTORETT', 'GESTOREMPRESA')" />
+        <intercept-url pattern="/empresas/mis-empresas" access="hasAnyRole('GESTORETT', 'GESTOREMPRESA')" />
         <intercept-url pattern="/empresas/nueva" access="hasAnyRole('GESTORETT', 'GESTOREMPRESA')" />
         <intercept-url pattern="/ofertas/nueva" access="hasAnyRole('GESTORETT', 'GESTOREMPRESA')" />
         <intercept-url pattern="/ofertas/mis-ofertas" access="hasAnyRole('GESTORETT', 'GESTOREMPRESA')" />

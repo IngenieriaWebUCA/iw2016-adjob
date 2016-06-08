@@ -2,6 +2,8 @@ package es.uca.iw.domain;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
 import org.springframework.roo.addon.tostring.RooToString;
+
+import javax.persistence.FetchType;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
@@ -26,31 +28,31 @@ public class Cv {
 
     /**
      */
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private Set<PuestoTrabajo> puestos_posibles = new HashSet<PuestoTrabajo>();
 
     /**
      */
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private Set<Experiencia> experiencia = new HashSet<Experiencia>();
 
     /**
      */
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private Set<Cursos> cursos = new HashSet<Cursos>();
 
     /**
      */
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private Set<Idiomas> idiomas = new HashSet<Idiomas>();
 
     /**
      */
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE) // OK
     private Set<Titulos> titulos = new HashSet<Titulos>();
 
     /**
      */
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Usuario usuario;
 }

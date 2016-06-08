@@ -2,6 +2,8 @@ package es.uca.iw.domain;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
 import org.springframework.roo.addon.tostring.RooToString;
+
+import javax.persistence.FetchType;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
@@ -48,6 +50,6 @@ public class Empresa {
 
     /**
      */
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empresa")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "empresa")
     private Set<Oferta> ofertas = new HashSet<Oferta>();
 }
