@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:security="http://www.springframework.org/security/tags" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
+    <c:set value="false" var="botones"/>
+    <security:authorize access="hasAnyRole('DEMANDANTE')">
+        <c:set value="true" var="botones"/>
+    </security:authorize>
     <page:list id="pl_es_uca_iw_domain_Cursos" items="${cursoses}" z="4ivp3h9iNq+zXQt8jeCgVOKIrVA=">
-        <table:table data="${cursoses}" id="l_es_uca_iw_domain_Cursos" path="/cursoses" z="RTB1dG+KlTX6yk0tETcWw+NZ9qY=">
+        <table:table create="false" data="${cursoses}" delete="${botones}" id="l_es_uca_iw_domain_Cursos" path="/cursoses" update="${botones}" z="user-managed">
             <table:column id="c_es_uca_iw_domain_Cursos_nombre" property="nombre" z="rKBCTQW244IB0aFtMMuVgxzw4ZE="/>
             <table:column id="c_es_uca_iw_domain_Cursos_nombre_academia" property="nombre_academia" z="5OxW1SCzwdyXJOYheoUIFlZwoiI="/>
             <table:column id="c_es_uca_iw_domain_Cursos_descripcion" property="descripcion" z="IyW9elsbLM62Y9WAjrZbG3rOT7s="/>

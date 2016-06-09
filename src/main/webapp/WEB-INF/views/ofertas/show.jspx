@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:security="http://www.springframework.org/security/tags" xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:security="http://www.springframework.org/security/tags" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-
     <security:authorize access="hasAnyRole('GESTOREMPRESA', 'GESTORETT')">
         <button class="btn-success btn-block" onclick="window.location.href='/adjob/peticionofertas/peticiones/${oferta.id}'">
             Ver y gestionar las peticiones de esta oferta
@@ -13,22 +12,21 @@
         <button class="btn-success btn-block" onclick="window.location.href='/adjob/usuarios/adscritos/${oferta.id}'">
             Ver candidatos adscritos
         </button>
-
         <button class="btn-warning btn-block" onclick="window.location.href='/adjob/peticionofertas/apuntar/${oferta.id}'">
             No elimine la oferta; establezca su estado en cancelada o finalizada
         </button>
     </security:authorize>
-
     <!-- Si un usuario es demandante, podrá apuntarse a la oferta. Si es ora cosa, podrá gestionarla -->
     <security:authorize access="hasRole('DEMANDANTE')">
         <button class="btn-warning btn-block" onclick="window.location.href='/adjob/peticionofertas/apuntar/${oferta.id}'">
             Apuntar a la oferta
         </button>
-
     </security:authorize>
-
-
-    <page:show id="ps_es_uca_iw_domain_Oferta" object="${oferta}" path="/ofertas" z="9ZZyJQGWBUEagHC3xmgyXobcg5U=">
+    <c:set value="false" var="botones"/>
+    <security:authorize access="hasAnyRole('GESTORETT', 'GESTOREMPRESA')">
+        <c:set value="true" var="botones"/>
+    </security:authorize>
+    <page:show create="false" delete="${botones}" id="ps_es_uca_iw_domain_Oferta" list="false" object="${oferta}" path="/ofertas" update="${botones}" z="user-managed">
         <field:display field="nombre" id="s_es_uca_iw_domain_Oferta_nombre" object="${oferta}" z="VdM431610FFAVoS/3JfkOTtk/9E="/>
         <field:display field="informacion" id="s_es_uca_iw_domain_Oferta_informacion" object="${oferta}" z="LKINGVPcsxS7DZSfVXva8zH5Quk="/>
         <field:display date="true" dateTimePattern="${oferta_fecha_inicio_date_format}" field="fecha_inicio" id="s_es_uca_iw_domain_Oferta_fecha_inicio" object="${oferta}" z="WUK+yNlYM4aQaQ5nlOYKLowyoBM="/>
@@ -41,8 +39,4 @@
         <field:display field="empresa" id="s_es_uca_iw_domain_Oferta_empresa" object="${oferta}" z="qV7wPuBiHzKura56IodIPscH+ms="/>
         <field:display field="puesto_buscado" id="s_es_uca_iw_domain_Oferta_puesto_buscado" object="${oferta}" z="oXj/E5IdSUZ7c78714Y2LtmxO+M="/>
     </page:show>
-
-
-
-
 </div>

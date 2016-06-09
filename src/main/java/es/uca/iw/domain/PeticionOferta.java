@@ -8,7 +8,7 @@ import javax.persistence.Enumerated;
 
 @RooJavaBean
 @RooToString
-@RooJpaActiveRecord(finders = { "findPeticionOfertasByUsuario_demandante", "findPeticionOfertasByOferta" })
+@RooJpaActiveRecord(finders = { "findPeticionOfertasByUsuario_demandante", "findPeticionOfertasByOferta", "findPeticionOfertasByCurriculum" })
 public class PeticionOferta {
 
     /**

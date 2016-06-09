@@ -78,6 +78,6 @@ public class Usuario {
 
     /**
      */
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "usuario")
     private Set<Cv> cvs = new HashSet<Cv>();
 }

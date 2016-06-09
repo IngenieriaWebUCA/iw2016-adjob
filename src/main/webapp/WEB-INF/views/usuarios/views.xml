@@ -10,6 +10,9 @@
 <definition extends="default" name="usuarios/create">
         <put-attribute name="body" value="/WEB-INF/views/usuarios/create.jspx"/>
     </definition>
+    <definition extends="default" name="usuarios/createett">
+        <put-attribute name="body" value="/WEB-INF/views/usuarios/createett.jspx"/>
+    </definition>
 <definition extends="default" name="usuarios/update">
         <put-attribute name="body" value="/WEB-INF/views/usuarios/update.jspx"/>
     </definition>

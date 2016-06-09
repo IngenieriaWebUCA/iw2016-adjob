@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:security="http://www.springframework.org/security/tags" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    <page:show id="ps_es_uca_iw_domain_Usuario" object="${usuario}" path="/usuarios" z="KS3UrodUhGmpHa+ZB1EWyvhl6vY=">
+    <c:set value="false" var="botones"/>
+    <security:authorize access="isAuthenticated()">
+        <c:set value="true" var="botones"/>
+    </security:authorize>
+    <page:show create="false" delete="${botones}" id="ps_es_uca_iw_domain_Usuario" list="false" object="${usuario}" path="/usuarios" update="${botones}" z="user-managed">
         <field:display field="nombre" id="s_es_uca_iw_domain_Usuario_nombre" object="${usuario}" z="XbLGMJ8CBeR5SQh5c1RvjWb1bpY="/>
         <field:display field="apellidos" id="s_es_uca_iw_domain_Usuario_apellidos" object="${usuario}" z="vPfNEXbCeltkywHKw9h1M6n6dSQ="/>
         <field:display field="email" id="s_es_uca_iw_domain_Usuario_email" object="${usuario}" z="HJK0LsgkkMFcmEjp2YBt4CqzaOk="/>
@@ -13,7 +17,9 @@
         <field:display field="telefono" id="s_es_uca_iw_domain_Usuario_telefono" object="${usuario}" z="foQZOE8MPUzErAq/US8pmGCCWjA="/>
         <field:display field="tipo" id="s_es_uca_iw_domain_Usuario_tipo" object="${usuario}" z="/tqmorAOqULBeRAo9PCuOV0f50c="/>
         <field:display field="sexo" id="s_es_uca_iw_domain_Usuario_sexo" object="${usuario}" z="GZI7nvA0udqVIupkKB1cUZbVRfE="/>
+        <div class="hidden">
         <field:display field="empresas_gestionadas" id="s_es_uca_iw_domain_Usuario_empresas_gestionadas" object="${usuario}" render="false" z="user-managed"/>
         <field:display field="cvs" id="s_es_uca_iw_domain_Usuario_cvs" object="${usuario}" z="qD1VgoCnHpBjlDsrBPZ96GERBNk="/>
+        </div>
     </page:show>
 </div>

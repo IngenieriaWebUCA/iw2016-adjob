@@ -13,9 +13,19 @@
         <field:input field="telefono" id="c_es_uca_iw_domain_Usuario_telefono" validationMessageCode="field_invalid_integer" z="GMjqpb6MIIKxftoaHN0gpvt9pYg="/>
         <field:select field="tipo" id="c_es_uca_iw_domain_Usuario_tipo" items="${tipousuarios}" path="tipousuarios" z="QGLTBwmcxAUK5aBoxfMqrUIIRTs="/>
         <field:select field="sexo" id="c_es_uca_iw_domain_Usuario_sexo" items="${sexoes}" path="sexoes" z="8XrXKLPs4BgcALFgUvWoXkfsnzY="/>
+
+
+        <div class="hidden">
+            <field:simple field="cvs" id="c_es_uca_iw_domain_Usuario_cvs" messageCode="entity_reference_not_managed" messageCodeAttribute="Cv" render="false" z="user-managed"/>
+
+            <field:select field="empresas_gestionadas" id="c_es_uca_iw_domain_Usuario_empresas_gestionadas" itemValue="id" items="${empresas}" multiple="true" path="/empresas" render="true" z="user-managed"/>
+        </div>
+
+        <!--
         <div class="hidden">
             <field:input field="empresas_gestionadas" id="c_es_uca_iw_domain_Usuario_empresas_gestionadas" z="o/Gr9RPW9lq6/OfgNR8OqkPUdVM="/>
             <field:input field="cvs" id="c_es_uca_iw_domain_Usuario_cvs" z="gWijiI5btIIiywPkQYkQW4vB+S0="/>
         </div>
+        -->
     </form:update>
 </div>

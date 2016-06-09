@@ -1,11 +1,13 @@
 package es.uca.iw.web;
 import es.uca.iw.domain.Cv;
-import es.uca.iw.domain.Idiomas;
+import es.uca.iw.domain.PeticionOferta;
+import es.uca.iw.domain.Usuario;
 import es.uca.iw.domain.Cursos;
 import es.uca.iw.domain.Experiencia;
-import es.uca.iw.domain.Usuario;
+import es.uca.iw.domain.Idiomas;
 import es.uca.iw.domain.PuestoTrabajo;
 import es.uca.iw.domain.Titulos;
+
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @RequestMapping("/cvs")
@@ -103,6 +106,10 @@ public class CvController {
         if(UsuarioController.hasRole("DEMANDANTE"))
             if(Cv.findCvsByUsuario(UsuarioController.getUsuario()).getResultList().contains(Cv.findCv(id))){
                 Cv cv = Cv.findCv(id);
+                // Buscamos todas las peticiones de oferta que haya realizado el usuario con este CV
+                ArrayList<PeticionOferta> peticiones = new ArrayList<PeticionOferta>(PeticionOferta.findPeticionOfertasByCurriculum(cv).getResultList());
+                for(PeticionOferta peticion:peticiones)
+                    peticion.remove();
                 cv.remove();
                 uiModel.asMap().clear();
                 uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
@@ -113,6 +120,5 @@ public class CvController {
                 return "redirect:/cvs/mis-cvs";
         else
             return "redirect:/";
-
     }
 }

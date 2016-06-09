@@ -35,7 +35,7 @@ import java.util.List;
 public class OfertaController {
 
     // Función que dada la id de una oferta, determina si el usuario autenticado puede o no gestionarla
-    public static Boolean gestionaOferta(long id){
+    private Boolean gestionaOferta(long id){
         Usuario usuario = UsuarioController.getUsuario();
         for(Empresa empresa:usuario.getEmpresas_gestionadas())
             if(empresa.getOfertas().contains(Oferta.findOferta(id)))
@@ -63,7 +63,8 @@ public class OfertaController {
                 for(PuestoTrabajo puesto:posibles){
                     List<Oferta> ofertas = Oferta.findOfertasByPuesto_buscado(puesto).getResultList();
                     for(Oferta of:ofertas)
-                        recomendadas.add(of);
+                        if(en_rango(of) && !of.getEstado_oferta().equals(EstadoOferta.Cancelada))
+                            recomendadas.add(of);
                 }
 
             }

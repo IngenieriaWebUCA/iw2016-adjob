@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:security="http://www.springframework.org/security/tags" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
+    <c:set value="false" var="botones"/>
+    <security:authorize access="hasAnyRole('GESTORETT', 'GESTOREMPRESA')">
+        <c:set value="true" var="botones"/>
+    </security:authorize>
+    <c:set value="false" var="botonEdit"/>
+    <security:authorize access="hasAnyRole('DEMANDANTE')">
+        <c:set value="true" var="botonEdit"/>
+    </security:authorize>
     <page:list id="pl_es_uca_iw_domain_PeticionOferta" items="${peticionofertas}" z="bC8XLvLq3ssXJOt167hQJdVpjrU=">
-        <table:table data="${peticionofertas}" id="l_es_uca_iw_domain_PeticionOferta" path="/peticionofertas" z="Y/4qTlFJThI2jLimWMmCQFvviAM=">
+        <table:table create="false" data="${peticionofertas}" delete="${botonEdit}" id="l_es_uca_iw_domain_PeticionOferta" path="/peticionofertas" update="${botones}" z="user-managed">
             <table:column id="c_es_uca_iw_domain_PeticionOferta_usuario_demandante" property="usuario_demandante" z="NRXqtfFQ6SxMeAXX9Fqv6t4SpLs="/>
             <table:column id="c_es_uca_iw_domain_PeticionOferta_estado" property="estado" z="cFSEEo8R+Do6+Y04WBUCp8gU7GQ="/>
             <table:column id="c_es_uca_iw_domain_PeticionOferta_curriculum" property="curriculum" z="CUe/NHgOv6l/9lSF7D7D40lBLwI="/>

@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:security="http://www.springframework.org/security/tags" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    <page:show id="ps_es_uca_iw_domain_Idiomas" object="${idiomas}" path="/idiomases" z="cggylcODyfASbci37YweiG2PaQg=">
+    <c:set value="false" var="botones"/>
+    <security:authorize access="hasAnyRole('DEMANDANTE')">
+        <c:set value="true" var="botones"/>
+    </security:authorize>
+    <page:show create="false" delete="${botones}" id="ps_es_uca_iw_domain_Idiomas" list="false" object="${idiomas}" path="/idiomases" update="${botones}" z="user-managed">
         <field:display field="nombre_titulo" id="s_es_uca_iw_domain_Idiomas_nombre_titulo" object="${idiomas}" z="Zkpsyyj0dfA/adO/zQudh8Axk9U="/>
         <field:display field="descripcion" id="s_es_uca_iw_domain_Idiomas_descripcion" object="${idiomas}" z="rhoQFEncSP6BWg0xyEfOzdM9m9E="/>
         <field:display field="entidad_emisora" id="s_es_uca_iw_domain_Idiomas_entidad_emisora" object="${idiomas}" z="hvMscF5r53DUQMBvFSTd2J3QI7s="/>

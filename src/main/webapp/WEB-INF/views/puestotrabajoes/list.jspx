@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:security="http://www.springframework.org/security/tags" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
+    <c:set value="false" var="botones"/>
+    <security:authorize access="isAuthenticated()">
+        <c:set value="true" var="botones"/>
+    </security:authorize>
     <page:list id="pl_es_uca_iw_domain_PuestoTrabajo" items="${puestotrabajoes}" z="OgMxw2cDYWRBj90Wsa1q4s4UdF0=">
-        <table:table data="${puestotrabajoes}" id="l_es_uca_iw_domain_PuestoTrabajo" path="/puestotrabajoes" z="XkSw3rnparUGEq/PakMHhOmPmzo=">
+        <table:table create="${botones}" data="${puestotrabajoes}" delete="false" id="l_es_uca_iw_domain_PuestoTrabajo" path="/puestotrabajoes" update="false" z="user-managed">
             <table:column id="c_es_uca_iw_domain_PuestoTrabajo_nombre" property="nombre" z="7FDro4mrffF35iDLyQK+jT++70E="/>
             <table:column id="c_es_uca_iw_domain_PuestoTrabajo_descripcion" property="descripcion" z="UphlvdkBsIEu/DNdJbCczre0KzA="/>
         </table:table>

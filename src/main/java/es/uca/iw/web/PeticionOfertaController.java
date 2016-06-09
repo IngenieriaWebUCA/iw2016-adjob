@@ -1,11 +1,13 @@
 package es.uca.iw.web;
+import es.uca.iw.domain.Usuario;
+import es.uca.iw.domain.Empresa;
 import es.uca.iw.domain.Cv;
+import es.uca.iw.domain.PuestoTrabajo;
 import es.uca.iw.domain.Oferta;
 import es.uca.iw.domain.PeticionOferta;
-import es.uca.iw.domain.Usuario;
 import es.uca.iw.reference.EstadoPeticionOferta;
-import es.uca.iw.reference.TipoUsuario;
 import es.uca.iw.domain.MailMail;
+import es.uca.iw.reference.TipoUsuario;
 
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 import org.springframework.stereotype.Controller;
@@ -39,6 +41,16 @@ public class PeticionOfertaController {
         return false;
     }
 
+    // Función que dada la id de una oferta, determina si el usuario autenticado puede o no gestionarla
+    private Boolean gestionaOferta(long id){
+        Usuario usuario = UsuarioController.getUsuario();
+        for(Empresa empresa:usuario.getEmpresas_gestionadas())
+            if(empresa.getOfertas().contains(Oferta.findOferta(id)))
+                return true;
+
+        return false;
+    }
+
     @RequestMapping(value = "/apuntar/{id}", produces = "text/html")
     public String createForm(@PathVariable("id") Long id, Model uiModel) {
         // La petición la debe iniciar un DEMANDANTE
@@ -62,7 +74,7 @@ public class PeticionOfertaController {
     @RequestMapping(value = "/peticiones/{id}", produces = "text/html")
     public String list(@PathVariable("id") Long id, Model uiModel) {
         if(UsuarioController.hasRole("GESTOREMPRESA") || UsuarioController.hasRole("GESTORETT")){
-            if(OfertaController.gestionaOferta(id)){
+            if(gestionaOferta(id)){
                 uiModel.addAttribute("peticionofertas", PeticionOferta.findPeticionOfertasByOferta(Oferta.findOferta(id)).getResultList());
 
                 return "peticionofertas/list";
@@ -78,7 +90,7 @@ public class PeticionOfertaController {
     public String updateForm(@PathVariable("id") Long id, Model uiModel) {
         if(UsuarioController.hasRole("GESTOREMPRESA") || UsuarioController.hasRole("GESTORETT")){
             PeticionOferta peticion = PeticionOferta.findPeticionOferta(id);
-            if(OfertaController.gestionaOferta(peticion.getOferta().getId())){
+            if(gestionaOferta(peticion.getOferta().getId())){
                 // Preparamos formulario. Lo he hecho así porque si no daba numerosos errores
                 ArrayList<Cv> cv_actual = new ArrayList<Cv>();
                 cv_actual.add( peticion.getCurriculum());

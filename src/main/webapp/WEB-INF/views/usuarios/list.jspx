@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:security="http://www.springframework.org/security/tags" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
+    <c:set value="false" var="botones"/>
+    <security:authorize access="isAuthenticated()">
+        <c:set value="true" var="botones"/>
+    </security:authorize>
     <page:list id="pl_es_uca_iw_domain_Usuario" items="${usuarios}" z="GjIj4KtI2cdl1Tf74OKgmEPcnY8=">
-        <table:table data="${usuarios}" id="l_es_uca_iw_domain_Usuario" path="/usuarios" z="c5S+CUk09DEVC810rPv0JqoO9Vg=">
+        <table:table create="false" data="${usuarios}" delete="${botones}" id="l_es_uca_iw_domain_Usuario" path="/usuarios" update="${botones}" z="user-managed">
             <table:column id="c_es_uca_iw_domain_Usuario_nombre" property="nombre" z="cJvG1Id50yrOd9I+bhsvaFN0rgk="/>
             <table:column id="c_es_uca_iw_domain_Usuario_apellidos" property="apellidos" z="QkMGlzwXbtClprzjxzCA9huobX8="/>
             <table:column id="c_es_uca_iw_domain_Usuario_email" property="email" z="UVojfcwXaRfS+g8qvkdJtiKDOY8="/>

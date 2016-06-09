@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:security="http://www.springframework.org/security/tags" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    <page:show id="ps_es_uca_iw_domain_PeticionOferta" object="${peticionoferta}" path="/peticionofertas" z="VQ9Fd1ywNjwukcGEefGigS+h0G8=">
+    <c:set value="false" var="botones"/>
+    <security:authorize access="hasAnyRole('GESTORETT', 'GESTOREMPRESA')">
+        <c:set value="true" var="botones"/>
+    </security:authorize>
+    <c:set value="false" var="botonEdit"/>
+    <security:authorize access="hasAnyRole('DEMANDANTE')">
+        <c:set value="true" var="botonEdit"/>
+    </security:authorize>
+
+    <security:authorize access="hasAnyRole('GESTOREMPRESA', 'GESTORETT')">
+        <button class="btn-success btn-block" onclick="window.location.href='/adjob/cvs/${peticionoferta.curriculum.id}'">
+            Ver el currículum adscrito a esta petición
+        </button>
+        <button class="btn-danger btn-block" onclick="window.location.href='/adjob/usuarios/${peticionoferta.usuario_demandante.id}'">
+            Ver al usuario adscrito a esta petición
+        </button>
+    </security:authorize>
+    <page:show create="false" delete="${botonEdit}" id="ps_es_uca_iw_domain_PeticionOferta" list="false" object="${peticionoferta}" path="/peticionofertas" update="${botones}" z="user-managed">
         <field:display field="usuario_demandante" id="s_es_uca_iw_domain_PeticionOferta_usuario_demandante" object="${peticionoferta}" z="Uwp5HjQF7v3jmI6GORG+F9RHGPI="/>
         <field:display field="estado" id="s_es_uca_iw_domain_PeticionOferta_estado" object="${peticionoferta}" z="2RK/0Q+KvyaLx/G5xtOBmt29Jio="/>
         <field:display field="curriculum" id="s_es_uca_iw_domain_PeticionOferta_curriculum" object="${peticionoferta}" z="wjz6L8cyoeGsvuLaPXqb5iwotvU="/>

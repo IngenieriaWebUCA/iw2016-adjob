@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:security="http://www.springframework.org/security/tags" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    <page:show id="ps_es_uca_iw_domain_Cv" object="${cv}" path="/cvs" z="Kjze7o9q21DP565yQHJmYszlC8A=">
+    <c:set value="false" var="botones"/>
+    <security:authorize access="hasAnyRole('DEMANDANTE')">
+        <c:set value="true" var="botones"/>
+    </security:authorize>
+    <page:show create="false" delete="${botones}" id="ps_es_uca_iw_domain_Cv" list="false" object="${cv}" path="/cvs" update="${botones}" z="user-managed">
         <field:display field="foto" id="s_es_uca_iw_domain_Cv_foto" object="${cv}" z="te9jImIy1u/AEr7CluGNfhGyjxY="/>
         <field:display field="trayectoria" id="s_es_uca_iw_domain_Cv_trayectoria" object="${cv}" z="eNKBFGQ/JdCq7rvKybz9rKhsktY="/>
         <field:display field="puestos_posibles" id="s_es_uca_iw_domain_Cv_puestos_posibles" object="${cv}" z="J/hs8BrnpAR+MrkItROp/d7ne78="/>

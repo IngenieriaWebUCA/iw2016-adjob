@@ -125,20 +125,15 @@ public class UsuarioController {
     }
 
 
-
     @RequestMapping(value = "/nuevo-ett", produces = "text/html")
-    public String crearGestorETT(Model uiModel) {
-        Usuario usuario = getUsuario();
-        Set<Empresa> empresas = usuario.getEmpresas_gestionadas();
+    public String createett(Model uiModel) {
+        ArrayList<Empresa> empresas = new ArrayList<Empresa>(getUsuario().getEmpresas_gestionadas());
         uiModel.addAttribute("usuario", new Usuario());
         addDateTimeFormatPatterns(uiModel);
-        uiModel.addAttribute("cvs", Cv.findAllCvs());
-        // Las empresas serán aquellas que estén gestionadas por el usuario
         uiModel.addAttribute("empresas", empresas);
         uiModel.addAttribute("sexoes", Arrays.asList(Sexo.values()));
-        // Permitimos que el tipo sea sólo gestor ETT
         uiModel.addAttribute("tipousuarios", Arrays.asList(TipoUsuario2.values()));
-        return "usuarios/create";
+        return "usuarios/createett";
     }
 
 
@@ -201,11 +196,33 @@ public class UsuarioController {
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String updateForm(@PathVariable("id") Long id, Model uiModel) {
         if(UsuarioController.getUsuario().getId() == id){
-            populateEditForm(uiModel, Usuario.findUsuario(id));
+            uiModel.addAttribute("usuario", Usuario.findUsuario(id));
+            addDateTimeFormatPatterns(uiModel);
+            //uiModel.addAttribute("cvs", Cv.findAllCvs());
+            uiModel.addAttribute("empresas", Empresa.findAllEmpresas());
+            uiModel.addAttribute("sexoes", Arrays.asList(Sexo.values()));
+            uiModel.addAttribute("tipousuarios", Arrays.asList(TipoUsuario1.values()));
             return "usuarios/update";
         }
         else
             return "redirect:/";
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
+    public String update(@Valid Usuario usuario, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        if (bindingResult.hasErrors()) {
+            System.out.println("ERRORES AL EDITAR: " + bindingResult.getAllErrors());
+            uiModel.addAttribute("usuario", usuario);
+            addDateTimeFormatPatterns(uiModel);
+            //uiModel.addAttribute("cvs", Cv.findAllCvs());
+            uiModel.addAttribute("empresas", Empresa.findAllEmpresas());
+            uiModel.addAttribute("sexoes", Arrays.asList(Sexo.values()));
+            uiModel.addAttribute("tipousuarios", Arrays.asList(TipoUsuario1.values()));
+            return "usuarios/update";
+        }
+        uiModel.asMap().clear();
+        usuario.merge();
+        return "redirect:/usuarios/mi-cuenta";
     }
 
 

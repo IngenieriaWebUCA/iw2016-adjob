@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:security="http://www.springframework.org/security/tags" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    <page:show id="ps_es_uca_iw_domain_Empresa" object="${empresa}" path="/empresas" z="8s3dSzxLdw09C/Q++CnOHietQH8=">
+    <c:set value="false" var="botones"/>
+    <security:authorize access="hasAnyRole('GESTORETT', 'GESTOREMPRESA')">
+        <c:set value="true" var="botones"/>
+    </security:authorize>
+    <page:show create="false" delete="${botones}" id="ps_es_uca_iw_domain_Empresa" list="false" object="${empresa}" path="/empresas" update="${botones}" z="user-managed">
         <field:display field="nombre" id="s_es_uca_iw_domain_Empresa_nombre" object="${empresa}" z="audhqrd1+SeLNmFV3kcoLPGqEVc="/>
         <field:display field="cif" id="s_es_uca_iw_domain_Empresa_cif" object="${empresa}" z="YFp3+41A4BLBhtTK72LaYqAgLcQ="/>
         <field:display field="actividad_profesional" id="s_es_uca_iw_domain_Empresa_actividad_profesional" object="${empresa}" z="+tZlO7OtjANY58veFAYPNlQxnZE="/>

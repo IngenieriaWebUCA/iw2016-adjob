@@ -118,11 +118,14 @@ public class EmpresaController {
             return "empresas/update";
         }
         uiModel.asMap().clear();
+        empresa.merge();
+        /*
         Usuario usuario = UsuarioController.getUsuario();
         Set<Empresa> empresas = usuario.getEmpresas_gestionadas();
         empresas.add(empresa);
         usuario.setEmpresas_gestionadas(empresas);
-        empresa.merge();
+        usuario.merge();
+        */
         return "redirect:/empresas/" + encodeUrlPathSegment(empresa.getId().toString(), httpServletRequest);
     }
 }
